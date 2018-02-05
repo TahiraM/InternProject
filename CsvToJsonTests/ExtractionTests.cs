@@ -29,14 +29,14 @@ namespace CsvToJsonTests
         [TestMethod] //test to check csv file is being read with no errors 
         public void Should_CHeckToSeeIfCSVFileParsedIntoString_WhenTheProjectRunInStartup()
         {
-            var content = Extraction.Read().ToString();
+            var content = Extraction.CsvFileReader().ToString();
             Assert.IsNotNull(content);
         }
 
         [TestMethod] //test to check the file is being split in correct number of rows
         public void Should_CheckToSeeIfDataIsSplitIntoCorrectNumberOfRows_WhenTheProjectRunInStartup()
         {
-            var rownumber = Extraction.RowCount().Length;
+            var rownumber = Extraction.NumberofRows().Length;
             var actualNum = 3;
             Assert.AreEqual(rownumber, actualNum);
         }
@@ -45,7 +45,7 @@ namespace CsvToJsonTests
         public void Should_CheckToSeeIfDataIsSplitIntoCorrectNumberOfColumns_WhenTheProjectRunInStartup()
         {
             var actualNum = 16;
-            var testNum = Extraction.Values();
+            var testNum = Extraction.NumberofColumns();
             Assert.AreEqual(actualNum, testNum);
         }
 
@@ -54,7 +54,7 @@ namespace CsvToJsonTests
         {
             var i = 0;
             var result = 1;
-            if (File.Exists(Extraction.FileJsType())) i = 1;
+            if (File.Exists(Extraction.FileJsonType)) i = 1;
 
             Assert.AreEqual(i, result);
         }
@@ -62,14 +62,14 @@ namespace CsvToJsonTests
         [TestMethod] //test to check the Json file can be accessed and read
         public void Should_CHeckToSeeIf_JSONBeingRead_FileParsedIntoString_WhenTheProjectRun()
         {
-            var content = Extraction.ReadJson();
+            var content = Extraction.JsonFileReader();
             Assert.IsNotNull(content);
         }
 
         /*[TestMethod] //test to ensure the JSON file is starting and ending with the correct syntax
         public void Should_CHeckToSeeIfCorrectSyntaxIsBeingUsed_WhenTheProjectRun_AtStartAndEndOfFile()
         {
-            var content = Extraction.ReadJson();
+            var content = Extraction.JsonFileReader();
             StringAssert.StartsWith(content, "[{");
             StringAssert.EndsWith(content, "\"}]");
 
@@ -78,7 +78,7 @@ namespace CsvToJsonTests
         [TestMethod] //test to check that the csv conversion is linking the correct header to value for the data
         public void Should_CHeckToSeeIfDataMappingIsCorrect_HeaderToData_WhenTheProjectRun()
         {
-            var content = Extraction.Map().ToString();
+            var content = Extraction.HeaderToDataMapping().ToString();
             const string match = "\"" + "V3DealID" + "\":" + "\"" + "02B4EFADE6" + "\"";
             StringAssert.Contains(content, match);
         }

@@ -10,7 +10,7 @@ namespace Stage3_Verification
             if (args.Any())
                 Extraction.FileType = args[0];
 
-            Extraction.ReadFile();
+            Extraction.ExtractCsvDataFile();
         }
     }
 }
