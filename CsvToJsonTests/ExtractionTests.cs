@@ -13,7 +13,7 @@ namespace CsvToJsonTests
         {
             var i = 0;
             var result = 1;
-            if (File.Exists(Extraction.FileType())) i++;
+            if (File.Exists(Extraction.FileType)) i++;
 
             Assert.AreEqual(i, result);
         }
@@ -21,7 +21,7 @@ namespace CsvToJsonTests
         [TestMethod] //test to check csv file is being called
         public void Should_FileType_ReturnsTheCorrectFileWithCsvExtension_WhenTheProjectRunInStartup()
         {
-            var name = Extraction.FileType();
+            var name = Extraction.FileType;
             var csv = ".csv";
             StringAssert.Contains(name, csv);
         }

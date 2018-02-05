@@ -6,16 +6,26 @@ namespace Stage3_Verification
 {
     public class Extraction
     {
-        public static string FileType()
-        {
-            var file = "Deal.csv";
-            return file;
-        }
+        // TODO: FileType should be parameteric
+//        public static string FileType()
+//        {
+//            var file = "Deal.csv";
+//            return file;
+//        }
+//
+
+        // TODO: Think about how you break your long method
+        // TODO: Think on the naming convention
+        // TODO: Think about Reading/Writing json
+        // TODO: Error Handling
+        // Static?
+
+        public static string FileType { get; set; } = "Deal.csv";
 
         public static StringBuilder ReadFile()
         {
             var jsonString = new StringBuilder();
-            using (var sr = new StreamReader(FileType()))
+            using (var sr = new StreamReader(FileType))
             {
                 while (!sr.EndOfStream)
                 {
@@ -139,7 +149,7 @@ namespace Stage3_Verification
 
         public static StreamReader Read()
         {
-            StreamReader sr = new StreamReader(FileType());
+            StreamReader sr = new StreamReader(FileType);
             return sr;
         }
 
