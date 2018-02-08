@@ -45,7 +45,7 @@ namespace CsvToJsonTests
         public void Should_CheckToSeeIfDataIsSplitIntoCorrectNumberOfColumns_WhenTheProjectRunInStartup()
         {
             var actualNum = 16;
-            var testNum = Extraction.NumberofColumns();
+            var testNum = Extraction.ColumnValueExtraction();
             Assert.AreEqual(actualNum, testNum);
         }
 

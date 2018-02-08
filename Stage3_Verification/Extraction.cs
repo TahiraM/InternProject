@@ -30,30 +30,29 @@ namespace Stage3_Verification
                 while (!sr.EndOfStream)
                 {
                     jsonString.Append("[");
-                    var fulltext = sr.ReadToEnd();
-                    var rows = fulltext.Split('\n');
-                    var headers = rows[0];
+                    
+                    var headers = NumberofRows()[0];
 
                     var headerNames = headers.Split("||");
 
 
-                    for (var i = 1; i <= rows.Length - 1; i++)
+                    for (var i = 1; i <= NumberofRows().Length - 1; i++)
                     {
-                        var RowData = rows[i];
-                        var RowDataValues = RowData.Split("||");
+                        var rowData = NumberofRows()[i];
+                        var rowDataValues = rowData.Split("||");
                         jsonString.Append("{");
                         for (var j = 0; j < headerNames.Length; j++)
                             switch (j)
                             {
                                 case 7:
                                 case 5:
-                                    var v = Validations.Integer_Validator(RowDataValues[j]);
+                                    var v = Validations.Integer_Validator(rowDataValues[j]);
                                     jsonString.Append("\"" + headerNames[j] + "\":" + "\"" + v +
                                                       Validations.IntegerType() + "\"");
                                     jsonString.Append(",");
                                     break;
                                 case 12:
-                                    var w = Validations.Double_Validation(RowDataValues[j]);
+                                    var w = Validations.Double_Validation(rowDataValues[j]);
                                     jsonString.Append("\"" + headerNames[j] + "\":" + "\"" + w +
                                                       Validations.DoubleType() + "\"");
                                     jsonString.Append(",");
@@ -62,23 +61,23 @@ namespace Stage3_Verification
                                 case 1:
                                 case 2:
                                 case 8:
-                                    if (RowDataValues[j] == "")
+                                    if (rowDataValues[j] == "")
                                     {
                                         Console.WriteLine("Error: ");
-                                        var empty = Validations.Error(RowDataValues[j]);
+                                        var empty = Validations.Error(rowDataValues[j]);
                                         jsonString.Append("\"" + headerNames[j] + "\":" + "\"" + empty + "\"");
                                         //break;
                                     }
                                     else
                                     {
-                                        var m = Validations.String_Validator(RowDataValues[j]);
+                                        var m = Validations.String_Validator(rowDataValues[j]);
                                         jsonString.Append("\"" + headerNames[j] + "\":" + "\"" + m + "\"");
                                         jsonString.Append(",");
                                     }
 
                                     break;
                                 default:
-                                    var x = Validations.String_Validator(RowDataValues[j]);
+                                    var x = Validations.String_Validator(rowDataValues[j]);
                                     jsonString.Append("\"" + headerNames[j] + "\":" + "\"" + x + "\"");
                                     jsonString.Append(",");
                                     break;
@@ -118,9 +117,10 @@ namespace Stage3_Verification
         }
 
 
-        public static int NumberofColumns()
+        public static int ColumnValueExtraction(int i)
         {
-            var a = NumberofRows()[0];
+            
+            var a = NumberofRows()[i];
             var rowValues = a.Split("||"); //split each row with || to get individual values
             var value = rowValues.Length;
             return value;

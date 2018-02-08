@@ -1,50 +1,4 @@
-[
-  {
-    "V3DealID": "02B4EFADE6 {type:string}",
-    "eFrontDealID": "02B4EFADE60B48339D13F93EB851943C {type:string}",
-    "DealName": "Marston (Project Magenta) {type:string}",
-    "V3CompanyID": " {type:string}",
-    "V3CompanyName": " {type:string}",
-    "SectorID": "0 {type:int}",
-    "Sector": " {type:string}",
-    "CountryID": "229 {type:int}",
-    "Country": "United Kingdom {type:string}",
-    "TransactionTypeID": " {type:string}",
-    "Transaction Type": " {type:string}",
-    "Transaction Fees": " {type:string}",
-    "Other Fees": "0 {type:double}",
-    "Currency": "EUR {type:string}",
-    "ActiveInActive": "Active {type:string}",
-    "ExitDate": "1st{type:string}"
-  },
-  {
-    "V3DealID": "02B4EFADE6 {type:string}",
-    "eFrontDealID": "02B4EFADE60B48339D13F93EB851943C {type:string}",
-    "DealName": "Marston (Project Magenta) {type:string}",
-    "V3CompanyID": "JFV3CompanyId02B4EFADE6 {type:string}",
-    "V3CompanyName": "JFV3Company {type:string}",
-    "SectorID": "1 {type:int}",
-    "Sector": "Advertising {type:string}",
-    "CountryID": "229 {type:int}",
-    "Country": "United Kingdom {type:string}",
-    "TransactionTypeID": "209 {type:string}",
-    "Transaction Type": "Primary LBO {type:string}",
-    "Transaction Fees": " {type:string}",
-    "Other Fees": "0 {type:double}",
-    "Currency": "EUR {type:string}",
-    "ActiveInActive": "false {type:string}",
-    "ExitDate": "2nd{type:string}"
-  },
-  {
-    "V3DealID": "02B4EFADE6 {type:string}",
-    "eFrontDealID": "02B4EFADE60B48339D13F93EB851943C {type:string}",
-    "DealName": "Marston (Project Magenta) {type:string}",
-    "V3CompanyID": "JFV3CompanyId02B4EFADE6 {type:string}",
-    "V3CompanyName": "JFV3Company {type:string}",
-    "SectorID": "1 {type:int}",
-    "Sector": "Advertising {type:string}",
-    "CountryID": "229 {type:int}",
-    "Country": "United Kingdom {type:string}",
+[{"V3DealID":"02B4EFADE6 {type:string}","eFrontDealID":"02B4EFADE60B48339D13F93EB851943C {type:string}","DealName":"Marston (Project Magenta) {type:string}","V3CompanyID":" {type:string}","V3CompanyName":" {type:string}","SectorID":"0 {type:int}","Sector":" {type:string}","CountryID":"229 {type:int}","Country":"United Kingdom {type:string}","TransactionTypeID":" {type:string}","Transaction Type":" {type:string}","Transaction Fees":" {type:string}","Other Fees":"0 {type:double}","Currency":"EUR {type:string}","ActiveInActive":"Active {type:string}","ExitDate":"1st {type:string}",},{"V3DealID":"02B4EFADE6 {type:string}","eFrontDealID":"02B4EFADE60B48339D13F93EB851943C {type:string}","DealName":"Marston (Project Magenta) {type:string}","V3CompanyID":"JFV3CompanyId02B4EFADE6 {type:string}","V3CompanyName":"JFV3Company {type:string}","SectorID":"1 {type:int}","Sector":"Advertising {type:string}","CountryID":"229 {type:int}","Country":"United Kingdom {type:string}","TransactionTypeID":"209 {type:string}","Transaction Type":"Primary LBO {type:string}","Transaction Fees":" {type:string}","Other Fees":"0 {type:double}","Currency":"EUR {type:string}","ActiveInActive":"false {type:string}","ExitDate":"2nd {type:string}",},{"V3DealID":"02B4EFADE6 {type:string}","eFrontDealID":"02B4EFADE60B48339D13F93EB851943C {type:string}","DealName":"Marston (Project Magenta) {type:string}","V3CompanyID":"JFV3CompanyId02B4EFADE6 {type:string}","V3CompanyName":"JFV3Company {type:string}","SectorID":"1 {type:int}","Sector":"Advertising {type:string}","CountryID":"229 {type:int}","Country":"United Kingdom {type:string}","TransactionTypeID":"209 {type:string}","Transaction Type":"Primary LBO {type:string}","Transaction Fees":" {type:string}","Other Fees":"0 {type:double}","Currency":"EUR {type:string}","ActiveInActive":"Active {type:string}","ExitDate":"3rd {type:string}",},]untry": "United Kingdom {type:string}",
     "TransactionTypeID": "209 {type:string}",
     "Transaction Type": "Primary LBO {type:string}",
     "Transaction Fees": " {type:string}",
