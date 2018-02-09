@@ -6,7 +6,7 @@ namespace Stage3_Verification
 {
     public class Extraction
     {
-        public static StringBuilder jsonString = new StringBuilder();
+        public static StringBuilder JsonString = new StringBuilder();
         // TODO: FileType should be parameteric
 //        public static string FileType()
 //        {
@@ -36,6 +36,7 @@ namespace Stage3_Verification
         {
             var fulltext = CsvFileReader().ReadToEnd();
             var rows = fulltext.Split('\n');
+            Console.WriteLine("Rows Split. No of rows: "+rows.Length);
             return rows;
         }
 
@@ -44,6 +45,7 @@ namespace Stage3_Verification
         {
             var a = NumberofRows()[i];
             var rowValues = a.Split("||"); //split each row with || to get individual values
+            Console.WriteLine("Headers Split. No of Headers: " + rowValues.Length);
             return rowValues;
         }
 
@@ -70,21 +72,21 @@ namespace Stage3_Verification
         public static StringBuilder ValidationOfInterger(int row, int column)
         {
             var v = Validations.Integer_Validator(RowValueString(row)[column]);
-            jsonString.Append("\"" + RowValueString(0)[column] + "\":" + "\"" + v +
+            JsonString.Append("\"" + RowValueString(0)[column] + "\":" + "\"" + v +
                               Validations.IntegerType() + "\"");
-            jsonString.Append(",");
+            JsonString.Append(",");
 
-            return jsonString;
+            return JsonString;
         }
 
         public static StringBuilder ValidationOfDouble(int row, int column)
         {
             var w = Validations.Double_Validation(RowValueString(row)[column]);
-            jsonString.Append("\"" + RowValueString(0)[column] + "\":" + "\"" + w +
+            JsonString.Append("\"" + RowValueString(0)[column] + "\":" + "\"" + w +
                               Validations.DoubleType() + "\"");
-            jsonString.Append(",");
+            JsonString.Append(",");
 
-            return jsonString;
+            return JsonString;
         }
 
         public static StringBuilder ErrorValidationString(int row, int column)
@@ -93,44 +95,44 @@ namespace Stage3_Verification
             {
                 Console.WriteLine("Error: ");
                 var empty = Validations.Error(RowValueString(row)[column]);
-                jsonString.Append("\"" + RowValueString(0)[column] + "\":" + "\"" + empty + "\"");
-                return jsonString;
+                JsonString.Append("\"" + RowValueString(0)[column] + "\":" + "\"" + empty + "\"");
+                return JsonString;
             }
 
             var m = Validations.String_Validator(RowValueString(row)[column]);
-            jsonString.Append("\"" + RowValueString(0)[column] + "\":" + "\"" + m + "\"");
-            jsonString.Append(",");
-            return jsonString;
+            JsonString.Append("\"" + RowValueString(0)[column] + "\":" + "\"" + m + "\"");
+            JsonString.Append(",");
+            return JsonString;
         }
 
         public static StringBuilder ValidationOfString(int row, int column)
         {
             var x = Validations.String_Validator(RowValueString(row)[column]);
-            jsonString.Append("\"" + RowValueString(0)[column] + "\":" + "\"" + x + "\"");
-            jsonString.Append(",");
+            JsonString.Append("\"" + RowValueString(0)[column] + "\":" + "\"" + x + "\"");
+            JsonString.Append(",");
 
-            return jsonString;
+            return JsonString;
         }
 
         public static StringBuilder CreateJsonTextFile()
         {
-            Console.WriteLine(jsonString);
+            Console.WriteLine(JsonString);
             var jsonDataFile = new FileStream("Vali.json", FileMode.OpenOrCreate, FileAccess.Write);
             var createJsonFile = new StreamWriter(jsonDataFile);
             Console.SetOut(createJsonFile);
-            Console.Write(jsonString);
+            Console.Write(JsonString);
             Console.SetOut(Console.Out);
             createJsonFile.Close();
             jsonDataFile.Close();
 
-            return jsonString;
+            return JsonString;
         }
 
         public static StringBuilder ExtractCsvDataFile()
         {
-            using (new StreamReader(FileType))
+            using (CsvFileReader())
             {
-                jsonString.Append("[");
+                JsonString.Append("[");
 
 
                 for (var i = 1;
@@ -139,7 +141,7 @@ namespace Stage3_Verification
                 {
                     // var headerNames = RowValueString();
                     //var rowDataValues = RowValueString(i);
-                    jsonString.Append("{");
+                    JsonString.Append("{");
                     for (var j = 0; j < RowValueString(0).Length; j++)
                         switch (j)
                         {
@@ -147,6 +149,7 @@ namespace Stage3_Verification
                             case 5:
                                 ValidationOfInterger(i, j);
                                 break;
+                            case 11:
                             case 12:
                                 ValidationOfDouble(i, j);
                                 break;
@@ -160,12 +163,14 @@ namespace Stage3_Verification
                                 ValidationOfString(i, j);
                                 break;
                         }
-                    jsonString.Append("},");
+                    JsonString.Append("},");
                 }
-                jsonString.Append("]");
+
+                JsonString.Append("]");
             }
+
             CreateJsonTextFile();
-            return jsonString;
+            return JsonString;
         }
     }
 }

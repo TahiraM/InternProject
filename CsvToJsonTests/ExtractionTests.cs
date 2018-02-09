@@ -95,7 +95,7 @@ namespace CsvToJsonTests
         [TestMethod]
         public void ShouldCheck_IfADoublePutThroughDoubleValidationTest_WillPass()
         {
-            Assert.IsNotNull(Extraction.ValidationOfDouble(1,12));
+            Assert.IsNotNull(Extraction.ValidationOfDouble(1,11));
         }
 
         [TestMethod]

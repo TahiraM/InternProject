@@ -37,10 +37,7 @@ namespace Stage3_Verification
 
         public static double? Double_Validation(string amount)
         {
-            if (amount == "")
-            {
-                return 0;
-            }
+            if (amount == "") return 0;
 
             double? p = Convert.ToDouble(amount);
             return p;
