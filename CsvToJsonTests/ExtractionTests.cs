@@ -8,7 +8,7 @@ namespace CsvToJsonTests
     [TestClass]
     public class ExtractionTests
     {
-        [TestMethod] 
+        [TestMethod]
         public void Should_CheckTheProjectToFindCSVFile_IsPresentWhenTheProjectRunInStartup()
         {
             var i = 0;
@@ -45,7 +45,7 @@ namespace CsvToJsonTests
         public void Should_CheckToSeeIfDataIsSplitIntoCorrectNumberOfColumns_WhenTheProjectRunInStartup()
         {
             var actualNum = 16;
-            var testNum = Extraction.RowValueString(0);
+            var testNum = Extraction.RowValueString(0).Length;
             Assert.AreEqual(actualNum, testNum);
         }
 
@@ -66,15 +66,6 @@ namespace CsvToJsonTests
             Assert.IsNotNull(content);
         }
 
-        /*[TestMethod] //test to ensure the JSON file is starting and ending with the correct syntax
-        public void Should_CHeckToSeeIfCorrectSyntaxIsBeingUsed_WhenTheProjectRun_AtStartAndEndOfFile()
-        {
-            var content = Extraction.JsonFileReader();
-            StringAssert.StartsWith(content, "[{");
-            StringAssert.EndsWith(content, "\"}]");
-
-        }*/
-
         [TestMethod] //test to check that the csv conversion is linking the correct header to value for the data
         public void Should_CHeckToSeeIfDataMappingIsCorrect_HeaderToData_WhenTheProjectRun()
         {
@@ -83,17 +74,34 @@ namespace CsvToJsonTests
             StringAssert.Contains(content, match);
         }
 
-
         [TestMethod]
-        public void ShouldCheck_IfAStringIsPutThroughIntValidation_TestWillFail()
+        public void ShouldCheck_IfAStringIsPutThroughIntValidationTest_WillFail()
         {
             Assert.ThrowsException<FormatException>(() => Validations.Integer_Validator("hello"));
         }
 
         [TestMethod]
-        public void ShouldCheck_IfAStringIsPutThroughDoubleValidation_TestWillFail()
+        public void ShouldCheck_IfAStringIsPutThroughDoubleValidationTest_WillFail()
         {
             Assert.ThrowsException<FormatException>(() => Validations.Double_Validation("hello"));
+        }
+
+        [TestMethod]
+        public void ShouldCheck_IfAIntegerPutThroughIntValidationTest_WillPass()
+        {
+            Assert.IsNotNull(Extraction.ValidationOfInterger(1, 7));
+        }
+
+        [TestMethod]
+        public void ShouldCheck_IfADoublePutThroughDoubleValidationTest_WillPass()
+        {
+            Assert.IsNotNull(Extraction.ValidationOfDouble(1,12));
+        }
+
+        [TestMethod]
+        public void ShouldCheck_IfAStringIsPutThroughStringValidationTest_WillPass()
+        {
+            Assert.IsNotNull(Extraction.ValidationOfString(1,2));
         }
     }
 }

@@ -36,8 +36,6 @@ namespace Stage3_Verification
         {
             var fulltext = CsvFileReader().ReadToEnd();
             var rows = fulltext.Split('\n');
-
-
             return rows;
         }
 
@@ -96,7 +94,6 @@ namespace Stage3_Verification
                 Console.WriteLine("Error: ");
                 var empty = Validations.Error(RowValueString(row)[column]);
                 jsonString.Append("\"" + RowValueString(0)[column] + "\":" + "\"" + empty + "\"");
-                //break;
                 return jsonString;
             }
 
@@ -115,23 +112,23 @@ namespace Stage3_Verification
             return jsonString;
         }
 
-        public static StringBuilder CreateJsonTextFile(StringBuilder dataFromJsonSB)
+        public static StringBuilder CreateJsonTextFile()
         {
-            Console.WriteLine(dataFromJsonSB);
+            Console.WriteLine(jsonString);
             var jsonDataFile = new FileStream("Vali.json", FileMode.OpenOrCreate, FileAccess.Write);
             var createJsonFile = new StreamWriter(jsonDataFile);
             Console.SetOut(createJsonFile);
-            Console.Write(dataFromJsonSB);
+            Console.Write(jsonString);
             Console.SetOut(Console.Out);
             createJsonFile.Close();
             jsonDataFile.Close();
 
-            return dataFromJsonSB;
+            return jsonString;
         }
 
         public static StringBuilder ExtractCsvDataFile()
         {
-            using (var sr = new StreamReader(FileType))
+            using (new StreamReader(FileType))
             {
                 jsonString.Append("[");
 
@@ -165,12 +162,9 @@ namespace Stage3_Verification
                         }
                     jsonString.Append("},");
                 }
-
-
                 jsonString.Append("]");
             }
-
-            CreateJsonTextFile(jsonString);
+            CreateJsonTextFile();
             return jsonString;
         }
     }

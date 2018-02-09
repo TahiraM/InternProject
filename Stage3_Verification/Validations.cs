@@ -13,9 +13,10 @@ namespace Stage3_Verification
 
         public static string String_Validator(string value)
         {
-            string answer = value + " {type:string}";
+            var answer = value + " {type:string}";
             return answer;
         }
+
         public static string IntegerType()
         {
             return " {type:int}";
@@ -23,23 +24,15 @@ namespace Stage3_Verification
 
         public static int? Integer_Validator(string variable)
         {
+            if (variable == "") return 0;
 
-            if (variable == "")
-            {
-                return 0;
-            }
-            else
-            {
-                int? i = Convert.ToInt32(variable);
-                return i;
-            }
-
+            int? i = Convert.ToInt32(variable);
+            return i;
         }
 
         public static string DoubleType()
         {
             return " {type:double}";
-             
         }
 
         public static double? Double_Validation(string amount)
@@ -48,14 +41,9 @@ namespace Stage3_Verification
             {
                 return 0;
             }
-            else
-            {
-                double? p = Convert.ToDouble(amount);
-                return p;
-            }
 
+            double? p = Convert.ToDouble(amount);
+            return p;
         }
-
-
     }
 }

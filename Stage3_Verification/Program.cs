@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Stage3_Verification
 {
-    class Program
+    internal class Program
     {
         private static void Main(string[] args)
         {
