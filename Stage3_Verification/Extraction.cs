@@ -8,14 +8,7 @@ namespace Stage3_Verification
     {
         public static StringBuilder JsonString = new StringBuilder();
         // TODO: FileType should be parameteric
-//        public static string FileType()
-//        {
-//            var file = "Deal.csv";
-//            return file;
-//        }
-//
-
-        // TODO: Think about how you break your long method
+        
         // TODO: Think on the naming convention
         // TODO: Think about Reading/Writing json
         // TODO: Error Handling
