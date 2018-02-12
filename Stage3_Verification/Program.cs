@@ -39,7 +39,7 @@ namespace Stage3_Verification
     }
 
 
-    public class CsvToJsonConverter
+   /* public class CsvToJsonConverter
     {
         private readonly IFileReader _fileReader;
         private readonly IFileWriter _fileWriter;
@@ -65,55 +65,21 @@ namespace Stage3_Verification
             // Save this into a file
             _fileWriter.WriteContent(output, jsonString);
         }
-    }
+    }*/
 
-    public interface IFileWriter
-    {
-        void WriteContent(string output, string data);
-    }
+    
 
-    class FileWriter : IFileWriter
-    {
-        public void WriteContent(string output, string data)
-        {
-            if (File.Exists(output))
-                throw new ApplicationException($"File {output} is exists and can't be replaced");
+    
 
-            File.WriteAllText(output, data);
-        }
-    }
+   
 
-    public interface IJsonConverter
-    {
-        string ConvertToJson(FundData[] data);
-    }
+    
 
-    public interface IDataExtractor
-    {
-        FundData[] Extract(string[] content);
-    }
+   
 
-    public class DataExtractor : IDataExtractor
-    {
-        public FundData[] Extract(string[] rows)
-        {
-            // Read through rows and for each row 
-            // create a new FundData
-            // split the row
-            // validate sections and assign them to related field
-            // add this to output list
+    
 
-            return new List<FundData>().ToArray();
-        }
-    }
-
-    public class FundData
-    {
-        public string FundId { get; set; }
-        public string FundName { get; set; }
-    }
-
-    public class FileReader : IFileReader
+    /*public class FileReader : IFileReader
     {
         public string[] ReadContent(string input)
         {
@@ -123,10 +89,10 @@ namespace Stage3_Verification
             var content = File.ReadAllLines(input);
             return content;
         }
-    }
+    }*/
 
-    public interface IFileReader
+    /*public interface IFileReader
     {
         string[] ReadContent(string input);
-    }
+    }*/
 }
