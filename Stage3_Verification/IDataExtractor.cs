@@ -6,6 +6,6 @@ namespace Stage3_Verification
 {
     public interface IDataExtractor
     {
-        FundData[] Extract(string[] content);
+        FundData[] Extract(string[] rows);
     }
 }

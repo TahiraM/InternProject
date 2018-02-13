@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Mime;
 
 namespace Stage3_Verification
 {
@@ -13,12 +14,15 @@ namespace Stage3_Verification
             // split the row
             // validate sections and assign them to related field
             // add this to output list
+            var headerValues = rows[0].Split("||");
 
-            FileReader parseFile = new FileReader();
+            FundData header = new FundData();
+             header.FundHeader.g
 
-            parseFile.ReadContent(string input)
-
-            return new List<FundData>().ToArray();
+            return new FundData[]{};
         }
+
+        
+        
     }
 }
