@@ -16,10 +16,17 @@ namespace Stage3_Verification
             // add this to output list
             var headerValues = rows[0].Split("||");
 
-            FundData header = new FundData();
-             header.FundHeader.g
+            FundData data = new FundData {FundId = rows[0]};
+            FundData rowD = new FundData();
 
-            return new FundData[]{};
+            for (var i = 1; i <= rows.Length-1; i++)
+            {
+                rowD.FundName = rows[i];
+               
+            }
+             
+
+            return new FundData[]{data, rowD};
         }
 
         

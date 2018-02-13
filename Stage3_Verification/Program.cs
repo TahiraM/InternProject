@@ -33,7 +33,8 @@ namespace Stage3_Verification
             var fileReader = new FileReader();
             var fileWriter = new FileWriter();
             var dataExtractor = new DataExtractor();
-            var converter = new CsvToJsonConverter(fileReader, fileWriter, dataExtractor);
+            var jsonConverter = new JsonConverter();
+            var converter = new CsvToJsonConverter(fileReader, fileWriter, dataExtractor, jsonConverter);
 
             converter.Convert(inputFile, outputFile);
 

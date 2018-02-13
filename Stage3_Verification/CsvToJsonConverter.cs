@@ -11,11 +11,12 @@ namespace Stage3_Verification
         private readonly IDataExtractor _dataExtractor;
         private readonly IJsonConverter _dataToJsonConverter;
 
-        public CsvToJsonConverter(IFileReader fileReader, IFileWriter fileWriter, IDataExtractor dataExtractor)
+        public CsvToJsonConverter(IFileReader fileReader, IFileWriter fileWriter, IDataExtractor dataExtractor, IJsonConverter dataToJsonConverter)
         {
             _fileReader = fileReader;
             _fileWriter = fileWriter;
             _dataExtractor = dataExtractor;
+            _dataToJsonConverter = dataToJsonConverter;
         }
 
         public void Convert(string input, string output)
