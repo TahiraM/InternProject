@@ -57,7 +57,7 @@ namespace Stage3_Verification
             var rowValues = a.Split("||");
             var bValues = b.Split("||"); //split each row with || to get individual values
             for (var j = 15; j < rowValues.Length; j++)
-                jsString.Append("\"" + rowValues[0] + "\":" + "\"" + bValues[0] + "\"");
+                jsString.Append(  "");
 
             return jsString;
         }

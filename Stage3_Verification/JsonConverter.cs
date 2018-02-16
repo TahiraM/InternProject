@@ -1,26 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace Stage3_Verification
 {
-    class JsonConverter : IJsonConverter
+    public class JsonConverter : IJsonConverter
     {
-        public StringBuilder jsonString = new StringBuilder();
-
-        public string ConvertToJson(FundData[] data)
+        public string ConvertToJson(DealData[] data)
         {
-            string details = "";
-            FundData getData = new FundData();
-            //string[] columns = getData.FundId.Split("||");
-            string[] rowData = getData.FundName.Split("||");
-
-            for (int i = 0; i <= rowData.Length; i++)
+            
+            var help = new StringBuilder();
+            string[] columnNames =
             {
-                 details = "\"" + rowData[i] + "\":" + "\"" + rowData[i] + "\"";
+                "V3DealId", "EFrontDealId","DealName", "V3CompanyId", "V3CompanyName", "SectorId", "Sector", "CountryId", "Country", "TransactionTypeId",
+                "TransactionType", "TransactionFees", "OtherFees", "Currency", "ActiveInActive", "ExitDate"
+            };
+
+            
+            help.Append("[");
+            for (var i = 0; i <= data.Length-1; i++)
+            {
+                var dealData = data[i];
+                string [] columnValues =
+                {
+                    dealData.V3DealId, dealData.EFrontDealId, dealData.DealName, dealData.V3CompanyId, dealData.V3CompanyName, dealData.Sector, dealData.SectorId.ToString(), dealData.Country, dealData.CountryId.ToString(),
+                    dealData.TransactionType, dealData.TransactionTypeId.ToString(), dealData.TransactionFees.ToString(), dealData.OtherFees.ToString(), dealData.Currency, dealData.ActiveInActive, dealData.ExitDate
+                };
+                
+
+                help.Append("{");
+                for (var j = 0; j <= columnNames.Length-1; j++)
+                {
+                    help.Append("\"" + columnNames[j] + "\":" + "\"" +
+                                columnValues[j] + "\",");
+                }
+                help.Append("},");
             }
 
-            return details;
+            help.Append("]");
+            return help.ToString();
         }
     }
 }

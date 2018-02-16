@@ -6,6 +6,6 @@ namespace Stage3_Verification
 {
     public interface IJsonConverter
     {
-        string ConvertToJson(FundData[] data);
+        string ConvertToJson(DealData[] data);
     }
 }
