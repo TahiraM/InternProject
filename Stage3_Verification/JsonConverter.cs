@@ -8,7 +8,7 @@ namespace Stage3_Verification
         public string ConvertToJson(DealData[] data)
         {
             
-            var help = new StringBuilder();
+            var jsonString = new StringBuilder();
             string[] columnNames =
             {
                 "V3DealId", "EFrontDealId","DealName", "V3CompanyId", "V3CompanyName", "SectorId", "Sector", "CountryId", "Country", "TransactionTypeId",
@@ -16,7 +16,7 @@ namespace Stage3_Verification
             };
 
             
-            help.Append("[");
+            jsonString.Append("[");
             for (var i = 0; i <= data.Length-1; i++)
             {
                 var dealData = data[i];
@@ -27,17 +27,17 @@ namespace Stage3_Verification
                 };
                 
 
-                help.Append("{");
+                jsonString.Append("{");
                 for (var j = 0; j <= columnNames.Length-1; j++)
                 {
-                    help.Append("\"" + columnNames[j] + "\":" + "\"" +
+                    jsonString.Append("\"" + columnNames[j] + "\":" + "\"" +
                                 columnValues[j] + "\",");
                 }
-                help.Append("},");
+                jsonString.Append("},");
             }
 
-            help.Append("]");
-            return help.ToString();
+            jsonString.Append("]");
+            return jsonString.ToString();
         }
     }
 }
