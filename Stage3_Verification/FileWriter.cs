@@ -5,12 +5,14 @@ namespace Stage3_Verification
 {
    public class FileWriter : IFileWriter
     {
-        public void WriteContent(string output, string data)
+        public void WriteContent(string output, string data, bool overwrite = true)
         {
-            if (File.Exists(output))
+            if (overwrite == false && File.Exists(output))
                 throw new ApplicationException($"File {output} is exists and can't be replaced");
 
             File.WriteAllText(output, data);
         }
+
+        
     }
 }
