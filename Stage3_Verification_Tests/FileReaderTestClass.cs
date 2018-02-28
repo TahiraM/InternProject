@@ -31,13 +31,12 @@ namespace Stage3_Verification_Tests
 
             Assert.AreEqual(value,1);
         }
+        //[TestMethod]
+        //public void ShouldFail_WhenANonTextFileIsGiven()
+        //{
+        //     string[] inputed = ["pages.jpg", ""];
+        //    FileReader reader = new FileReader();
+        //}
 
-        [TestMethod]
-        public void ShouldFail_WhenANonTextFileIsGiven()
-        {
-             string[] inputed = ["pages.jpg", ""];
-            FileReader reader = new FileReader();
-        }
-        
     }
 }

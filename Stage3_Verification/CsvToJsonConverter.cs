@@ -1,5 +1,7 @@
 ﻿namespace Stage3_Verification
 {
+    //TODO: comments 
+
     public class CsvToJsonConverter
     {
         private readonly IFileReader _fileReader;
