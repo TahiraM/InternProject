@@ -37,7 +37,6 @@ namespace Stage3_Verification_Tests
         {
              string[] inputed = ["pages.jpg", ""];
             FileReader reader = new FileReader();
-            Assert.Fail(reader.ReadContent(inputed);
         }
         
     }
