@@ -12,7 +12,6 @@ namespace Stage3_Verification
             // split the row
             // validate sections and assign them to related field
             // add this to output list
-            rows[0].Split("||");
             var funds = new List<DealData>();
 
             for (var i = 1; i <= rows.Length - 1; i++)
