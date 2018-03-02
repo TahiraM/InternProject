@@ -12,7 +12,7 @@ namespace Stage3_Verification_Tests
         {
             var dataExtractorMock = new Mock<IDataExtractor>();
 
-            dataExtractorMock.Setup
+            dataExtractorMock.Setup(data => data.);
         }
     }
 }
