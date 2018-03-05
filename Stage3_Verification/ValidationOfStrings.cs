@@ -1,6 +1,6 @@
 ﻿namespace Stage3_Verification
 {
-    class ValidationOfStrings
+    public class ValidationOfStrings
     {
         public static int ThisInt(string value)
         {

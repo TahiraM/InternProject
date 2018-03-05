@@ -9,6 +9,9 @@ namespace Stage3_Verification
         {
             if (!File.Exists(input))
                 throw new FileNotFoundException($"File {input} is not exists");
+            string extension = Path.GetExtension(input);
+            if (extension != ".csv")
+                throw new FileLoadException($"File{input} not in correct format");
 
             var content = File.ReadAllLines(input);
             Console.WriteLine(content);

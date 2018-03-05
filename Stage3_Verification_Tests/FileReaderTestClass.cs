@@ -12,7 +12,7 @@ namespace Stage3_Verification_Tests
         //public abstract IFileReader GetStringSearcherInstance();
 
         [TestMethod]
-        public void ToCheck_IfFileReaderCanReadAnyFileGivenToIt()
+        public void ToCheck_IfFileReaderCanReadAFileGivenToIt()
         {
             const string input = "Deal.csv";
             FileReader reader = new FileReader();
@@ -20,7 +20,7 @@ namespace Stage3_Verification_Tests
         }
 
         [TestMethod]
-        public void ShouldFail_IfileIsNotFoundTestWillNotPass()
+        public void ShouldFail_IfileIsNotFound()
         {
             var value = 0;
             const string input = " ";
@@ -31,12 +31,14 @@ namespace Stage3_Verification_Tests
 
             Assert.AreEqual(value,1);
         }
-        //[TestMethod]
-        //public void ShouldFail_WhenANonTextFileIsGiven()
-        //{
-        //     string[] inputed = ["pages.jpg", ""];
-        //    FileReader reader = new FileReader();
-        //}
+
+        [TestMethod]
+        public void ShouldFail_WhenANonCSVFileIsGiven()
+        {
+            string inputed = "pages.jpg";
+            FileReader reader = new FileReader();
+            Assert.ThrowsException<FileLoadException>(() => reader.ReadContent(inputed));
+        }
 
     }
 }
