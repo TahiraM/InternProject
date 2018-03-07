@@ -12,10 +12,12 @@ namespace Stage3_Verification
             var dealDataForHeaders = new DealData();
             string[] columnNames =
             {
-                nameof(dealDataForHeaders.V3DealId),
-
-                "V3DealId", "EFrontDealId","DealName", "V3CompanyId", "V3CompanyName", "SectorId", "Sector", "CountryId", "Country", "TransactionTypeId",
-                "TransactionType", "TransactionFees", "OtherFees", "Currency", "ActiveInActive", "ExitDate"
+                nameof(dealDataForHeaders.V3DealId),nameof(dealDataForHeaders.EFrontDealId),nameof(dealDataForHeaders.DealName),
+                nameof(dealDataForHeaders.V3CompanyId),nameof(dealDataForHeaders.V3CompanyName),nameof(dealDataForHeaders.SectorId),
+                nameof(dealDataForHeaders.Sector),nameof(dealDataForHeaders.CountryId),nameof(dealDataForHeaders.Country),
+                nameof(dealDataForHeaders.TransactionTypeId),nameof(dealDataForHeaders.TransactionType),nameof(dealDataForHeaders.TransactionFees),
+                nameof(dealDataForHeaders.OtherFees),nameof(dealDataForHeaders.Currency),nameof(dealDataForHeaders.ActiveInActive),
+                nameof(dealDataForHeaders.ExitDate)
             };
 
             jsonString.Append("[");
