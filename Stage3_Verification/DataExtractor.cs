@@ -7,6 +7,7 @@ namespace Stage3_Verification
     {
         public DealData[] Extract(string[] rows)
         {
+
             // Read through rows and for each row 
             // create a new FundData
             // split the row
