@@ -28,7 +28,7 @@ namespace Stage3_Verification
                     V3CompanyName = data[4],
                     SectorId = ValidationOfStrings.ThisInt(data[5]),
                     Sector = data[6],
-                    CountryId = Convert.ToInt32(data[7]),
+                    CountryId = ValidationOfStrings.ThisInt(data[7]),
                     Country = data[8],
                     TransactionTypeId = ValidationOfStrings.ThisInt(data[9]),
                     TransactionType = data[10],

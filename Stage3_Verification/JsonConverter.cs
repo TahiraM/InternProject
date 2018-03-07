@@ -1,50 +1,30 @@
 ﻿using System;
-using System.Text;
 using Newtonsoft.Json;
 
 namespace Stage3_Verification
 {
     public class JsonConverter : IJsonConverter
     {
+        private readonly ILegacyJsonConverter _legacyJsonConverter;
+
+        public JsonConverter(ILegacyJsonConverter legacyJsonConverter)
+        {
+            _legacyJsonConverter = legacyJsonConverter;
+        }
+
         public string ConvertToJson(DealData[] data)
         {
-            var jsonString = new StringBuilder();
-            var dealDataForHeaders = new DealData();
-            string[] columnNames =
+            try
             {
-                nameof(dealDataForHeaders.V3DealId),nameof(dealDataForHeaders.EFrontDealId),nameof(dealDataForHeaders.DealName),
-                nameof(dealDataForHeaders.V3CompanyId),nameof(dealDataForHeaders.V3CompanyName),nameof(dealDataForHeaders.SectorId),
-                nameof(dealDataForHeaders.Sector),nameof(dealDataForHeaders.CountryId),nameof(dealDataForHeaders.Country),
-                nameof(dealDataForHeaders.TransactionTypeId),nameof(dealDataForHeaders.TransactionType),nameof(dealDataForHeaders.TransactionFees),
-                nameof(dealDataForHeaders.OtherFees),nameof(dealDataForHeaders.Currency),nameof(dealDataForHeaders.ActiveInActive),
-                nameof(dealDataForHeaders.ExitDate)
-            };
+                var result = _legacyJsonConverter.Convert(data);
+                var dealDataList = JsonConvert.DeserializeObject<DealData[]>(result);
 
-            jsonString.Append("[");
-
-            for (var i = 0; i <= data.Length - 1; i++)
-            {
-                var dealData = data[i];
-                string[] columnValues =
-                {
-                    dealData.V3DealId, dealData.EFrontDealId, dealData.DealName, dealData.V3CompanyId, dealData.V3CompanyName, dealData.Sector, dealData.SectorId.ToString(), dealData.Country, dealData.CountryId.ToString(),
-                    dealData.TransactionType, dealData.TransactionTypeId.ToString(), dealData.TransactionFees.ToString(), dealData.OtherFees.ToString(), dealData.Currency, dealData.ActiveInActive, dealData.ExitDate
-                };
-
-                jsonString.Append("{");
-                for (var j = 0; j <= columnNames.Length - 1; j++)
-                {
-                    jsonString.Append("\"" + columnNames[j] + "\":" + "\"" + columnValues[j] + "\",");
-                }
-                jsonString.Remove(jsonString.Length - 1, 1);
-                jsonString.Append("},");
+                return JsonConvert.SerializeObject(dealDataList);
             }
-            jsonString.Remove(jsonString.Length - 1, 1);
-
-            jsonString.Append("]");
-            return jsonString.ToString();
-
-            //return JsonConvert.SerializeObject(data);
+            catch (Exception e)
+            {
+                throw new JsonException("Error in parsing Json", e);
+            }
         }
     }
 }
