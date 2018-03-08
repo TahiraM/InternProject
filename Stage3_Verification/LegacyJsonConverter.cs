@@ -7,7 +7,7 @@ namespace Stage3_Verification
         public string Convert(DealData[] data)
         {
             var jsonString = new StringBuilder();
-            var dealDataForHeaders = new DealData();
+            DealData dealDataForHeaders;
             string[] columnNames =
             {
                 nameof(dealDataForHeaders.V3DealId),nameof(dealDataForHeaders.EFrontDealId),nameof(dealDataForHeaders.DealName),

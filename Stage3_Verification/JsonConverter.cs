@@ -16,10 +16,12 @@ namespace Stage3_Verification
         {
             try
             {
+                JsonSerializer deserializer = new JsonSerializer();
                 var result = _legacyJsonConverter.Convert(data);
-                var dealDataList = JsonConvert.DeserializeObject<DealData[]>(result);
 
-                return JsonConvert.SerializeObject(dealDataList);
+                var dealDataList = JsonConvert.DeserializeObject(result);
+                var endResult = JsonConvert.SerializeObject(dealDataList);
+                return endResult;
             }
             catch (Exception e)
             {

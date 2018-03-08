@@ -11,6 +11,7 @@ namespace Stage3_Verification
                 throw new ApplicationException($"File {output} is exists and can't be replaced");
 
             File.WriteAllText(output, data);
+            
         }
 
         

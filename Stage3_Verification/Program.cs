@@ -25,7 +25,8 @@ namespace Stage3_Verification
 
             var fileReader = new FileReader();
             var fileWriter = new FileWriter();
-            var dataExtractor = new DataExtractor();
+            var legacyDataExtractor = new LegacyDataExtractor();
+            var dataExtractor = new DataExtractor(legacyDataExtractor);
             var legacyJsonConverter = new LegacyJsonConverter();
             var jsonConverter = new JsonConverter(legacyJsonConverter);
             var converter = new CsvToJsonConverter(fileReader, fileWriter, dataExtractor, jsonConverter);
