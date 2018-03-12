@@ -20,7 +20,6 @@ namespace Stage3_Verification_Tests
 
             // Assert
             Assert.ThrowsException<FileNotFoundException>(action);
-
         }
 
         [TestMethod]

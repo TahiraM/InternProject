@@ -16,7 +16,7 @@ namespace Stage3_Verification
         {
             try
             {
-                JsonSerializer deserializer = new JsonSerializer();
+                var deserializer = new JsonSerializer();
                 var result = _legacyJsonConverter.Convert(data);
 
                 var dealDataList = JsonConvert.DeserializeObject(result);

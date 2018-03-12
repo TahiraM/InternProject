@@ -15,7 +15,7 @@
     "OtherFees": "0",
     "Currency": "EUR",
     "ActiveInActive": "Active",
-    "ExitDate": "1st"
+    "ExitDate": "01/01/0001"
   },
   {
     "V3DealId": "02B4EFADE6",
@@ -33,7 +33,7 @@
     "OtherFees": "0",
     "Currency": "EUR",
     "ActiveInActive": "false",
-    "ExitDate": "2nd"
+    "ExitDate": "02/02/0002"
   },
   {
     "V3DealId": "02B4EFADE6",
@@ -51,6 +51,6 @@
     "OtherFees": "0.1",
     "Currency": "EUR",
     "ActiveInActive": "Active",
-    "ExitDate": "3rd"
+    "ExitDate": "03/03/0003"
   }
 ]

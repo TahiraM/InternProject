@@ -1,6 +1,6 @@
 ﻿namespace Stage3_Verification
 {
-    public interface IDataExtractor
+    public interface ILegacyDataExtractor
     {
         DealData[] Extract(string[] rows);
     }

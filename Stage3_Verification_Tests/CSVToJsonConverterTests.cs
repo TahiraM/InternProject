@@ -5,7 +5,7 @@ using Stage3_Verification;
 namespace Stage3_Verification_Tests
 {
     [TestClass]
-   public class CsvToJsonConverterTests
+    public class CsvToJsonConverterTests
     {
         [TestMethod]
         public void ShouldPass_IfTheInterFaceIsLinkedCOrrectlyAndAMOckInterfaceCanBeCreated()

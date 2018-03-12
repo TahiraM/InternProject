@@ -1,32 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Utilities;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using Newtonsoft.Json;
-using Stage3_Verification;
 using NSubstitute;
-using NSubstitute.Core;
 using NSubstitute.ExceptionExtensions;
-using JsonConverter = Stage3_Verification.JsonConverter;
+using Stage3_Verification;
 
 namespace Stage3_Verification_Tests
 {
     [TestClass]
     public class DataExtractorTest
     {
-        
-
-       
-
-
         [TestMethod]
-        public void ShouldPass_TheNumberOfRowsShouldBeTakenFromIDataExtractor()
+        public void Should_Extract_Pass_WhenTheDataIsValidAndAvailable()
         {
             // Arrange
-            var data = new[] { "V3DealID||eFrontDealID", "V3DealID||eFrontDealID" };
-            var expected = new DealData[2];
+            var file = File.ReadAllLines("Deal.csv").ToString();
+            var data = new[] {file};
+            var extractData = new LegacyDataExtractor();
+            var expected = extractData.Extract(data);
 
             var legacyDataExtractor = Substitute.For<ILegacyDataExtractor>();
             legacyDataExtractor.Extract(Arg.Any<string[]>()).Returns(expected);
@@ -38,6 +29,23 @@ namespace Stage3_Verification_Tests
 
             // Assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Should_Extract_ThrowError_IfDataBeingParsedIsNotInCorrectFormat()
+        {
+            // Arrange
+            var data = new[] {"help", "hi", "test"};
+
+            var legacyDataExtractor = Substitute.For<ILegacyDataExtractor>();
+            var sut = new DataExtractor(legacyDataExtractor);
+            legacyDataExtractor.Extract(Arg.Any<string[]>()).Throws(new FormatException("Data Is Not Valid"));
+
+            // Act
+            Action action = () => sut.Extract(data);
+
+            // Assert
+            Assert.ThrowsException<FormatException>(action);
         }
     }
 }

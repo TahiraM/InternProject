@@ -15,7 +15,7 @@ namespace Stage3_Verification_Tests
         public void Should_ConvertToJson_Pass_WhenTheDataIsValidAndAvailable()
         {
             // Arrange
-            var data = new DealData() { Country = "Canada", Currency = "CAD"};
+            var data = new DealData {Country = "Canada", Currency = "CAD"};
             var dataArray = new[] {data};
             var expected = JsonConvert.SerializeObject(dataArray);
 
@@ -42,7 +42,7 @@ namespace Stage3_Verification_Tests
             var sut = new JsonConverter(legacyJsonConverter);
 
             // Act
-            Action action = () => sut.ConvertToJson(new DealData[] {});
+            Action action = () => sut.ConvertToJson(new DealData[] { });
 
             // Assert
             Assert.ThrowsException<JsonException>(action);

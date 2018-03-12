@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using Stage3_Verification;
 
 namespace Stage3_Verification_Tests
@@ -21,6 +20,4 @@ namespace Stage3_Verification_Tests
             Assert.AreEqual(doubleTest, 0.987);
         }
     }
-
-
 }

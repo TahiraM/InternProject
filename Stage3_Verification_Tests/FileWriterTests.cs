@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stage3_Verification;
 
@@ -18,8 +19,7 @@ namespace Stage3_Verification_Tests
             // Act
             sut.WriteContent(fileName, expected, true);
             var result = File.ReadAllLines(fileName);
-            
-            
+
 
             // Assert
             Assert.IsNotNull(result);
@@ -40,7 +40,7 @@ namespace Stage3_Verification_Tests
             sut.WriteContent(fileName, expected, true);
             var result = File.ReadAllLines(fileName);
 
-           // Assert
+            // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(result.Length, 1);
             Assert.AreEqual(result[0], expected);
@@ -53,19 +53,31 @@ namespace Stage3_Verification_Tests
             // Arrange
             const string fileName = "Vali.json";
             const string expected = "Hello";
-            const string expecPath = "C:\\GIT\\InternProject\\Stage3_Verification_Tests\\bin\\Debug\\netcoreapp2.0\\Vali.json";
+            const string expecPath =
+                "C:\\GIT\\InternProject\\Stage3_Verification_Tests\\bin\\Debug\\netcoreapp2.0\\Vali.json";
             var sut = new FileWriter();
 
             // Act
             sut.WriteContent(fileName, expected);
             var filePath = Path.GetFullPath(fileName);
-            
+
             // Assert
             Assert.AreEqual(filePath, expecPath);
         }
-        
 
-        
-        
+        [TestMethod]
+        public void ShouldFail_WriteComment_IfFileCannotBeOverwritten()
+        {
+            // Arrange
+            const string fileName = "Vali.json";
+            const string expected = "Hello";
+            var sut = new FileWriter();
+
+            // Act
+            Action action = () => sut.WriteContent(fileName, expected, false);
+
+            // Assert
+            Assert.ThrowsException<ApplicationException>(action);
+        }
     }
 }

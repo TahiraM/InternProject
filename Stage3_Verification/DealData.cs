@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Stage3_Verification
+﻿namespace Stage3_Verification
 {
     public class DealData
     {

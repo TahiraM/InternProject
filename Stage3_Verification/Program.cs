@@ -6,7 +6,6 @@ namespace Stage3_Verification
     {
         private static void Main(string[] args)
         {
-
             // Convert CSV file to JSON
 
             // Read the CSV file
@@ -32,7 +31,6 @@ namespace Stage3_Verification
             var converter = new CsvToJsonConverter(fileReader, fileWriter, dataExtractor, jsonConverter);
 
             converter.Convert(inputFile, outputFile);
-
         }
     }
 }

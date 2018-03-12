@@ -4,12 +4,13 @@
 
     public class CsvToJsonConverter
     {
-        private readonly IFileReader _fileReader;
-        private readonly IFileWriter _fileWriter;
         private readonly IDataExtractor _dataExtractor;
         private readonly IJsonConverter _dataToJsonConverter;
+        private readonly IFileReader _fileReader;
+        private readonly IFileWriter _fileWriter;
 
-        public CsvToJsonConverter(IFileReader fileReader, IFileWriter fileWriter, IDataExtractor dataExtractor, IJsonConverter dataToJsonConverter)
+        public CsvToJsonConverter(IFileReader fileReader, IFileWriter fileWriter, IDataExtractor dataExtractor,
+            IJsonConverter dataToJsonConverter)
         {
             _fileReader = fileReader;
             _fileWriter = fileWriter;
