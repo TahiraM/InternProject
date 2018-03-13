@@ -25,17 +25,17 @@ namespace Stage3_Verification
                     DealName = data[2],
                     V3CompanyId = data[3],
                     V3CompanyName = data[4],
-                    SectorId = ValidationOfStrings.ThisInt(data[5]),
+                    SectorId = ValidationOfDealData.ThisInt(data[5]),
                     Sector = data[6],
-                    CountryId = ValidationOfStrings.ThisInt(data[7]),
+                    CountryId = ValidationOfDealData.ThisInt(data[7]),
                     Country = data[8],
-                    TransactionTypeId = ValidationOfStrings.ThisInt(data[9]),
+                    TransactionTypeId = ValidationOfDealData.ThisInt(data[9]),
                     TransactionType = data[10],
-                    TransactionFees = ValidationOfStrings.ThisDouble(data[11]),
-                    OtherFees = ValidationOfStrings.ThisDouble(data[12]),
+                    TransactionFees = ValidationOfDealData.ThisDouble(data[11]),
+                    OtherFees = ValidationOfDealData.ThisDouble(data[12]),
                     Currency = data[13],
                     ActiveInActive = data[14],
-                    ExitDate = ValidationOfStrings.ThisDate(data[15])
+                    ExitDate = ValidationOfDealData.ThisDate(data[15])
                 };
                 funds.Add(fund);
             }
