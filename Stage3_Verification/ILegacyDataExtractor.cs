@@ -2,6 +2,6 @@
 {
     public interface ILegacyDataExtractor
     {
-        DealData[] Extract(string[] rows);
+        DealData[] Extract(string[] rows, bool hasTitleRow = true);
     }
 }

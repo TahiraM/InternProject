@@ -1,24 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Stage3_Verification
 {
     public class LegacyDataExtractor : ILegacyDataExtractor
     {
-        public DealData[] Extract(string[] rows)
+        public DealData[] Extract(string[] rows, bool hasTitleRow = true)
         {
-            // Read through rows and for each row 
-            // create a new FundData
-            // split the row
-            // validate sections and assign them to related field
-            // add this to output list
-            var funds = new List<DealData>();
-
-            for (var i = 1; i <= rows.Length - 1; i++)
-            {
-                var data = rows[i].Split("||");
-
-
-                var fund = new DealData
+            var result = rows
+                .Skip(hasTitleRow == false ? 0 : 1)
+                .Select(row => row.Split("||"))
+                .Select(data => new DealData
                 {
                     V3DealId = data[0],
                     EFrontDealId = data[1],
@@ -36,12 +28,19 @@ namespace Stage3_Verification
                     Currency = data[13],
                     ActiveInActive = data[14],
                     ExitDate = ValidationOfDealData.ThisDate(data[15])
-                };
-                funds.Add(fund);
-            }
+                })
+                .Where(m => m.ActiveInActive == "true")
+                .ToArray();
 
+            return result;
+        }
+    }
 
-            return funds.ToArray();
+    public static class LegacyDataExtractorExtensions
+    {
+        public static DealData[] ExtractWithoutHeader(this LegacyDataExtractor extractor, string[] rows)
+        {
+            return extractor.Extract(rows, false);
         }
     }
 }
