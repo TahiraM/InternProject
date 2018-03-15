@@ -1,13 +1,15 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
+using Castle.Core.Internal;
 
-namespace Stage3_Verification
+namespace CsvFileConvertor
 {
     public class LegacyJsonConverter : ILegacyJsonConverter
     {
         public string Convert(DealData[] data)
         {
             var jsonString = new StringBuilder();
-            // ReSharper disable once LocalNameCapturedOnly
+
             DealData dealDataForHeaders;
             string[] columnNames =
             {
@@ -23,6 +25,8 @@ namespace Stage3_Verification
                 nameof(dealDataForHeaders.ActiveInActive),
                 nameof(dealDataForHeaders.ExitDate)
             };
+            if (columnNames.IsNullOrEmpty())
+                throw new InvalidDataException("No Header For "+columnNames+" Found");
 
             jsonString.Append("[");
 
@@ -52,4 +56,6 @@ namespace Stage3_Verification
             return jsonString.ToString();
         }
     }
+
+    
 }

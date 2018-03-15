@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Stage3_Verification
+namespace CsvFileConvertor
 {
     public class ValidationOfDealData
     {

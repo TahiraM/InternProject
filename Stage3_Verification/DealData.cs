@@ -1,4 +1,4 @@
-﻿namespace Stage3_Verification
+﻿namespace CsvFileConvertor
 {
     public class DealData
     {
@@ -18,5 +18,7 @@
         public string Currency { get; set; }
         public string ActiveInActive { get; set; }
         public string ExitDate { get; set; }
+
+       
     }
 }

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.IO;
 using Castle.Core.Internal;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-using NLog.Fluent;
 
-namespace Stage3_Verification
+namespace CsvFileConvertor
 {
     public class Stage3Validator
     {

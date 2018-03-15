@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CsvFileConvertor;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
-using Stage3_Verification;
 
-namespace Stage3_Verification_Tests
+namespace CsvFileConverterTests
 {
     [TestClass]
     public class CsvToJsonConverterTests

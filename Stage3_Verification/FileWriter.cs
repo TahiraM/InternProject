@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Stage3_Verification
+namespace CsvFileConvertor
 {
     public class FileWriter : IFileWriter
     {

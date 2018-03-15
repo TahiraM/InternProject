@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
-namespace Stage3_Verification
+namespace CsvFileConvertor
 {
     public class LegacyDataExtractor : ILegacyDataExtractor
     {
@@ -29,7 +28,6 @@ namespace Stage3_Verification
                     ActiveInActive = data[14],
                     ExitDate = ValidationOfDealData.ThisDate(data[15])
                 })
-                .Where(m => m.ActiveInActive == "true")
                 .ToArray();
 
             return result;

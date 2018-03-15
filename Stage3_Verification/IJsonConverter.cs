@@ -1,4 +1,4 @@
-﻿namespace Stage3_Verification
+﻿namespace CsvFileConvertor
 {
     public interface IJsonConverter
     {

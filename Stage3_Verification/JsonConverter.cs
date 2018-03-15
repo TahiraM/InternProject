@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Stage3_Verification
+namespace CsvFileConvertor
 {
     public class JsonConverter : IJsonConverter
     {

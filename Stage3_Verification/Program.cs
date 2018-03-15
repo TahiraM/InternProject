@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Stage3_Verification
+namespace CsvFileConvertor
 {
     internal class Program
     {

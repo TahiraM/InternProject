@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
+using CsvFileConvertor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stage3_Verification;
 
-namespace Stage3_Verification_Tests
+namespace CsvFileConverterTests
 {
     [TestClass]
     public class FileWriterTests

@@ -1,4 +1,4 @@
 ﻿V3DealID||eFrontDealID||DealName||V3CompanyID||V3CompanyName||SectorID||Sector||CountryID||Country||TransactionTypeID||Transaction Type||Transaction Fees||Other Fees||Currency||ActiveInActive||ExitDate
-02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||||||||||229||United Kingdom||||||98.76||||EUR||Active||01/01/01
-02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||JFV3CompanyId02B4EFADE6||JFV3Company||1||Advertising||229||United Kingdom||209||Primary LBO||||||EUR||false||02/02/02
-02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||JFV3CompanyId02B4EFADE6||JFV3Company||1||Advertising||229||United Kingdom||209||Primary LBO||2.1||0.1||EUR||Active||03/03/03
+02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||||||3||||229||United Kingdom||1||||98.76||0.998||EUR||Active||1/1/2001
+02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||JFV3CompanyId02B4EFADE6||JFV3Company||1||Advertising||229||United Kingdom||209||Primary LBO|| 8.8||1.1 ||EUR||false||2/2/2002
+02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||JFV3CompanyId02B4EFADE6||JFV3Company||1||Advertising||229||United Kingdom||209||Primary LBO||2.1||0.1||EUR||Active||3/3/2003

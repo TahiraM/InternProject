@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Stage3_Verification\Stage3_Verification.csproj" />
+    <ProjectReference Include="..\Stage3_Verification\CsvFileConverter.csproj" />
   </ItemGroup>
 
 </Project>

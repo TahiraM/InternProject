@@ -1,4 +1,4 @@
-﻿namespace Stage3_Verification
+﻿namespace CsvFileConvertor
 {
     public class DataExtractor : IDataExtractor
     {
@@ -9,7 +9,7 @@
             _legacyDataExtractor = legacyDataExtractor;
         }
 
-        public DealData[] Extract(string[] rows)
+        public DealData[] Extract(string[] rows, bool hasTitleRow = true)
         {
             return _legacyDataExtractor.Extract(rows);
         }
