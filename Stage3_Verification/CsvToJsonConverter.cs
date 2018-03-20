@@ -1,4 +1,7 @@
-﻿namespace CsvFileConverter
+﻿using System;
+using Serilog;
+
+namespace CsvFileConverter
 {
     //TODO: comments 
 
@@ -31,6 +34,9 @@
 
             // Save this into a file
             _fileWriter.WriteContent(output, jsonString);
+
+            Log.CloseAndFlush();
+            Console.ReadKey();
         }
     }
 }

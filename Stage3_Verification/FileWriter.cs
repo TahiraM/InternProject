@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Serilog;
 
 namespace CsvFileConverter
 {
@@ -9,6 +10,9 @@ namespace CsvFileConverter
         {
             if (overwrite == false && File.Exists(output))
                 throw new ApplicationException($"File {output} is exists and can't be replaced");
+
+            Log.Information("Data is being saved to {Output}",output);
+            Log.Information("The Data being saved is {Data}", data);
 
             File.WriteAllText(output, data);
         }

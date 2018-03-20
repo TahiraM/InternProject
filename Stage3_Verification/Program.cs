@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Serilog;
 
 namespace CsvFileConverter
 {
@@ -15,9 +17,8 @@ namespace CsvFileConverter
             // Convert to the target format
 
             // Save this into a file
-            LogHelper.Log(LogTarget.File, "Hello");
             var inputFile = "Deal.csv";
-            var outputFile = "Vali.json";
+            const string outputFile = "Vali.json";
 
             if (args.Any())
                 inputFile = args[0];
@@ -30,7 +31,19 @@ namespace CsvFileConverter
             var jsonConverter = new JsonConverter(legacyJsonConverter);
             var converter = new CsvToJsonConverter(fileReader, fileWriter, dataExtractor, jsonConverter);
 
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .WriteTo.File("logs\\myapp.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+            Log.Information("Error List");
             converter.Convert(inputFile, outputFile);
+
+
+            
+            
         }
     }
 }

@@ -1,0 +1,51 @@
+2018-03-20 13:50:40.344 +00:00 [INF] Error List
+2018-03-20 13:50:40.394 +00:00 [INF] it works while program runs fileReader
+2018-03-20 13:50:40.398 +00:00 [INF] it works while program runs DataExtractor
+2018-03-20 13:50:40.406 +00:00 [INF] it works while program runs JsonConverter
+2018-03-20 13:50:40.537 +00:00 [INF] it works while program runs fileWriter
+2018-03-20 16:24:26.243 +00:00 [INF] Error List
+2018-03-20 16:24:26.297 +00:00 [INF] Input file recieved Deal.csv
+2018-03-20 16:24:26.302 +00:00 [INF] it works while program runs fileReader
+2018-03-20 16:24:26.306 +00:00 [INF] it works while program runs DataExtractor
+2018-03-20 16:24:26.315 +00:00 [INF] it works while program runs JsonConverter
+2018-03-20 16:24:26.441 +00:00 [INF] it works while program runs fileWriter
+2018-03-20 16:45:18.654 +00:00 [INF] Error List
+2018-03-20 16:45:18.707 +00:00 [INF] Input file recieved Deal.csv
+2018-03-20 16:45:18.712 +00:00 [INF] it works while program runs fileReader
+2018-03-20 16:45:18.717 +00:00 [INF] Number of rows being parsed in DataExtractor ["V3DealID||eFrontDealID||DealName||V3CompanyID||V3CompanyName||SectorID||Sector||CountryID||Country||TransactionTypeID||Transaction Type||Transaction Fees||Other Fees||Currency||ActiveInActive||ExitDate","02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||||||3||||229||United Kingdom||1||||98.76||0.998||EUR||Active||1/1/2001","02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||JFV3CompanyId02B4EFADE6||JFV3Company||1||Advertising||229||United Kingdom||209||Primary LBO|| 8.8||1.1 ||EUR||false||2/2/2002","02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||JFV3CompanyId02B4EFADE6||JFV3Company||1||Advertising||229||United Kingdom||209||Primary LBO||2.1||0.1||EUR||Active||3/3/2003"]
+2018-03-20 16:45:18.738 +00:00 [INF] it works while program runs JsonConverter
+2018-03-20 16:45:18.862 +00:00 [INF] it works while program runs fileWriter
+2018-03-20 16:46:24.308 +00:00 [INF] Error List
+2018-03-20 16:46:24.363 +00:00 [INF] Input file recieved Deal.csv
+2018-03-20 16:46:24.367 +00:00 [INF] it works while program runs fileReader
+2018-03-20 16:46:24.372 +00:00 [INF] Number of rows being parsed in DataExtractor ["V3DealID||eFrontDealID||DealName||V3CompanyID||V3CompanyName||SectorID||Sector||CountryID||Country||TransactionTypeID||Transaction Type||Transaction Fees||Other Fees||Currency||ActiveInActive||ExitDate","02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||||||3||||229||United Kingdom||1||||98.76||0.998||EUR||Active||1/1/2001","02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||JFV3CompanyId02B4EFADE6||JFV3Company||1||Advertising||229||United Kingdom||209||Primary LBO|| 8.8||1.1 ||EUR||false||2/2/2002","02B4EFADE6||02B4EFADE60B48339D13F93EB851943C||Marston (Project Magenta)||JFV3CompanyId02B4EFADE6||JFV3Company||1||Advertising||229||United Kingdom||209||Primary LBO||2.1||0.1||EUR||Active||3/3/2003"]
+2018-03-20 16:46:24.393 +00:00 [INF] it works while program runs JsonConverter
+2018-03-20 16:46:24.517 +00:00 [INF] it works while program runs fileWriter
+2018-03-20 16:50:28.172 +00:00 [INF] Error List
+2018-03-20 16:50:28.224 +00:00 [INF] Input file recieved Deal.csv
+2018-03-20 16:50:28.229 +00:00 [INF] it works while program runs fileReader
+2018-03-20 16:50:28.230 +00:00 [INF] Number of rows being parsed in DataExtractor 4
+2018-03-20 16:50:28.242 +00:00 [INF] it works while program runs JsonConverter
+2018-03-20 16:50:28.367 +00:00 [INF] it works while program runs fileWriter
+2018-03-20 16:53:55.176 +00:00 [INF] Error List
+2018-03-20 16:53:55.230 +00:00 [INF] Input file recieved Deal.csv
+2018-03-20 16:53:55.235 +00:00 [INF] it works while program runs fileReader
+2018-03-20 16:53:55.236 +00:00 [INF] Number of rows being parsed in DataExtractor 4
+2018-03-20 16:53:55.247 +00:00 [INF] it works while program runs JsonConverter
+2018-03-20 16:53:55.254 +00:00 [INF] Data being parsed through JsonConverter ["CsvFileConverter.DealData","CsvFileConverter.DealData","CsvFileConverter.DealData"]
+2018-03-20 16:53:55.385 +00:00 [INF] it works while program runs fileWriter
+2018-03-20 16:54:40.095 +00:00 [INF] Error List
+2018-03-20 16:54:40.150 +00:00 [INF] Input file recieved Deal.csv
+2018-03-20 16:54:40.155 +00:00 [INF] it works while program runs fileReader
+2018-03-20 16:54:40.156 +00:00 [INF] Number of rows being parsed in DataExtractor 4
+2018-03-20 16:54:40.168 +00:00 [INF] it works while program runs JsonConverter
+2018-03-20 16:54:40.180 +00:00 [INF] Data being parsed through JsonConverter [{"V3DealId":"02B4EFADE6","EFrontDealId":"02B4EFADE60B48339D13F93EB851943C","DealName":"Marston (Project Magenta)","V3CompanyId":"","V3CompanyName":"","SectorId":3,"Sector":"","CountryId":229,"Country":"United Kingdom","TransactionTypeId":1,"TransactionType":"","TransactionFees":98.76,"OtherFees":0.998,"Currency":"EUR","ActiveInActive":"Active","ExitDate":"1/1/2001","$type":"DealData"},{"V3DealId":"02B4EFADE6","EFrontDealId":"02B4EFADE60B48339D13F93EB851943C","DealName":"Marston (Project Magenta)","V3CompanyId":"JFV3CompanyId02B4EFADE6","V3CompanyName":"JFV3Company","SectorId":1,"Sector":"Advertising","CountryId":229,"Country":"United Kingdom","TransactionTypeId":209,"TransactionType":"Primary LBO","TransactionFees":8.8,"OtherFees":1.1,"Currency":"EUR","ActiveInActive":"false","ExitDate":"2/2/2002","$type":"DealData"},{"V3DealId":"02B4EFADE6","EFrontDealId":"02B4EFADE60B48339D13F93EB851943C","DealName":"Marston (Project Magenta)","V3CompanyId":"JFV3CompanyId02B4EFADE6","V3CompanyName":"JFV3Company","SectorId":1,"Sector":"Advertising","CountryId":229,"Country":"United Kingdom","TransactionTypeId":209,"TransactionType":"Primary LBO","TransactionFees":2.1,"OtherFees":0.1,"Currency":"EUR","ActiveInActive":"Active","ExitDate":"3/3/2003","$type":"DealData"}]
+2018-03-20 16:54:40.334 +00:00 [INF] it works while program runs fileWriter
+2018-03-20 16:58:58.861 +00:00 [INF] Error List
+2018-03-20 16:58:58.914 +00:00 [INF] Input file recieved Deal.csv
+2018-03-20 16:58:58.919 +00:00 [INF] it works while program runs fileReader
+2018-03-20 16:58:58.920 +00:00 [INF] Number of rows being parsed in DataExtractor 4
+2018-03-20 16:58:58.932 +00:00 [INF] it works while program runs JsonConverter
+2018-03-20 16:58:58.945 +00:00 [INF] Data being parsed through JsonConverter [{"V3DealId":"02B4EFADE6","EFrontDealId":"02B4EFADE60B48339D13F93EB851943C","DealName":"Marston (Project Magenta)","V3CompanyId":"","V3CompanyName":"","SectorId":3,"Sector":"","CountryId":229,"Country":"United Kingdom","TransactionTypeId":1,"TransactionType":"","TransactionFees":98.76,"OtherFees":0.998,"Currency":"EUR","ActiveInActive":"Active","ExitDate":"1/1/2001","$type":"DealData"},{"V3DealId":"02B4EFADE6","EFrontDealId":"02B4EFADE60B48339D13F93EB851943C","DealName":"Marston (Project Magenta)","V3CompanyId":"JFV3CompanyId02B4EFADE6","V3CompanyName":"JFV3Company","SectorId":1,"Sector":"Advertising","CountryId":229,"Country":"United Kingdom","TransactionTypeId":209,"TransactionType":"Primary LBO","TransactionFees":8.8,"OtherFees":1.1,"Currency":"EUR","ActiveInActive":"false","ExitDate":"2/2/2002","$type":"DealData"},{"V3DealId":"02B4EFADE6","EFrontDealId":"02B4EFADE60B48339D13F93EB851943C","DealName":"Marston (Project Magenta)","V3CompanyId":"JFV3CompanyId02B4EFADE6","V3CompanyName":"JFV3Company","SectorId":1,"Sector":"Advertising","CountryId":229,"Country":"United Kingdom","TransactionTypeId":209,"TransactionType":"Primary LBO","TransactionFees":2.1,"OtherFees":0.1,"Currency":"EUR","ActiveInActive":"Active","ExitDate":"3/3/2003","$type":"DealData"}]
+2018-03-20 16:58:59.097 +00:00 [INF] Data is being saved to Vali.json
+2018-03-20 16:58:59.099 +00:00 [INF] The Data being saved is [{"V3DealId":"02B4EFADE6","EFrontDealId":"02B4EFADE60B48339D13F93EB851943C","DealName":"Marston (Project Magenta)","V3CompanyId":"","V3CompanyName":"","SectorId":"","Sector":"3","CountryId":"United Kingdom","Country":"229","TransactionTypeId":"","TransactionType":"1","TransactionFees":"98.76","OtherFees":"0.998","Currency":"EUR","ActiveInActive":"Active","ExitDate":"1/1/2001"},{"V3DealId":"02B4EFADE6","EFrontDealId":"02B4EFADE60B48339D13F93EB851943C","DealName":"Marston (Project Magenta)","V3CompanyId":"JFV3CompanyId02B4EFADE6","V3CompanyName":"JFV3Company","SectorId":"Advertising","Sector":"1","CountryId":"United Kingdom","Country":"229","TransactionTypeId":"Primary LBO","TransactionType":"209","TransactionFees":"8.8","OtherFees":"1.1","Currency":"EUR","ActiveInActive":"false","ExitDate":"2/2/2002"},{"V3DealId":"02B4EFADE6","EFrontDealId":"02B4EFADE60B48339D13F93EB851943C","DealName":"Marston (Project Magenta)","V3CompanyId":"JFV3CompanyId02B4EFADE6","V3CompanyName":"JFV3Company","SectorId":"Advertising","Sector":"1","CountryId":"United Kingdom","Country":"229","TransactionTypeId":"Primary LBO","TransactionType":"209","TransactionFees":"2.1","OtherFees":"0.1","Currency":"EUR","ActiveInActive":"Active","ExitDate":"3/3/2003"}]

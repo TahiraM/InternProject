@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Serilog;
 
 namespace CsvFileConverter
 {
@@ -14,8 +15,11 @@ namespace CsvFileConverter
 
         public string ConvertToJson(DealData[] data)
         {
+
+            Log.Information("it works while program runs JsonConverter");
             try
             {
+                Log.Information("Data being parsed through JsonConverter {@Data}",data);
                 var deserializer = new JsonSerializer();
                 var result = _legacyJsonConverter.Convert(data);
 

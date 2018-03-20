@@ -1,4 +1,6 @@
-﻿namespace CsvFileConverter
+﻿using Serilog;
+
+namespace CsvFileConverter
 {
     public class DataExtractor : IDataExtractor
     {
@@ -11,6 +13,8 @@
 
         public DealData[] Extract(string[] rows, bool hasTitleRow = true)
         {
+
+            Log.Information("Number of rows being parsed in DataExtractor {Rows}",rows.Length);
             return _legacyDataExtractor.Extract(rows);
         }
     }
