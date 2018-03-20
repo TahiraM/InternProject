@@ -26,7 +26,7 @@ namespace CsvFileConverter
                 nameof(dealDataForHeaders.ExitDate)
             };
             if (columnNames.IsNullOrEmpty())
-                throw new InvalidDataException("No Header For "+columnNames+" Found");
+                throw new InvalidDataException("No Header For " + columnNames + " Found");
 
             jsonString.Append("[");
 
@@ -56,6 +56,4 @@ namespace CsvFileConverter
             return jsonString.ToString();
         }
     }
-
-    
 }

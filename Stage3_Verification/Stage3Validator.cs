@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using Castle.Core.Internal;
 
 namespace CsvFileConverter
 {
@@ -7,9 +6,9 @@ namespace CsvFileConverter
     {
         public int Length { get; set; }
         public string Input { get; set; }
-        
 
-        public void StringLength( int stringMaxLength)
+
+        public void StringLength(int stringMaxLength)
         {
             if (Length != stringMaxLength) throw new InvalidDataException("String length too short");
         }
@@ -25,7 +24,5 @@ namespace CsvFileConverter
             if (Length < low) throw new InvalidDataException("Value entered is too small");
             if (Input.Length < low) throw new InvalidDataException("String entered is below character limit");
         }
-
-
     }
 }

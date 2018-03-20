@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace CsvFileConverter
+﻿namespace CsvFileConverter
 {
     //TODO: comments 
 
@@ -35,5 +33,4 @@ namespace CsvFileConverter
             _fileWriter.WriteContent(output, jsonString);
         }
     }
-    
 }

@@ -9,7 +9,7 @@ namespace CsvFileConverter
         {
             if (value == string.Empty) return 0;
             var check = int.TryParse(value, out var num);
-            
+
             if (check == false)
                 throw new FormatException("Data not in correct format");
             return num;
@@ -19,7 +19,7 @@ namespace CsvFileConverter
         {
             if (value == string.Empty) return 0;
             var check = double.TryParse(value, out var num);
-            
+
             if (check == false)
                 throw new FormatException("Data not in correct format");
             return num;
