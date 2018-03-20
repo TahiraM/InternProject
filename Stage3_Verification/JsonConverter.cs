@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace CsvFileConvertor
+namespace CsvFileConverter
 {
     public class JsonConverter : IJsonConverter
     {

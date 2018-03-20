@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace CsvFileConvertor
+namespace CsvFileConverter
 {
     public class LegacyDataExtractor : ILegacyDataExtractor
     {

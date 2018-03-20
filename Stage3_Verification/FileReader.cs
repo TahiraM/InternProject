@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace CsvFileConvertor
+namespace CsvFileConverter
 {
     public class FileReader : IFileReader
     {

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace CsvFileConvertor
+namespace CsvFileConverter
 {
     internal class Program
     {
@@ -15,7 +15,7 @@ namespace CsvFileConvertor
             // Convert to the target format
 
             // Save this into a file
-
+            LogHelper.Log(LogTarget.File, "Hello");
             var inputFile = "Deal.csv";
             var outputFile = "Vali.json";
 

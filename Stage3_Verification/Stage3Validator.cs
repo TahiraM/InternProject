@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Castle.Core.Internal;
 
-namespace CsvFileConvertor
+namespace CsvFileConverter
 {
     public class Stage3Validator
     {
@@ -16,8 +16,6 @@ namespace CsvFileConvertor
 
         public void Required(string input)
         {
-            var logger = NLog.LogManager.GetCurrentClassLogger();
-            if (input.IsNullOrEmpty()) logger.Error(string.Format("This field is neccesary", input.IsNullOrEmpty()));
         }
 
         public void Range(int low, int high)

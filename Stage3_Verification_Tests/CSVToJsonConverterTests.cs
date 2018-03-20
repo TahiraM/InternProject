@@ -1,4 +1,4 @@
-﻿using CsvFileConvertor;
+﻿using CsvFileConverter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 

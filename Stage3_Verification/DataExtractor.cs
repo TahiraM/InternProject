@@ -1,4 +1,4 @@
-﻿namespace CsvFileConvertor
+﻿namespace CsvFileConverter
 {
     public class DataExtractor : IDataExtractor
     {

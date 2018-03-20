@@ -2,7 +2,7 @@
 using System.Text;
 using Castle.Core.Internal;
 
-namespace CsvFileConvertor
+namespace CsvFileConverter
 {
     public class LegacyJsonConverter : ILegacyJsonConverter
     {

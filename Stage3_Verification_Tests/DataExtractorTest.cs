@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using CsvFileConvertor;
+using CsvFileConverter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
