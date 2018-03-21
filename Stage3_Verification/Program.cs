@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Serilog;
 
 namespace CsvFileConverter
@@ -34,16 +33,15 @@ namespace CsvFileConverter
 
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .WriteTo.Console()
-                .WriteTo.File("logs\\myapp.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.Console(
+                    outputTemplate:
+                    "{Timestamp:HH:mm:ss} [{Level:u3}] [{SourceContent:l}] {Message} {NewLine}{Exception}")
+                .WriteTo.File(
+                    "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] [{SourceContext}] {Message}{NewLine}{Exception}")
                 .CreateLogger();
-
+            Log.Logger.ForContext<FileReader>().Information("");
             Log.Information("Error List");
             converter.Convert(inputFile, outputFile);
-
-
-            
-            
         }
     }
 }

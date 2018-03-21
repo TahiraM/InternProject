@@ -9,12 +9,14 @@ namespace CsvFileConverter
         public void WriteContent(string output, string data, bool overwrite = true)
         {
             if (overwrite == false && File.Exists(output))
-                throw new ApplicationException($"File {output} is exists and can't be replaced");
+                Log.Error("File {Output} exists and can't be replaced", output);
 
             Log.Information("Data is being saved to {Output}",output);
             Log.Information("The Data being saved is {Data}", data);
 
             File.WriteAllText(output, data);
+            Log.CloseAndFlush();
+            Console.ReadKey();
         }
     }
 }

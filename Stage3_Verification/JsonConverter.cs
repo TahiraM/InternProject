@@ -15,12 +15,9 @@ namespace CsvFileConverter
 
         public string ConvertToJson(DealData[] data)
         {
-
-            Log.Information("it works while program runs JsonConverter");
             try
             {
                 Log.Information("Data being parsed through JsonConverter {@Data}",data);
-                var deserializer = new JsonSerializer();
                 var result = _legacyJsonConverter.Convert(data);
 
                 var dealDataList = JsonConvert.DeserializeObject(result);
@@ -29,6 +26,7 @@ namespace CsvFileConverter
             }
             catch (Exception e)
             {
+                Log.Error("Error in parsing Json");
                 throw new JsonException("Error in parsing Json", e);
             }
         }

@@ -9,7 +9,7 @@ namespace CsvFileConverter
         public string[] ReadContent(string input)
         {
             if (!File.Exists(input))
-                throw new FileNotFoundException($"File {input} is not exists");
+                Log.Error($"File {input} is not exists");
             Log.Information("Input file recieved {Input}", input);
             var extension = Path.GetExtension(input);
             if (extension != ".csv")

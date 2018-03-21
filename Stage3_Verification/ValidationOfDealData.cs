@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Serilog;
 
 namespace CsvFileConverter
 {
@@ -21,7 +22,7 @@ namespace CsvFileConverter
             var check = double.TryParse(value, out var num);
 
             if (check == false)
-                throw new FormatException("Data not in correct format");
+                Log.Fatal( "The 25"); 
             return num;
         }
 
