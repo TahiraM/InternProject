@@ -24,10 +24,10 @@ namespace CsvFileConverter
                 var endResult = JsonConvert.SerializeObject(dealDataList);
                 return endResult;
             }
-            catch (Exception e)
+            catch (JsonException e)
             {
-                Log.Error("Error in parsing Json");
-                throw new JsonException("Error in parsing Json", e);
+                Log.Error(e,"Error in parsing Json");
+                throw;
             }
         }
     }

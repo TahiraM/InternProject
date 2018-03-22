@@ -10,15 +10,17 @@ namespace CsvFileConverter
         {
             if (!File.Exists(input))
             {
-                Log.Error($"File {input} is not exists");
-                throw new FileNotFoundException($"File { input } is not exists");
+                var exception = new FileNotFoundException($"File {input} is not exists");
+                Log.Error(exception,$"File {input} is not exists");
+                throw exception;
             }
             Log.Information("Input file recieved {Input}", input);
             var extension = Path.GetExtension(input);
             if (extension != ".csv")
             {
-                Log.Error($"File{input} not in correct format");
-                throw new FileLoadException($"File{input} not in correct format");
+                var exception = new FileLoadException($"File{input} not in correct format");
+                Log.Error(exception,$"File{input} not in correct format");
+                throw exception;
             }
 
             var content = File.ReadAllLines(input);

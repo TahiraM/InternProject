@@ -28,8 +28,9 @@ namespace CsvFileConverter
             };
             if (columnNames.IsNullOrEmpty())
             {
-                Log.Error("No Header For {Column} Found",  columnNames );
-                throw new InvalidDataException("No Header For " + columnNames + " Found");
+                var exception = new InvalidDataException("No Header For " + columnNames + " Found");
+                Log.Error(exception,"No Header For {Column} Found",  columnNames );
+                throw exception;
             }
                 
 
