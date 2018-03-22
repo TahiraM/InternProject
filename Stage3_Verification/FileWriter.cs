@@ -15,8 +15,7 @@ namespace CsvFileConverter
             Log.Information("The Data being saved is {Data}", data);
 
             File.WriteAllText(output, data);
-            Log.CloseAndFlush();
-            Console.ReadKey();
+            
         }
     }
 }
