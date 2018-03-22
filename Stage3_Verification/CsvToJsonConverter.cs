@@ -35,8 +35,6 @@ namespace CsvFileConverter
             // Save this into a file
             _fileWriter.WriteContent(output, jsonString);
 
-            Log.CloseAndFlush();
-            Console.ReadKey();
         }
     }
 }

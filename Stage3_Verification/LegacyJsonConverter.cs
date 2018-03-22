@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using Castle.Core.Internal;
+using Serilog;
 
 namespace CsvFileConverter
 {
@@ -26,7 +27,11 @@ namespace CsvFileConverter
                 nameof(dealDataForHeaders.ExitDate)
             };
             if (columnNames.IsNullOrEmpty())
+            {
+                Log.Error("No Header For {Column} Found",  columnNames );
                 throw new InvalidDataException("No Header For " + columnNames + " Found");
+            }
+                
 
             jsonString.Append("[");
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using CsvFileConverter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -82,7 +83,7 @@ namespace CsvFileConverterTests
             Action sut = () => ValidationOfDealData.ThisDate(data);
 
             // Assert
-            Assert.ThrowsException<FormatException>(sut);
+            Assert.ThrowsException<DataException>(sut);
         }
     }
 }

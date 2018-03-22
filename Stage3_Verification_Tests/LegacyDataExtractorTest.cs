@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using CsvFileConverter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -184,7 +185,7 @@ namespace CsvFileConverterTests
             Action action = () => sut.Extract(fixture.InvalidInputExitDate, false);
 
             // Assert
-            Assert.ThrowsException<FormatException>(action);
+            Assert.ThrowsException<DataException>(action);
         }
     }
 }
