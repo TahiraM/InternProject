@@ -12,9 +12,14 @@ namespace CsvFileConverter
             if (value == string.Empty) return 0;
             var check = int.TryParse(value, out var num);
 
-            if (check != false) return num;
-            Log.Fatal("The Value Being Validated is not in Integer Format");
-            throw new FormatException("The Value Being Validated is not in Integer Format");
+            if (check == false)
+            {
+                var exception = new FormatException("The Value Being Validated is not in Double Format");
+                Log.Fatal(exception, "");
+                throw exception;
+
+            }
+            else return num;
         }
 
         public static double ThisDouble(string value)
@@ -22,9 +27,14 @@ namespace CsvFileConverter
             if (value == string.Empty) return 0;
             var check = double.TryParse(value, out var num);
 
-            if (check != false) return num;
-            Log.Fatal("The Value Being Validated is not in Double Format");
-            throw new FormatException("The Value Being Validated is not in Double Format");
+            if (check == false)
+            {
+                var exception = new FormatException("The Value Being Validated is not in Double Format");
+                Log.Fatal(exception,"");
+                throw exception ;
+
+            }
+            else return num;
         }
 
         public static string ThisDate(string value)
@@ -41,12 +51,13 @@ namespace CsvFileConverter
 
                 return validDate;
             }
-            catch (Exception ex)
+            catch (DataException ex)
             {
                 if (value == string.Empty) return " ";
                 Log.Error(ex, "The String Being Validated is not in Date Format");
-                throw new DataException("The String Being Validated is not in Date Format");
+                throw;
             }
+            
         }
     }
 }
