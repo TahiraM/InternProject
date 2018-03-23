@@ -37,7 +37,7 @@ namespace CsvFileConverterTests
             // Arrange
 
             var legacyJsonConverter = Substitute.For<ILegacyJsonConverter>();
-            legacyJsonConverter.Convert(Arg.Any<DealData[]>()).Throws(new Exception("Data Is Not Valid"));
+            legacyJsonConverter.Convert(Arg.Any<DealData[]>()).Throws(new SystemException("Data Is Not Valid"));
 
             var sut = new JsonConverter(legacyJsonConverter);
 
@@ -45,7 +45,7 @@ namespace CsvFileConverterTests
             Action action = () => sut.ConvertToJson(new DealData[] { });
 
             // Assert
-            Assert.ThrowsException<JsonException>(action);
+            Assert.ThrowsException<SystemException>(action);
         }
     }
 }

@@ -24,7 +24,6 @@ namespace CsvFileConverter
             }
 
             var content = File.ReadAllLines(input);
-            Console.WriteLine(content);
             Log.Information("it works while program runs fileReader");
             return content;
         }

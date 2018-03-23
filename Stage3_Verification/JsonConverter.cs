@@ -24,7 +24,7 @@ namespace CsvFileConverter
                 var endResult = JsonConvert.SerializeObject(dealDataList);
                 return endResult;
             }
-            catch (JsonException e)
+            catch (SystemException e)
             {
                 Log.Error(e,"Error in parsing Json");
                 throw;

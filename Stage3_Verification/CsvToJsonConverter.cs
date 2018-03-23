@@ -1,7 +1,4 @@
-﻿using System;
-using Serilog;
-
-namespace CsvFileConverter
+﻿namespace CsvFileConverter
 {
     //TODO: comments 
 
@@ -12,7 +9,10 @@ namespace CsvFileConverter
         private readonly IFileReader _fileReader;
         private readonly IFileWriter _fileWriter;
 
-        public CsvToJsonConverter(IFileReader fileReader, IFileWriter fileWriter, IDataExtractor dataExtractor,
+        public CsvToJsonConverter(
+            IFileReader fileReader, 
+            IFileWriter fileWriter, 
+            IDataExtractor dataExtractor,
             IJsonConverter dataToJsonConverter)
         {
             _fileReader = fileReader;
@@ -34,7 +34,6 @@ namespace CsvFileConverter
 
             // Save this into a file
             _fileWriter.WriteContent(output, jsonString);
-
         }
     }
 }
