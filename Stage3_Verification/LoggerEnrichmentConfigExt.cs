@@ -7,12 +7,7 @@ namespace CsvFileConverter
     {
         public static LoggerConfiguration WithCaller(this LoggerEnrichmentConfiguration enrichmentConfiguration)
         {
-            return enrichmentConfiguration.With<CallerEnricher>();
-        }
-
-        public static LoggerConfiguration WithMethodName(this LoggerEnrichmentConfiguration enrichmentConfiguration)
-        {
-            return enrichmentConfiguration.With<CodeMethodNameEnricher>();
+            return enrichmentConfiguration.With<MethodDetailsEnricher>();
         }
     }
 }

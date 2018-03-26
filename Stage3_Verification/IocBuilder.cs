@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Serilog;
+using Serilog.Exceptions;
 
 namespace CsvFileConverter
 {
@@ -9,7 +10,17 @@ namespace CsvFileConverter
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterInstance<ILogger>(Log.Logger);
+            builder.RegisterInstance(Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .Enrich.WithExceptionDetails()
+                .Enrich.WithCaller()
+                .WriteTo.File("CsvToJson.log",
+                    outputTemplate:
+                    "{Timestamp:HH:mm:ss} [{Level}]  (at {Caller}) {Message} {Exception}{NewLine}")
+                .WriteTo.Console(
+                    outputTemplate:
+                    "{Timestamp:HH:mm:ss} [{Level}]  (at {Caller}) {Message} {Exception}{NewLine}")
+                .CreateLogger());
 
             builder.RegisterType<CsvToJsonConverter>();
             builder.RegisterType<FileReader>().As<IFileReader>();

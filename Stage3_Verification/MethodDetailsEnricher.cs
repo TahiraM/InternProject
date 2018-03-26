@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 
 namespace CsvFileConverter
 {
-    public class CodeMethodNameEnricher : ILogEventEnricher
+    public class MethodDetailsEnricher : ILogEventEnricher
     {
-        public string MethodPlaceHolder = "Method";
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {
             var skip = 3;
@@ -16,14 +16,16 @@ namespace CsvFileConverter
                 var stack = new StackFrame(skip);
                 if (!stack.HasMethod())
                 {
-                    logEvent.AddPropertyIfAbsent(new LogEventProperty(MethodPlaceHolder, new ScalarValue("<unknown method>")));
+                    logEvent.AddPropertyIfAbsent(new LogEventProperty("Caller", new ScalarValue("<unknown method>")));
                     return;
                 }
 
                 var method = stack.GetMethod();
                 if (method.DeclaringType.Assembly != typeof(Log).Assembly)
                 {
-                    logEvent.AddPropertyIfAbsent(new LogEventProperty(MethodPlaceHolder,new ScalarValue(method.Name)));
+                    var caller =
+                        $"{method.DeclaringType.FullName}.{method.Name}({string.Join(", ", method.GetParameters().Select(pi => pi.ParameterType.FullName))})";
+                    logEvent.AddPropertyIfAbsent(new LogEventProperty("Caller", new ScalarValue(caller)));
                 }
 
                 skip++;
