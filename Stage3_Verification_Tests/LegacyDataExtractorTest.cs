@@ -1,23 +1,34 @@
 ﻿//using System;
+//using System.Collections;
+//using System.Collections.Generic;
 //using System.Data;
+//using System.Linq;
 //using CsvFileConverter;
 //using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+//TODO: these tests now fail as there is a IEnumerable parameter that has to parsed into legacyDataExtractor and so i could not access the method as i did not know how to mock an IEnumerable
 
 //namespace CsvFileConverterTests
 //{
 //    [TestClass]
-//    public class LegacyDataExtractorTest
+//    public class LegacyDataExtractorTest 
 //    {
+//        private readonly ILegacyDataExtractor _legacyDataExtractor;
+
+//        public LegacyDataExtractorTest(ILegacyDataExtractor legacyDataExtractor)
+//        {
+//            _legacyDataExtractor = legacyDataExtractor;
+//        }
 //        [TestMethod]
 //        public void Should_ExtractSectorId_Pass_WhenTheDataIsValidAndAvailable()
 //        {
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
 //            var expected = fixture.ValidOutput;
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor()
 
 //            // Act
-//            var actual = sut.ExtractWithoutHeader(fixture.ValidInput);
+//            var actual = sut.Extract();
 
 //            // Assert
 //            Assert.AreEqual(expected.Length, actual.Length);
@@ -29,7 +40,7 @@
 //        {
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor(validators);
 
 //            // Act
 //            Action action = () => sut.Extract(fixture.InvalidInputSectorId, false);
@@ -44,7 +55,7 @@
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
 //            var expected = fixture.ValidOutput;
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor(validators);
 
 //            // Act
 //            var actual = sut.ExtractWithoutHeader(fixture.ValidInput);
@@ -59,7 +70,7 @@
 //        {
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor(validators);
 
 //            // Act
 //            Action action = () => sut.Extract(fixture.InvalidInputCountryId, false);
@@ -74,7 +85,7 @@
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
 //            var expected = fixture.ValidOutput;
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor(validators);
 
 //            // Act
 //            var actual = sut.ExtractWithoutHeader(fixture.ValidInput);
@@ -89,7 +100,7 @@
 //        {
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor(validators);
 
 //            // Act
 //            Action action = () => sut.Extract(fixture.InvalidInputTransTypeId, false);
@@ -104,7 +115,7 @@
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
 //            var expected = fixture.ValidOutput;
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor(validators);
 
 //            // Act
 //            var actual = sut.ExtractWithoutHeader(fixture.ValidInput);
@@ -119,7 +130,7 @@
 //        {
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor(validators);
 
 //            // Act
 //            Action action = () => sut.Extract(fixture.InvalidInputTransFees, false);
@@ -134,7 +145,7 @@
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
 //            var expected = fixture.ValidOutput;
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor(validators);
 
 //            // Act
 //            var actual = sut.ExtractWithoutHeader(fixture.ValidInput);
@@ -149,7 +160,7 @@
 //        {
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor(validators);
 
 //            // Act
 //            Action action = () => sut.Extract(fixture.InvalidInputOtherFees, false);
@@ -164,7 +175,7 @@
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
 //            var expected = fixture.ValidOutput;
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor(validators);
 
 //            // Act
 //            var actual = sut.ExtractWithoutHeader(fixture.ValidInput);
@@ -179,7 +190,7 @@
 //        {
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
-//            var sut = new LegacyDataExtractor();
+//            var sut = new LegacyDataExtractor(validators);
 
 //            // Act
 //            Action action = () => sut.Extract(fixture.InvalidInputExitDate, false);

@@ -11,8 +11,8 @@ namespace CsvFileConverter
 
         private static int Main(string[] args)
         {
-            const string inputFile = "Deal.csv";
-            const string outputFile = "Vali.json";
+            const string inputFile = "C:\\GIT\\InternProject\\Stage3_Verification\\InputOutputFiles\\Deal.csv";
+            const string outputFile = "C:\\GIT\\InternProject\\Stage3_Verification\\InputOutputFiles\\Vali.json";
             try
             {
                 Log.Logger.Information($"Setup container");
@@ -23,6 +23,7 @@ namespace CsvFileConverter
 
                 Log.Logger.Information($"Start of the conversion process from {inputFile} to {outputFile}");
                 converter.Convert(inputFile, outputFile);
+
 
                 Console.ReadKey();
             }
@@ -40,4 +41,6 @@ namespace CsvFileConverter
         }
         
     }
+
+    
 }

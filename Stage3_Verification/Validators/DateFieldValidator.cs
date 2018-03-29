@@ -23,7 +23,7 @@ namespace CsvFileConverter
 
                 return new FieldValidationResult(date);
             }
-            catch (IndexOutOfRangeException ex)
+            catch (IndexOutOfRangeException)
             {
                 return new FieldValidationResult(null, "The value Being Validated is not in date Format");
             }

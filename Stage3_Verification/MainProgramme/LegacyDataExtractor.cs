@@ -1,5 +1,6 @@
 ﻿using Serilog;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,6 +30,7 @@ namespace CsvFileConverter
 
         private readonly Dictionary<Type, IFieldValidator> _validators;
 
+       
         public LegacyDataExtractor(IEnumerable<IFieldValidator> validators)
         {
             _validators = validators?.ToDictionary(m => m.TypeToValidate) ??
