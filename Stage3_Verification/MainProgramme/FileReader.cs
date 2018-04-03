@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using LumenWorks.Framework.IO.Csv;
 using Serilog;
 
 namespace CsvFileConverter
@@ -26,6 +28,26 @@ namespace CsvFileConverter
             var content = File.ReadAllLines(input);
             Log.Information("it works while program runs fileReader");
 
+
+            using (var read =
+                new CsvReader(
+                    new StreamReader("C:\\GIT\\InternProject\\Stage3_Verification\\InputOutputFiles\\Deal.csv"), true))
+            {
+                var missedValue = read.MissingFieldAction == MissingFieldAction.ReplaceByEmpty;
+                var fieldCount = read.FieldCount;
+                var headers = read.GetFieldHeaders();
+                var intValid = new IntFieldValidator();
+                while (read.ReadNextRecord())
+                {
+                    for (var i = 0; i < fieldCount; i++)
+
+                        Console.Write("{0} = {1};", headers[i], read[i] == null ? "" : read[i]);
+                    Console.WriteLine();
+                }
+            }
+
+
+            // Field headers will automatically be used as column names
 
             return content;
         }
