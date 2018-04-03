@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using CsvFileConverter.Logging;
 using Serilog;
 using Serilog.Exceptions;
 // TODO: I tried to dispose of my container by puttuing in a InstancePerLifetimeScope but I dont think this is working
@@ -15,19 +16,7 @@ namespace CsvFileConverter
         public static IContainer Build()
         {
             var builder = new ContainerBuilder();
-
-            builder.RegisterInstance(Log.Logger = new LoggerConfiguration()
-                .Enrich.FromLogContext()
-                .Enrich.WithExceptionDetails()
-                .Enrich.WithCaller()
-                .WriteTo.File("C:\\GIT\\InternProject\\Stage3_Verification\\Logging\\CsvToJson.log",
-                    outputTemplate:
-                    "{Timestamp:HH:mm:ss} [{Level}]  (at {Caller}) {Message} {Exception}{NewLine}")
-                .WriteTo.Console(
-                    outputTemplate:
-                    "{Timestamp:HH:mm:ss} [{Level}]  (at {Caller}) {Message} {Exception}{NewLine}")
-                .CreateLogger());
-
+            builder.RegisterInstance(Log.Logger = new LoggerConfigFile().SeriLogConfig);
             builder.RegisterType<CsvToJsonConverter>().SingleInstance(); 
             builder.RegisterType<FileReader>().As<IFileReader>();
             builder.RegisterType<DataExtractor>().As<IDataExtractor>();
