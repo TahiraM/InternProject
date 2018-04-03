@@ -31,11 +31,14 @@ namespace CsvFileConverter
         private readonly Dictionary<Type, IFieldValidator> _validators;
 
        
+
         public LegacyDataExtractor(IEnumerable<IFieldValidator> validators)
         {
             _validators = validators?.ToDictionary(m => m.TypeToValidate) ??
                           throw new ArgumentNullException(nameof(validators));
         }
+
+        
 
         public DealData[] Extract(string[] rows, bool hasTitleRow = true)
         {

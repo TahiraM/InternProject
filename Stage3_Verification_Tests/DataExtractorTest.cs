@@ -11,15 +11,13 @@ namespace CsvFileConverterTests
     [TestClass]
     public class DataExtractorTest
     {
-        private readonly Dictionary<Type, IFieldValidator> _validators;
-        private IEnumerable<IFieldValidator> validators;
-        [TestMethod]
         public void Should_Extract_Pass_WhenTheDataIsValidAndAvailable()
         {
             // Arrange
             var file = File.ReadAllLines("Deal.csv").ToString();
             var data = new[] { file };
-            var extractData = new LegacyDataExtractor(validators);
+            var fixture = new LegacyDataExtractorFixture();
+            var extractData = new LegacyDataExtractor(fixture.GetValidators());
             var expected = extractData.Extract(data);
 
             var legacyDataExtractor = Substitute.For<ILegacyDataExtractor>();

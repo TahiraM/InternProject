@@ -6,9 +6,6 @@ namespace CsvFileConverter
 {
     internal class Program
     {
-        
-
-
         private static int Main(string[] args)
         {
             const string inputFile = "C:\\GIT\\InternProject\\Stage3_Verification\\InputOutputFiles\\Deal.csv";
@@ -39,8 +36,5 @@ namespace CsvFileConverter
 
             return 0;
         }
-        
     }
-
-    
 }

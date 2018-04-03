@@ -1,4 +1,5 @@
-﻿using CsvFileConverter;
+﻿using System.Collections.Generic;
+using CsvFileConverter;
 
 namespace CsvFileConverterTests
 {
@@ -51,6 +52,16 @@ namespace CsvFileConverterTests
         public string[] InvalidInputOtherFees { get; }
         public string[] InvalidInputExitDate { get; }
 
+        public IEnumerable<IFieldValidator> GetValidators()
+        {
+            return new List<IFieldValidator>()
+            {
+                new DateFieldValidator(),
+                new DoubleFieldValidator(),
+                new IntFieldValidator(),
+                new StringFieldValidator()
+            };
+        }
 
         private DealData GenerateOutput(int sectorId, int countryId, int transTypeId, double transFees, double otherFees, string exitDate)
         {
