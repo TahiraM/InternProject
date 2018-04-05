@@ -3,10 +3,7 @@ using Autofac;
 using CsvFileConverter.Logging;
 using Serilog;
 using Serilog.Exceptions;
-// TODO: I tried to dispose of my container by puttuing in a InstancePerLifetimeScope but I dont think this is working
-// TODO: I tried to implement other autofac methods such as IStartable, But i could not get the method to work 
 
-//TODO: Split the logger config into a seperate file
 //TODO: Location of logger should come from the config xml file app.config config manager object. 
 
 namespace CsvFileConverter

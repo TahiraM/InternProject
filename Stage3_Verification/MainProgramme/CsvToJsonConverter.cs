@@ -2,7 +2,6 @@
 
 namespace CsvFileConverter
 {
-    //TODO: comments 
 
     public class CsvToJsonConverter
     {
