@@ -16,8 +16,6 @@ namespace CsvFileConverter
             builder.RegisterInstance(Log.Logger = new LoggerConfigFile().SeriLogConfig);
             builder.RegisterType<CsvToJsonConverter>().SingleInstance(); 
             builder.RegisterType<FileReader>().As<IFileReader>();
-            builder.RegisterType<DataExtractor>().As<IDataExtractor>();
-            builder.RegisterType<LegacyDataExtractor>().As<ILegacyDataExtractor>();
             builder.RegisterType<JsonConverter>().As<IJsonConverter>();
             builder.RegisterType<LegacyJsonConverter>().As<ILegacyJsonConverter>();
             builder.RegisterType<FileWriter>().As<IFileWriter>();

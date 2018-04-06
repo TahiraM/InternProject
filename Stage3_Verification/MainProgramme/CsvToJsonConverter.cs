@@ -5,7 +5,7 @@ namespace CsvFileConverter
 
     public class CsvToJsonConverter
     {
-        private readonly IDataExtractor _dataExtractor;
+        
         private readonly IJsonConverter _dataToJsonConverter;
         private readonly IFileReader _fileReader;
         private readonly IFileWriter _fileWriter;
@@ -13,12 +13,10 @@ namespace CsvFileConverter
         public CsvToJsonConverter(
             IFileReader fileReader, 
             IFileWriter fileWriter, 
-            IDataExtractor dataExtractor,
             IJsonConverter dataToJsonConverter)
         {
             _fileReader = fileReader;
             _fileWriter = fileWriter;
-            _dataExtractor = dataExtractor;
             _dataToJsonConverter = dataToJsonConverter;
         }
 
@@ -26,12 +24,9 @@ namespace CsvFileConverter
         {
             // Read the CSV file
             var content = _fileReader.ReadContent(input);
-
-            // Extract Important Information
-            var data = _dataExtractor.Extract(content);
-
+            
             // Converting to json
-            var jsonString = _dataToJsonConverter.ConvertToJson(data);
+            var jsonString = _dataToJsonConverter.ConvertToJson(content);
 
             // Save this into a file
             _fileWriter.WriteContent(output, jsonString);

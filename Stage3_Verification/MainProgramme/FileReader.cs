@@ -1,36 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Threading;
-using LumenWorks.Framework.IO.Csv;
-using Serilog;
+using System.Linq;
+using System.Text;
+using CsvHelper;
+using CsvHelper.Configuration;
 
 namespace CsvFileConverter
 {
     public class FileReader : IFileReader
     {
-
-        
-        public string[] ReadContent(string input)
+        public DealData[] ReadContent(string input)
         {
-            string[] data = { };
-
-            using (var csv = new CsvReader(new StreamReader(input)))
+           
+            
+            var config = new Configuration
             {
-                csv.DefaultParseErrorAction = ParseErrorAction.RaiseEvent;
-                int fieldCount = csv.Columns.Count;
-                string[] headers = csv.GetFieldHeaders();
-                while (csv.ReadNextRecord())
-                {
-                    for (int i = 0; (i<= (fieldCount)); i++)
-                    {
-                        string content = string.Format(headers[i]+": "+ csv[i]+";" );
-                        Console.WriteLine(content);
-                    }
-                }
+                Delimiter = "||",
+                Encoding = Encoding.UTF8,
+                HasHeaderRecord = true,
+                QuoteNoFields = false,
+                PrepareHeaderForMatch = header => header.ToLowerInvariant().Replace(" ", string.Empty)
+            };
+
+            using (var stream = File.OpenRead(input))
+            using (var reader = new StreamReader(stream, Encoding.UTF8))
+            using (var csv = new CsvReader(reader, config))
+            {
+                 var records = csv.GetRecords<DealData>().ToArray();
+                Console.WriteLine(records.ToString());
+                return records;
             }
 
+            
 
-            return data;
+
+            
         }
     }
 }

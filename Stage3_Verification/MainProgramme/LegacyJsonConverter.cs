@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Castle.Core.Internal;
+using Newtonsoft.Json;
 using Serilog;
 
 namespace CsvFileConverter
@@ -38,6 +41,8 @@ namespace CsvFileConverter
 
             for (var i = 0; i <= data.Length - 1; i++)
             {
+
+
                 var dealData = data[i];
                 string[] columnValues =
                 {

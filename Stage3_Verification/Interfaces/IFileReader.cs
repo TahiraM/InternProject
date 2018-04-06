@@ -4,7 +4,7 @@ namespace CsvFileConverter
 {
     public interface IFileReader
     {
-        string[] ReadContent(string input);
+        DealData[] ReadContent(string input);
        
     }
 }

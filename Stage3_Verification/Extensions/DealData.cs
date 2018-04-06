@@ -19,4 +19,5 @@
         public string ActiveInActive { get; set; }
         public string ExitDate { get; set; }
     }
+    
 }
