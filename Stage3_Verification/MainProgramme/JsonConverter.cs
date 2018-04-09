@@ -1,34 +1,25 @@
-﻿using System;
+﻿using System.Text;
 using Newtonsoft.Json;
-using Serilog;
 
 namespace CsvFileConverter
 {
     public class JsonConverter : IJsonConverter
     {
-        private readonly ILegacyJsonConverter _legacyJsonConverter;
-
-        public JsonConverter(ILegacyJsonConverter legacyJsonConverter)
-        {
-            _legacyJsonConverter = legacyJsonConverter;
-        }
-
         public string ConvertToJson(DealData[] data)
         {
-            try
-            {
-                Log.Information("Data being parsed through JsonConverter {@Data}",data);
-                var result = _legacyJsonConverter.Convert(data);
+            var jsonString = new StringBuilder();
 
-                var dealDataList = JsonConvert.DeserializeObject(result);
-                var endResult = JsonConvert.SerializeObject(dealDataList);
-                return endResult;
-            }
-            catch (SystemException e)
+            jsonString.Append("[");
+
+            for (var i = 0; i <= data.Length - 1; i++)
             {
-                Log.Error(e,"Error in parsing Json");
-                throw;
+                var dealData = data[i];
+
+                jsonString.Append(JsonConvert.SerializeObject(dealData));
             }
+
+            jsonString.Append("]");
+            return jsonString.ToString();
         }
     }
 }

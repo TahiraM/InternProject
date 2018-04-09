@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using CsvHelper;
 using CsvHelper.Configuration;
+using Serilog;
 
 namespace CsvFileConverter
 {
@@ -28,7 +29,8 @@ namespace CsvFileConverter
             using (var csv = new CsvReader(reader, config))
             {
                  var records = csv.GetRecords<DealData>().ToArray();
-                Console.WriteLine(records.ToString());
+                Log.Logger.Information("CSV DATA OUT!");
+                Console.WriteLine(records.Length.ToString());
                 return records;
             }
 

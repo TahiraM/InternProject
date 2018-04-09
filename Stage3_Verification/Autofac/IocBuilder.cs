@@ -17,7 +17,6 @@ namespace CsvFileConverter
             builder.RegisterType<CsvToJsonConverter>().SingleInstance(); 
             builder.RegisterType<FileReader>().As<IFileReader>();
             builder.RegisterType<JsonConverter>().As<IJsonConverter>();
-            builder.RegisterType<LegacyJsonConverter>().As<ILegacyJsonConverter>();
             builder.RegisterType<FileWriter>().As<IFileWriter>();
 
             builder.RegisterType<IntFieldValidator>().As<IFieldValidator>();
