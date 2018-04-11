@@ -1,7 +1,10 @@
-﻿namespace CsvFileConverter
+﻿using Serilog;
+
+namespace CsvFileConverter
 {
     public interface IDataExtractor
     {
-        DealData[] Extract(string[] rows, bool hasTitleRow = true);
+        DealData[] ReadContent(string input);
+       
     }
 }

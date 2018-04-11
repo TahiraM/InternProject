@@ -10,23 +10,13 @@ namespace CsvFileConverter
         public FieldValidationResult Validate(string fieldValue)
         {
             if (fieldValue == string.Empty)
-                return new FieldValidationResult(null, "value is empty");
-            try
-            {
-                var dateParts = fieldValue.Split('/');
+                return new FieldValidationResult( "value is empty");
 
-                var testDate = new DateTime(Convert.ToInt32(dateParts[2]),
-                    Convert.ToInt32(dateParts[0]),
-                    Convert.ToInt32(dateParts[1]));
-                var uk = new CultureInfo("en-UK");
-                var date = testDate.ToString("d", uk);
+            var culture = CultureInfo.CreateSpecificCulture("en-GB");
 
-                return new FieldValidationResult(date);
-            }
-            catch (IndexOutOfRangeException)
-            {
-                return new FieldValidationResult(null, "The value Being Validated is not in date Format");
-            }
+            return DateTime.TryParse(fieldValue, culture, DateTimeStyles.AssumeUniversal, out var dataTime)
+                ? new FieldValidationResult(dataTime)
+                : new FieldValidationResult( "The value Being Validated is not in date Format");
         }
     }
 }

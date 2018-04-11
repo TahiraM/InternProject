@@ -11,11 +11,12 @@ namespace CsvFileConverterTests
         public void ShouldPass_IfTheInterFaceIsLinkedCOrrectlyAndAMOckInterfaceCanBeCreated()
         {
             // Arrange
-            var fileReader = Substitute.For<IFileReader>();
+            var fileReader = Substitute.For<IDataExtractor>();
             var fileWriter = Substitute.For<IFileWriter>();
             var jsonConverter = Substitute.For<IJsonConverter>();
+            var validations = Substitute.For<IValidations>();
 
-            var sut = new CsvToJsonConverter(fileReader, fileWriter, jsonConverter);
+            var sut = new CsvToJsonConverter(fileReader, fileWriter, jsonConverter, validations);
 
             // Act
             sut.Convert("", "");

@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Newtonsoft.Json;
+using Serilog;
 
 namespace CsvFileConverter
 {
@@ -8,17 +9,13 @@ namespace CsvFileConverter
         public string ConvertToJson(DealData[] data)
         {
             var jsonString = new StringBuilder();
-
+            
             jsonString.Append("[");
 
-            for (var i = 0; i <= data.Length - 1; i++)
-            {
-                var dealData = data[i];
-
-                jsonString.Append(JsonConvert.SerializeObject(dealData));
-            }
+            jsonString.Append(JsonConvert.SerializeObject(data));
 
             jsonString.Append("]");
+            Log.Logger.Information("Data being converted to json format");
             return jsonString.ToString();
         }
     }

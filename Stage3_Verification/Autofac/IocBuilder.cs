@@ -12,13 +12,15 @@ namespace CsvFileConverter
     {
         public static IContainer Build()
         {
+            var logger = Log.Logger = new LoggerConfigFile().SeriLogConfig;
+
             var builder = new ContainerBuilder();
-            builder.RegisterInstance(Log.Logger = new LoggerConfigFile().SeriLogConfig);
+            builder.RegisterInstance(logger);
             builder.RegisterType<CsvToJsonConverter>().SingleInstance(); 
-            builder.RegisterType<FileReader>().As<IFileReader>();
+            builder.RegisterType<DataExtractor>().As<IDataExtractor>();
             builder.RegisterType<JsonConverter>().As<IJsonConverter>();
             builder.RegisterType<FileWriter>().As<IFileWriter>();
-
+            builder.RegisterType<Validations>().As<IValidations>();
             builder.RegisterType<IntFieldValidator>().As<IFieldValidator>();
             builder.RegisterType<DoubleFieldValidator>().As<IFieldValidator>();
             builder.RegisterType<DateFieldValidator>().As<IFieldValidator>();
