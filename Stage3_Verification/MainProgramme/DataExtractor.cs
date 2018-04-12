@@ -11,8 +11,8 @@ namespace CsvFileConverter
 {
     public class DataExtractor : IDataExtractor
     {
-        private readonly IEnumerable<IFieldValidator> _validators;
         private readonly ILogger _logger;
+        private readonly IEnumerable<IFieldValidator> _validators;
 
         public DataExtractor(IEnumerable<IFieldValidator> validators, ILogger logger)
         {
@@ -20,7 +20,7 @@ namespace CsvFileConverter
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public DealData[] ReadContent(string input)
+        public DealData[] ReadContent(StringReader reader)
         {
             var config = new Configuration
             {
@@ -31,23 +31,18 @@ namespace CsvFileConverter
                 PrepareHeaderForMatch = header => header.ToLowerInvariant().Replace(" ", string.Empty)
             };
 
-            var content = File.ReadAllText(input);
             try
             {
-
-                using (var reader = new StringReader(content))
+                using (var csv = new CsvReader(reader, config))
                 {
-                    using (var csv = new CsvReader(reader, config))
-                    {
-                        var classMap = new DealDataMap(_validators);
-                        csv.Configuration.RegisterClassMap(classMap);
+                    var classMap = new DealDataMap(_validators);
+                    csv.Configuration.RegisterClassMap(classMap);
 
-                        var records = csv.GetRecords<DealData>().ToArray();
+                    var records = csv.GetRecords<DealData>().ToArray();
 
-                        Log.Logger.Information($"CSV DATA OUT! with {records.Length} records");
+                    Log.Logger.Information($"CSV DATA OUT! with {records.Length} records");
 
-                        return records;
-                    }
+                    return records;
                 }
             }
             catch (Exception e)

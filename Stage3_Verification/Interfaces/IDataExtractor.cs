@@ -1,10 +1,10 @@
-﻿using Serilog;
+﻿using System.IO;
 
 namespace CsvFileConverter
 {
     public interface IDataExtractor
     {
-        DealData[] ReadContent(string input);
+        DealData[] ReadContent(StringReader input);
        
     }
 }

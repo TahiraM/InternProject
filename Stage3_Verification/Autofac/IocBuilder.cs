@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
 using CsvFileConverter.Logging;
+using CsvFileConverter.MainProgramme;
 using Serilog;
 using Serilog.Exceptions;
 
@@ -16,6 +17,7 @@ namespace CsvFileConverter
 
             var builder = new ContainerBuilder();
             builder.RegisterInstance(logger);
+            builder.RegisterType<FileReader>().As<IFileReader>();
             builder.RegisterType<CsvToJsonConverter>().SingleInstance(); 
             builder.RegisterType<DataExtractor>().As<IDataExtractor>();
             builder.RegisterType<JsonConverter>().As<IJsonConverter>();
