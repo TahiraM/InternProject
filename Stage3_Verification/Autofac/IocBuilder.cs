@@ -2,10 +2,11 @@
 using Autofac;
 using CsvFileConverter.Logging;
 using CsvFileConverter.MainProgramme;
+using FluentValidation;
 using Serilog;
 using Serilog.Exceptions;
 
-//TODO: Location of logger should come from the config xml file app.config config manager object. 
+
 
 namespace CsvFileConverter
 {
@@ -16,26 +17,23 @@ namespace CsvFileConverter
             var logger = Log.Logger = new LoggerConfigFile().SeriLogConfig;
 
             var builder = new ContainerBuilder();
+
+            builder.RegisterType<CsvToJsonConverter>();
             builder.RegisterInstance(logger);
             builder.RegisterType<FileReader>().As<IFileReader>();
-            builder.RegisterType<CsvToJsonConverter>().SingleInstance(); 
             builder.RegisterType<DataExtractor>().As<IDataExtractor>();
-            builder.RegisterType<JsonConverter>().As<IJsonConverter>();
+            builder.RegisterType<JsonTextFormatter>().As<ITextFormatter>();
+            builder.RegisterType<XmlTextFormatter>().As<ITextFormatter>();
             builder.RegisterType<FileWriter>().As<IFileWriter>();
-            builder.RegisterType<Validations>().As<IValidations>();
+            
             builder.RegisterType<IntFieldValidator>().As<IFieldValidator>();
             builder.RegisterType<DoubleFieldValidator>().As<IFieldValidator>();
             builder.RegisterType<DateFieldValidator>().As<IFieldValidator>();
             builder.RegisterType<StringFieldValidator>().As<IFieldValidator>();
-           
-           
+            builder.RegisterTypes(typeof(DealDataRawValidator)).As<IValidator<DealDataRaw>>();
 
-                var container= builder.Build();
-
+            var container= builder.Build();
             return container;
         }
-
     }
-
-    
 }

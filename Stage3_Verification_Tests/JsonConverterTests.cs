@@ -15,14 +15,11 @@
 //        public void Should_ConvertToJson_Pass_WhenTheDataIsValidAndAvailable()
 //        {
 //            // Arrange
-//            var data = new DealData {Country = "Canada", Currency = "CAD"};
-//            var dataArray = new[] {data};
+//            var data = new DealData { Country = "Canada", Currency = "CAD" };
+//            var dataArray = new[] { data };
 //            var expected = JsonConvert.SerializeObject(dataArray);
 
-//            var legacyJsonConverter = Substitute.For<ILegacyJsonConverter>();
-//            legacyJsonConverter.ConvertToJson(Arg.Any<DealData[]>()).Returns(expected);
-
-//            var sut = new JsonConverter(legacyJsonConverter);
+//            var sut = new JsonConverter();
 
 //            // Act
 //            var actual = sut.ConvertToJson(dataArray);
@@ -36,13 +33,12 @@
 //        {
 //            // Arrange
 
-//            var legacyJsonConverter = Substitute.For<ILegacyJsonConverter>();
-//            legacyJsonConverter.ConvertToJson(Arg.Any<DealData[]>()).Throws(new SystemException("Data Is Not Valid"));
+//            var fixture = new LegacyJsonConverterFixture();
 
-//            var sut = new JsonConverter(legacyJsonConverter);
+//            var sut = new JsonConverter();
 
 //            // Act
-//            Action action = () => sut.ConvertToJson(new DealData[] { });
+//            Action action = () => sut.ConvertToJson(fixture.InValidInput);
 
 //            // Assert
 //            Assert.ThrowsException<SystemException>(action);

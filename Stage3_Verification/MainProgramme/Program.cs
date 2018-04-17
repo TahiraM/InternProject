@@ -17,6 +17,7 @@ namespace CsvFileConverter
 
                 Log.Logger.Information($"Create converter from container");
                 var converter = container.Resolve<CsvToJsonConverter>();
+               
 
                 Log.Logger.Information($"Start of the conversion process from {inputFile} to {outputFile}");
                 converter.Convert(inputFile, outputFile);

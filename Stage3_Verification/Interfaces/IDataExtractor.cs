@@ -4,7 +4,7 @@ namespace CsvFileConverter
 {
     public interface IDataExtractor
     {
-        DealData[] ReadContent(StringReader input);
+        DealData[] ReadContent(StringReader input, bool headerPresent);
        
     }
 }
