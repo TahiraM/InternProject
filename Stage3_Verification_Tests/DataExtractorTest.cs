@@ -30,7 +30,7 @@
 //            Assert.AreEqual(expected[0].SectorId, actual[0].SectorId);
 //        }
 
-        
+
 
 //        [TestMethod]
 //        public void Should_ExtractSectorId_ReturnsNullForSectorId_WhenSectorIdIsNotInTheRightFormat()
@@ -44,7 +44,7 @@
 //            Action action = () => sut.ReadContent(input, false);
 
 //            // Assert
-//            Assert.ThrowsException<TypeConverterException>(action);
+//            Assert.ThrowsException<FormatException>(action);
 //        }
 
 //        [TestMethod]
@@ -76,7 +76,7 @@
 //            Action action = () => sut.ReadContent(input, false);
 
 //            // Assert
-//            Assert.ThrowsException<TypeConverterException>(action);
+//            Assert.ThrowsException<FormatException>(action);
 //        }
 
 //        [TestMethod]
@@ -108,7 +108,7 @@
 //            Action action = () => sut.ReadContent(input, false);
 
 //            // Assert
-//            Assert.ThrowsException<TypeConverterException>(action);
+//            Assert.ThrowsException<FormatException>(action);
 //        }
 
 //        [TestMethod]
@@ -140,7 +140,7 @@
 //            Action action = () => sut.ReadContent(input, false);
 
 //            // Assert
-//            Assert.ThrowsException<TypeConverterException>(action);
+//            Assert.ThrowsException<FormatException>(action);
 //        }
 
 //        [TestMethod]
@@ -172,7 +172,7 @@
 //            Action action = () => sut.ReadContent(input, false);
 
 //            // Assert
-//            Assert.ThrowsException<TypeConverterException>(action);
+//            Assert.ThrowsException<FormatException>(action);
 //        }
 
 //        [TestMethod]
@@ -180,7 +180,7 @@
 //        {
 //            // Arrange
 //            var fixture = new LegacyDataExtractorFixture();
-//            var expected = fixture.ValidOutput;
+//            var expected = fixture.ValidInput;
 //            StringReader input = new StringReader(fixture.ValidInput);
 //            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
 
@@ -189,7 +189,7 @@
 
 //            // Assert
 //            Assert.AreEqual(expected.Length, actual.Length);
-//            Assert.AreEqual(expected[0].ExitDate, actual[0].ExitDate);
+//           // Assert.AreEqual(expected[0].ExitDate, actual[0].ExitDate);
 //        }
 
 //        [TestMethod]
@@ -204,7 +204,7 @@
 //            Action action = () => sut.ReadContent(input, false);
 
 //            // Assert
-//            Assert.ThrowsException<TypeConverterException>(action);
+//            Assert.ThrowsException<FormatException>(action);
 //        }
 
 

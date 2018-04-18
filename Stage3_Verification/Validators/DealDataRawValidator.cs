@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using CsvHelper.Configuration;
 using FluentValidation;
+using NHibernate.Mapping;
 using Serilog;
 
 namespace CsvFileConverter
@@ -15,7 +17,7 @@ namespace CsvFileConverter
         {
             _validators = validators?.ToDictionary(m => m.TypeToValidate) ??
                           throw new ArgumentNullException(nameof(validators));
-
+           
             RuleFor(x => x.SectorId).Must(Validate<int>).WithMessage("This value is not an int ");
             RuleFor(x => x.CountryId).Must(Validate<int>).WithMessage("This value is not an int "); ;
             RuleFor(x => x.TransactionTypeId).Must(Validate<int>).WithMessage("This value is not an int "); ;

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using CsvFileConverter;
+using FluentValidation;
 
 namespace CsvFileConverterTests
 {
     public class LegacyDataExtractorFixture
     {
+        private readonly Dictionary<Type, IFieldValidator> _validators;
         public LegacyDataExtractorFixture()
         {
             InvalidInputSectorId =
@@ -46,15 +48,10 @@ namespace CsvFileConverterTests
         public string InvalidInputOtherFees { get; }
         public string InvalidInputExitDate { get; }
 
-        public IEnumerable<IFieldValidator> GetValidators()
+        public IValidator<DealDataRaw> GetValidators()
         {
-            return new List<IFieldValidator>
-            {
-                new DateFieldValidator(),
-                new DoubleFieldValidator(),
-                new IntFieldValidator(),
-                new StringFieldValidator()
-            };
+        
+            return new InlineValidator<DealDataRaw>();
         }
 
         private DealData GenerateOutput(int sectorId, int countryId, int transTypeId, double transFees,
