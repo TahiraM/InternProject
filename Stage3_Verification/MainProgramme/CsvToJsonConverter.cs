@@ -1,9 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Xml;
-using System.Xml.Serialization;
 using CsvFileConverter.MainProgramme;
-using Newtonsoft.Json;
 
 namespace CsvFileConverter
 {
@@ -36,48 +32,6 @@ namespace CsvFileConverter
 
             // Save this into a file
             _fileWriter.WriteContent(output, data);
-        }
-    }
-
-    public enum FormatterType
-    {
-        Json,
-        Xml
-    }
-
-    public interface ITextFormatter
-    {
-        FormatterType Type { get; }
-
-        string Format<T>(T t) where T : class;
-    }
-
-    public class XmlTextFormatter : ITextFormatter
-    {
-        public FormatterType Type => FormatterType.Xml;
-
-        public string Format<T>(T t) where T : class
-        {
-            var serializer = new XmlSerializer(typeof(T));
-
-            using (var stringWriter = new StringWriter())
-            {
-                using (var writer = XmlWriter.Create(stringWriter))
-                {
-                    serializer.Serialize(writer, t);
-                    return stringWriter.ToString();
-                }
-            }
-        }
-    }
-
-    public class JsonTextFormatter : ITextFormatter
-    {
-        public FormatterType Type => FormatterType.Json;
-
-        public string Format<T>(T t) where T : class
-        {
-            return JsonConvert.SerializeObject(t);
         }
     }
 }

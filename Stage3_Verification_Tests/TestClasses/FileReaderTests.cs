@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using CsvFileConverter;
 using CsvFileConverter.MainProgramme;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
