@@ -11,7 +11,7 @@ using Serilog;
 
 namespace CsvFileConverter
 {
-    public class DataExtractor : IDataExtractor
+    public class DataExtractor : IDataExtractor 
     {
         private readonly IEnumerable<IFieldValidator> _validators;
         private readonly ILogger _logger;

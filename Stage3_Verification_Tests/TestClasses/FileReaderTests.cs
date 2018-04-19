@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using CsvFileConverter.MainProgramme;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CsvFileConverterTests
@@ -19,7 +20,7 @@ namespace CsvFileConverterTests
             Action action = () => sut.ReadContent(fileName);
 
             // Assert
-            Assert.ThrowsException<FileNotFoundException>(action);
+            action.Should().Throw<FileNotFoundException>();
         }
 
         [TestMethod]
@@ -38,7 +39,8 @@ namespace CsvFileConverterTests
             File.Delete(fileName);
 
             // Assert
-            Assert.IsNotNull(result);
+            result.Should().NotBeNull();
+           
         }
 
         [TestMethod]
@@ -55,7 +57,7 @@ namespace CsvFileConverterTests
             Action action = () => sut.ReadContent(fileName);
 
             // Assert
-            Assert.ThrowsException<FileLoadException>(action);
+            action.Should().Throw<FileLoadException>();
 
             File.Delete(fileName);
         }

@@ -16,7 +16,7 @@ namespace CsvFileConverterTests
     [TestClass]
     public class DataExtractorTest
     {
-        public void Should_Extract_Pass_WhenTheDataIsValidAndAvailable()
+        public void Should_ExtractSectorId_Pass_WhenTheDataIsValidAndAvailable()
         {
             // Arrange
             var fixture = new DataExtractorFixture();
@@ -40,6 +40,21 @@ namespace CsvFileConverterTests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.InvalidInputSectorId);
+            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+
+            // Act
+            Action action = () => sut.ReadContent(input, false);
+
+            // Assert
+            action.Should().Throw<TypeConverterException>();
+        }
+
+        [TestMethod]
+        public void Should_ExtractSectorId_ReturnError_WhenSectorIdIsEmpty()
+        {
+            // Arrange
+            var fixture = new DataExtractorFixture();
+            var input = new StringReader(fixture.EmptyInputSectorId);
             var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
 
             // Act
@@ -83,6 +98,21 @@ namespace CsvFileConverterTests
         }
 
         [TestMethod]
+        public void Should_ExtractCountryId_ReturnError_WhenCountryIdIsEmpty()
+        {
+            // Arrange
+            var fixture = new DataExtractorFixture();
+            var input = new StringReader(fixture.EmptyInputCountryId);
+            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+
+            // Act
+            Action action = () => sut.ReadContent(input, false);
+
+            // Assert
+            action.Should().Throw<TypeConverterException>();
+        }
+
+        [TestMethod]
         public void Should_ExtractTransTypeId_Pass_WhenTheDataIsValidAndAvailable()
         {
             // Arrange
@@ -106,6 +136,21 @@ namespace CsvFileConverterTests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.InvalidInputTransTypeId);
+            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+
+            // Act
+            Action action = () => sut.ReadContent(input, false);
+
+            // Assert
+            action.Should().Throw<TypeConverterException>();
+        }
+
+        [TestMethod]
+        public void Should_ExtractTransTypeId_ReturnError_WhenTransTypeIdIsEmpty()
+        {
+            // Arrange
+            var fixture = new DataExtractorFixture();
+            var input = new StringReader(fixture.EmptyInputCountryId);
             var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
 
             // Act
@@ -149,6 +194,21 @@ namespace CsvFileConverterTests
         }
 
         [TestMethod]
+        public void Should_ExtractTransFees_ReturnError_WhenTransFeesIsEmpty()
+        {
+            // Arrange
+            var fixture = new DataExtractorFixture();
+            var input = new StringReader(fixture.EmptyInputTransFees);
+            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+
+            // Act
+            Action action = () => sut.ReadContent(input, false);
+
+            // Assert
+            action.Should().Throw<TypeConverterException>();
+        }
+
+        [TestMethod]
         public void Should_ExtractOtherFees_Pass_WhenTheDataIsValidAndAvailable()
         {
             // Arrange
@@ -182,6 +242,21 @@ namespace CsvFileConverterTests
         }
 
         [TestMethod]
+        public void Should_ExtractOtherFees_ReturnError_WhenOtherFeesIsEmpty()
+        {
+            // Arrange
+            var fixture = new DataExtractorFixture();
+            var input = new StringReader(fixture.EmptyInputOtherFees);
+            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+
+            // Act
+            Action action = () => sut.ReadContent(input, false);
+
+            // Assert
+            action.Should().Throw<TypeConverterException>();
+        }
+
+        [TestMethod]
         public void Should_ExtractV3DealId_Pass_WhenTheDataIsValidAndAvailable()
         {
             // Arrange
@@ -199,20 +274,7 @@ namespace CsvFileConverterTests
             expected[0].Should().IsSameOrEqualTo(actual[0]);
         }
 
-        [TestMethod]
-        public void Should_ExtractV3DealId_ReturnsNullFor_WhenOtherFeesIsNotInTheRightFormat()
-        {
-            // Arrange
-            var fixture = new DataExtractorFixture();
-            var input = new StringReader(fixture.InvalidInputV3DealId);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
-
-            // Act
-            Action action = () => sut.ReadContent(input, false);
-
-            // Assert
-            action.Should().Throw<ReaderException>();
-        }
+       
 
         [TestMethod]
         public void Should_ExtractExitDate_Pass_WhenTheDataIsValidAndAvailable()
@@ -245,6 +307,22 @@ namespace CsvFileConverterTests
 
             // Assert
             action.Should().Throw<ReaderException>();
+        }
+
+        [TestMethod]
+        public void Should_ExtractExitDate_ReturnError_WhenExitDateIsEmpty()
+        {
+            // Arrange
+            var fixture = new DataExtractorFixture();
+            var input = new StringReader(fixture.EmptyInputExitDate);
+            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+
+            // Act
+            Action action = () => sut.ReadContent(input, false);
+
+            // Assert
+            action.Should().Throw<ReaderException>();
+
         }
 
 

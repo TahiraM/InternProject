@@ -14,23 +14,38 @@ namespace CsvFileConverterTests
             InvalidInputSectorId =
                 "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || no || Advertising || 229 || United Kingdom || 209 || Primary LBO || 2.1 || 0.1 || EUR || Active || 03 / 03 / 03"
                 ;
+            EmptyInputSectorId =
+                "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company ||  || Advertising || 229 || United Kingdom || 209 || Primary LBO || 2.1 || 0.1 || EUR || Active || 03 / 03 / 03"
+                ;
             InvalidInputCountryId =
                 "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || no || United Kingdom || 209 || Primary LBO || 2.1 || 0.1 || EUR || Active || 03 / 03 / 03"
+                ;
+            EmptyInputCountryId =
+                "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising ||  || United Kingdom || 209 || Primary LBO || 2.1 || 0.1 || EUR || Active || 03 / 03 / 03"
                 ;
             InvalidInputTransTypeId =
                 "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom || no || Primary LBO || 2.1 || 0.1 || EUR || Active || 03 / 03 / 03"
                 ;
+            EmptyInputTransTypeId =
+                "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom ||  || Primary LBO || 2.1 || 0.1 || EUR || Active || 03 / 03 / 03"
+                ;
             InvalidInputTransFees =
                 "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom || 209 || Primary LBO || no || 0.1 || EUR || Active || 03 / 03 / 03"
+                ;
+            EmptyInputTransFees =
+                "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom || 209 || Primary LBO ||  || 0.1 || EUR || Active || 03 / 03 / 03"
                 ;
             InvalidInputOtherFees =
                 "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom || 209 || Primary LBO || 2.1 || no || EUR || Active || 03 / 03 / 03"
                 ;
+            EmptyInputOtherFees =
+                "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom || 209 || Primary LBO || 2.1 ||  || EUR || Active || 03 / 03 / 03"
+                ;
             InvalidInputExitDate =
                 "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom || 209 || Primary LBO || 2.1 || 0.1 || EUR || Active || no"
                 ;
-            InvalidInputV3DealId =
-                " || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom || 209 || Primary LBO || 2.1 || 0.1 || EUR || Active || no"
+            EmptyInputExitDate =
+                "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom || 209 || Primary LBO || 2.1 || 0.1 || EUR || Active || "
                 ;
 
             ValidInput =
@@ -46,12 +61,18 @@ namespace CsvFileConverterTests
         public DealData[] ValidOutput { get; }
 
         public string InvalidInputSectorId { get; }
-        public string InvalidInputV3DealId { get; }
         public string InvalidInputCountryId { get; }
         public string InvalidInputTransTypeId { get; }
         public string InvalidInputTransFees { get; }
         public string InvalidInputOtherFees { get; }
         public string InvalidInputExitDate { get; }
+
+        public string EmptyInputSectorId { get; }
+        public string EmptyInputCountryId { get; }
+        public string EmptyInputTransTypeId { get; }
+        public string EmptyInputTransFees { get; }
+        public string EmptyInputOtherFees { get; }
+        public string EmptyInputExitDate { get; }
 
         public IEnumerable<IFieldValidator> GetValidators()
         {

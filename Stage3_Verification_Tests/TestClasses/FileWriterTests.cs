@@ -29,7 +29,7 @@ namespace CsvFileConverterTests
             result.Should().NotBeNullOrEmpty();
             result[0].Should().IsSameOrEqualTo(actual);
             File.Exists(fileName).Should().BeTrue();
-            //result.Should().StartWith("[{").And.EndWith("}]");
+            result[0].Should().StartWith("[{").And.EndWith("}]");
         }
 
 

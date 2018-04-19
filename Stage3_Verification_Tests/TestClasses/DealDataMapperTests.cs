@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CsvFileConverterTests.TestClasses
 {
     [TestClass]
-    class DealDataMaperTests
+    class DealDataMapperTests
     {
         [TestMethod]
         public void ShouldPass_Validate_IfAllDataBeingTestedIsInCorrectFormat()
