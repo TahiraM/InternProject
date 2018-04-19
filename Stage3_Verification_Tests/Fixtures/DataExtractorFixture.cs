@@ -29,13 +29,16 @@ namespace CsvFileConverterTests
             InvalidInputExitDate =
                 "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom || 209 || Primary LBO || 2.1 || 0.1 || EUR || Active || no"
                 ;
+            InvalidInputV3DealId =
+                " || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom || 209 || Primary LBO || 2.1 || 0.1 || EUR || Active || no"
+                ;
 
             ValidInput =
                 "02B4EFADE6 || 02B4EFADE60B48339D13F93EB851943C || Marston(Project Magenta) || JFV3CompanyId02B4EFADE6 || JFV3Company || 1 || Advertising || 229 || United Kingdom || 209 || Primary LBO || 2.1 || 0.1 || EUR || Active || 03 / 03 / 2003"
                 ;
             ValidOutput = new[]
             {
-                GenerateOutput(1, 229, 209, 2.1, 0.1, Convert.ToDateTime(date))
+                GenerateOutput(1, 229, 209, 2.1, 0.1, "02B4EFADE6", Convert.ToDateTime(date) )
             };
         }
 
@@ -43,6 +46,7 @@ namespace CsvFileConverterTests
         public DealData[] ValidOutput { get; }
 
         public string InvalidInputSectorId { get; }
+        public string InvalidInputV3DealId { get; }
         public string InvalidInputCountryId { get; }
         public string InvalidInputTransTypeId { get; }
         public string InvalidInputTransFees { get; }
@@ -61,10 +65,11 @@ namespace CsvFileConverterTests
         }
 
         private DealData GenerateOutput(int sectorId, int countryId, int transTypeId, double transFees,
-            double otherFees, DateTime exitDate)
+            double otherFees, string v3DealId, DateTime exitDate)
         {
             return new DealData
             {
+                V3DealId = v3DealId,
                 SectorId = sectorId,
                 CountryId = countryId,
                 TransactionTypeId = transTypeId,

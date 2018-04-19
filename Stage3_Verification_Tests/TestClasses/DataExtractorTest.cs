@@ -28,8 +28,6 @@ namespace CsvFileConverterTests
             var actual = sut.ReadContent(input, false);
 
             // Assert
-            //Assert.AreEqual(expected.Length, actual.Length);
-            //Assert.AreEqual(expected[0].SectorId, actual[0].SectorId);
             expected.Should().Contain(item => item.SectorId == 1);
             expected.Length.Should().IsSameOrEqualTo(actual.Length);
             expected[0].Should().IsSameOrEqualTo(actual[0]);
@@ -181,6 +179,39 @@ namespace CsvFileConverterTests
 
             // Assert
             action.Should().Throw<TypeConverterException>();
+        }
+
+        [TestMethod]
+        public void Should_ExtractV3DealId_Pass_WhenTheDataIsValidAndAvailable()
+        {
+            // Arrange
+            var fixture = new DataExtractorFixture();
+            var expected = fixture.ValidOutput;
+            var input = new StringReader(fixture.ValidInput);
+            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+
+            // Act
+            var actual = sut.ReadContent(input, false);
+
+            // Assert
+            expected.Should().Contain(item => item.V3DealId == "02B4EFADE6");
+            expected.Length.Should().IsSameOrEqualTo(actual.Length);
+            expected[0].Should().IsSameOrEqualTo(actual[0]);
+        }
+
+        [TestMethod]
+        public void Should_ExtractV3DealId_ReturnsNullFor_WhenOtherFeesIsNotInTheRightFormat()
+        {
+            // Arrange
+            var fixture = new DataExtractorFixture();
+            var input = new StringReader(fixture.InvalidInputV3DealId);
+            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+
+            // Act
+            Action action = () => sut.ReadContent(input, false);
+
+            // Assert
+            action.Should().Throw<ReaderException>();
         }
 
         [TestMethod]

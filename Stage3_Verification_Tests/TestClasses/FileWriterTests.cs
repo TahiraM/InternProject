@@ -29,7 +29,7 @@ namespace CsvFileConverterTests
             result.Should().NotBeNullOrEmpty();
             result[0].Should().IsSameOrEqualTo(actual);
             File.Exists(fileName).Should().BeTrue();
-            result.Should().StartWith("[{").And.EndWith("}]");
+            //result.Should().StartWith("[{").And.EndWith("}]");
         }
 
 
@@ -52,21 +52,28 @@ namespace CsvFileConverterTests
             expecPath.Should().IsSameOrEqualTo(filePath);
         }
 
+       
+
         [TestMethod]
-        public void ShouldFail_WriteContent_DataBeingParsedIsNotInCorrectFormat()
+        public void ShouldPass_WriteContent_DataShouldBeConvertedToXML()
         {
             // Arrange
-            var fileName = "testing.json";
+            var fileName = "testing.xml";
             var fixture = new FileWriterFixture();
-            var actual = fixture.ValidOutput;
             var expected = fixture.InValidInput;
             var sut = new FileWriter(fixture.GetFormatters());
 
             // Act
-            Action action = () => sut.WriteContent(fileName, expected);
+            sut.WriteContent(fileName, expected);
+            var result = File.ReadAllLines(fileName);
 
             // Assert
-            action.Should().Throw<FormatException>();
+            result.Should().NotBeNullOrEmpty();
+            File.Exists(fileName).Should().BeTrue();;
         }
+
+
+
+        //TODO:add tests for different formatters- should fail
     }
 }

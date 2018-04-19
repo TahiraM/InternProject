@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json.Linq;
+using NHibernate.Validator.Constraints;
 using Serilog;
 
 namespace CsvFileConverter
@@ -17,7 +19,15 @@ namespace CsvFileConverter
 
         public void WriteContent(string output, DealData[] dealData)
         {
-            WriteContent(output, dealData, true, FormatterType.Json);
+            var extension = Path.GetExtension(output);
+            if (extension != ".json")
+            {
+                if (extension == ".xml") WriteContent(output, dealData, true, FormatterType.Xml);
+            }
+            else
+            {
+                WriteContent(output, dealData, true, FormatterType.Json);
+            }
         }
 
         public void WriteContent(string output, DealData[] dealData, bool overwrite)
@@ -46,6 +56,7 @@ namespace CsvFileConverter
 
             var formatter = _formatters[formatterType];
             var data = formatter.Format(dealData);
+            
 
             File.WriteAllText(output, data);
         }
