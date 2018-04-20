@@ -41,7 +41,7 @@ namespace CsvFileConverterTests
             const string fileName = "Vali.json";
             var expected = fixture.ValidInput;
             const string expecPath =
-                "C:\\GIT\\InternProject\\Stage3_Verification_Tests\\bin\\Debug\\netcoreapp2.0\\Vali.json";
+                "Vali.json";
             var sut = new FileWriter(fixture.GetFormatters());
 
             // Act
@@ -72,8 +72,42 @@ namespace CsvFileConverterTests
             File.Exists(fileName).Should().BeTrue();;
         }
 
+        [TestMethod]
+        public void ShouldPass_WriteContent_DataShouldBeConvertedWithOverwriteParameter()
+        {
+            // Arrange
+            var fileName = "testing.json";
+            var fixture = new FileWriterFixture();
+            var expected = fixture.InValidInput;
+            var sut = new FileWriter(fixture.GetFormatters());
 
+            // Act
+            sut.WriteContent(fileName, expected, true);
+            var result = File.ReadAllLines(fileName);
 
-        //TODO:add tests for different formatters- should fail
+            // Assert
+            result.Should().NotBeNullOrEmpty();
+            File.Exists(fileName).Should().BeTrue(); ;
+        }
+
+        [TestMethod]
+        public void ShouldPass_WriteContent_DataShouldBeConvertedWithFormatterParameter()
+        {
+            // Arrange
+            var fileName = "testing.xml";
+            var fixture = new FileWriterFixture();
+            var expected = fixture.InValidInput;
+            var sut = new FileWriter(fixture.GetFormatters());
+
+            // Act
+            sut.WriteContent(fileName, expected, true, FormatterType.Xml);
+            var result = File.ReadAllLines(fileName);
+
+            // Assert
+            result.Should().NotBeNullOrEmpty();
+            File.Exists(fileName).Should().BeTrue(); ;
+        }
+
+        
     }
 }
