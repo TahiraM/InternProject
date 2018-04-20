@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CsvFileConverter;
+using InternProject.CsvFileConverter.Library;
 
 namespace CsvFileConverterTests
 {
@@ -53,7 +53,7 @@ namespace CsvFileConverterTests
                 ;
             ValidOutput = new[]
             {
-                GenerateOutput(1, 229, 209, 2.1, 0.1, "02B4EFADE6", Convert.ToDateTime(date) )
+                GenerateOutput(1, 229, 209, 2.1, 0.1, "02B4EFADE6", Convert.ToDateTime(date))
             };
         }
 

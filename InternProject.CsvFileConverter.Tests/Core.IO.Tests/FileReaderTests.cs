@@ -1,7 +1,7 @@
 using System;
 using System.IO;
-using CsvFileConverter.MainProgramme;
 using FluentAssertions;
+using InternProject.CsvFileConverter.Library;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CsvFileConverterTests
@@ -40,7 +40,6 @@ namespace CsvFileConverterTests
 
             // Assert
             result.Should().NotBeNull();
-           
         }
 
         [TestMethod]

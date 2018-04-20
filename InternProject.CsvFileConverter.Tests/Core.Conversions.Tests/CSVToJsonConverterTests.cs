@@ -1,9 +1,7 @@
 ﻿using System;
 using System.IO;
-using CsvFileConverter;
-using CsvFileConverter.MainProgramme;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Utilities;
+using InternProject.CsvFileConverter.Library;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 

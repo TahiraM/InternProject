@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using CsvFileConverter;
 using CsvHelper;
 using CsvHelper.TypeConversion;
 using FluentAssertions;
 using FluentAssertions.Common;
+using InternProject.CsvFileConverter.Library;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
@@ -274,7 +274,6 @@ namespace CsvFileConverterTests
             expected[0].Should().IsSameOrEqualTo(actual[0]);
         }
 
-       
 
         [TestMethod]
         public void Should_ExtractExitDate_Pass_WhenTheDataIsValidAndAvailable()
@@ -322,7 +321,6 @@ namespace CsvFileConverterTests
 
             // Assert
             action.Should().Throw<ReaderException>();
-
         }
 
 

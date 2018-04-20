@@ -1,8 +1,7 @@
-﻿using System;
-using System.IO;
-using CsvFileConverter;
+﻿using System.IO;
 using FluentAssertions;
 using FluentAssertions.Common;
+using InternProject.CsvFileConverter.Library;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CsvFileConverterTests
@@ -52,7 +51,6 @@ namespace CsvFileConverterTests
             expecPath.Should().IsSameOrEqualTo(filePath);
         }
 
-       
 
         [TestMethod]
         public void ShouldPass_WriteContent_DataShouldBeConvertedToXML()
@@ -69,7 +67,8 @@ namespace CsvFileConverterTests
 
             // Assert
             result.Should().NotBeNullOrEmpty();
-            File.Exists(fileName).Should().BeTrue();;
+            File.Exists(fileName).Should().BeTrue();
+            ;
         }
 
         [TestMethod]
@@ -87,7 +86,8 @@ namespace CsvFileConverterTests
 
             // Assert
             result.Should().NotBeNullOrEmpty();
-            File.Exists(fileName).Should().BeTrue(); ;
+            File.Exists(fileName).Should().BeTrue();
+            ;
         }
 
         [TestMethod]
@@ -105,9 +105,8 @@ namespace CsvFileConverterTests
 
             // Assert
             result.Should().NotBeNullOrEmpty();
-            File.Exists(fileName).Should().BeTrue(); ;
+            File.Exists(fileName).Should().BeTrue();
+            ;
         }
-
-        
     }
 }

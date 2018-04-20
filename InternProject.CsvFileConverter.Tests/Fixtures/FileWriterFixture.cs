@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using CsvFileConverter;
+using InternProject.CsvFileConverter.Library;
 
 namespace CsvFileConverterTests
 {
