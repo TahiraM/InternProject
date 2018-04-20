@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace CsvFileConverter
 {
+    [ExcludeFromCodeCoverage]
     public class DateFieldValidator : IFieldValidator
     {
         public Type TypeToValidate => typeof(DateTime);

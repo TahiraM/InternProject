@@ -1,9 +1,11 @@
-﻿using System.IO;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
 namespace CsvFileConverter
 {
+    [ExcludeFromCodeCoverage]
     public class XmlTextFormatter : ITextFormatter
     {
         public FormatterType Type => FormatterType.Xml;

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CsvFileConverter
 {
+    [ExcludeFromCodeCoverage]
     public class IntFieldValidator : IFieldValidator
     {
         public Type TypeToValidate => typeof(int);

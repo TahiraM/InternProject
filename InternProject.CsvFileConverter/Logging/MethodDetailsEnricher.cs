@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Serilog;
 using Serilog.Core;
@@ -6,6 +7,7 @@ using Serilog.Events;
 
 namespace CsvFileConverter
 {
+    [ExcludeFromCodeCoverage]
     public class MethodDetailsEnricher : ILogEventEnricher
     {
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)

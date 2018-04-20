@@ -1,5 +1,8 @@
-﻿namespace CsvFileConverter
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace CsvFileConverter
 {
+    [ExcludeFromCodeCoverage]
     public class FieldValidationResult
     {
         public object Value { get; }

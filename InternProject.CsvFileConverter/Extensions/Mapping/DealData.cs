@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CsvFileConverter
 {
+    [ExcludeFromCodeCoverage]
     public class DealData
     {
         public string V3DealId { get; set; }
@@ -22,23 +24,5 @@ namespace CsvFileConverter
         public DateTime ExitDate { get; set; }
     }
 
-    public class DealDataRaw
-    {
-        public string V3DealId { get; set; }
-        public string EFrontDealId { get; set; }
-        public string DealName { get; set; }
-        public string V3CompanyId { get; set; }
-        public string V3CompanyName { get; set; }
-        public string SectorId { get; set; }
-        public string Sector { get; set; }
-        public string CountryId { get; set; }
-        public string Country { get; set; }
-        public string TransactionTypeId { get; set; }
-        public string TransactionType { get; set; }
-        public string TransactionFees { get; set; }
-        public string OtherFees { get; set; }
-        public string Currency { get; set; }
-        public string ActiveInActive { get; set; }
-        public string ExitDate { get; set; }
-    }
+   
 }

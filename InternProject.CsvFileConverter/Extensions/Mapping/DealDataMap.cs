@@ -1,29 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using CsvHelper.Configuration;
-using FluentValidation;
-using NHibernate.Mapping;
 using Serilog;
 
 namespace CsvFileConverter
 {
-    public class DealDataRawValidator : AbstractValidator<DealDataRaw>
+    [ExcludeFromCodeCoverage]
+    public class DealDataMap : ClassMap<DealData>
     {
         private readonly Dictionary<Type, IFieldValidator> _validators;
-
-        public DealDataRawValidator(IEnumerable<IFieldValidator> validators)
+        
+        public DealDataMap(IEnumerable<IFieldValidator> validators)
         {
             _validators = validators?.ToDictionary(m => m.TypeToValidate) ??
                           throw new ArgumentNullException(nameof(validators));
-           
-            RuleFor(x => x.SectorId).Must(Validate<int>).WithMessage("This value is not an int ");
-            RuleFor(x => x.CountryId).Must(Validate<int>).WithMessage("This value is not an int "); ;
-            RuleFor(x => x.TransactionTypeId).Must(Validate<int>).WithMessage("This value is not an int "); ;
-            RuleFor(x => x.TransactionFees).Must(Validate<double>).WithMessage("This value is not an double "); ;
-            RuleFor(x => x.OtherFees).Must(Validate<double>).WithMessage("This value is not an double "); ;
-            RuleFor(x => x.ExitDate).Must(Validate<DateTime>).WithMessage("This value is not an DateTime "); ;
+
+            AutoMap();
+
+            Map(m => m.ExitDate).Validate(Validate<DateTime>);
+            Map(m => m.OtherFees).Validate(Validate<double>);
+            Map(m => m.TransactionFees).Validate(Validate<double>);
+            Map(m => m.CountryId).Validate(Validate<int>);
+            Map(m => m.SectorId).Validate(Validate<int>);
+            Map(m => m.TransactionTypeId).Validate(Validate<int>);
         }
 
         private bool Validate<T>(string value)

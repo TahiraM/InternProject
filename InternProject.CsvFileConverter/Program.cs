@@ -8,8 +8,8 @@ namespace CsvFileConverter
     {
         private static int Main(string[] args)
         {
-            const string inputFile = "C:\\GIT\\InternProject\\Stage3_Verification\\InputOutputFiles\\Deal.csv";
-            const string outputFile = "C:\\GIT\\InternProject\\Stage3_Verification\\InputOutputFiles\\Vali.json";
+            const string inputFile = "Deal.csv";
+            const string outputFile = "Vali.json";
             try
             {
                 Log.Logger.Information($"Setup container");
