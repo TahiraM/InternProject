@@ -15,7 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Stage3_Verification\CsvFileConverter.csproj" />
+    <ProjectReference Include="..\InternProject.CsvFileConverter\CsvFileConverter.csproj" />
   </ItemGroup>
+
+  
 
 </Project>
