@@ -1,8 +1,10 @@
-﻿using Serilog;
+﻿using System.Diagnostics.CodeAnalysis;
+using Serilog;
 using Serilog.Exceptions;
 
 namespace InternProject.CsvFileConverter.Library
 {
+    [ExcludeFromCodeCoverage]
     internal class LoggerConfigFile
     {
         public ILogger SeriLogConfig => Log.Logger = new LoggerConfiguration()

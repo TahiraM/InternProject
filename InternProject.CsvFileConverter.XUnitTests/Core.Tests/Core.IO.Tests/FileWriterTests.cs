@@ -2,14 +2,13 @@
 using FluentAssertions;
 using FluentAssertions.Common;
 using InternProject.CsvFileConverter.Library;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
-namespace CsvFileConverterTests
+namespace InternProject.CsvFileConverter.XUnitTests
 {
-    
     public class FileWriterTests
     {
-        [TestMethod]
+        [Fact]
         public void Should_WriteContent_Pass_WhenTheJsonFileIsPresentAndContainsTheRightData()
         {
             // Arrange
@@ -31,8 +30,7 @@ namespace CsvFileConverterTests
             result[0].Should().StartWith("[{").And.EndWith("}]");
         }
 
-
-        [TestMethod]
+        [Fact]
         public void ShouldPass_FileBeingSavedIsBeingSavedInCorrectLocation()
         {
             // Arrange
@@ -51,12 +49,12 @@ namespace CsvFileConverterTests
             expecPath.Should().IsSameOrEqualTo(filePath);
         }
 
-
-        [TestMethod]
-        public void ShouldPass_WriteContent_DataShouldBeConvertedToXML()
+        [Theory]
+        [InlineData("testing.xml")]
+        [InlineData("testing.json")]
+        public void ShouldPass_WriteContent_DataShouldBeConvertedToCorrectFileType(string fileName)
         {
             // Arrange
-            var fileName = "testing.xml";
             var fixture = new FileWriterFixture();
             var expected = fixture.InValidInput;
             var sut = new FileWriter(fixture.GetFormatters());
@@ -68,45 +66,46 @@ namespace CsvFileConverterTests
             // Assert
             result.Should().NotBeNullOrEmpty();
             File.Exists(fileName).Should().BeTrue();
-            
-        }
 
-        [TestMethod]
-        public void ShouldPass_WriteContent_DataShouldBeConvertedWithOverwriteParameter()
+        }
+        [Theory]
+        [InlineData("testing.xml", true)]
+        [InlineData("testing.json", true)]
+        public void ShouldPass_WriteContent_DataShouldBeConvertedToCorrectFileTypeWithOverwrite(string fileName, bool overwrite)
         {
             // Arrange
-            var fileName = "testing.json";
             var fixture = new FileWriterFixture();
             var expected = fixture.InValidInput;
             var sut = new FileWriter(fixture.GetFormatters());
 
             // Act
-            sut.WriteContent(fileName, expected, true);
+            sut.WriteContent(fileName, expected, overwrite);
             var result = File.ReadAllLines(fileName);
 
             // Assert
             result.Should().NotBeNullOrEmpty();
             File.Exists(fileName).Should().BeTrue();
-            
+
         }
 
-        [TestMethod]
-        public void ShouldPass_WriteContent_DataShouldBeConvertedWithFormatterParameter()
+        [Theory]
+        [InlineData("testing.xml", true, FormatterType.Xml)]
+        [InlineData("testing.json", true, FormatterType.Json)]
+        public void ShouldPass_WriteContent_DataShouldBeConvertedToCorrectFileTypeWithFormatter(string fileName, bool overwrite, FormatterType type)
         {
             // Arrange
-            var fileName = "testing.xml";
             var fixture = new FileWriterFixture();
             var expected = fixture.InValidInput;
             var sut = new FileWriter(fixture.GetFormatters());
 
             // Act
-            sut.WriteContent(fileName, expected, true, FormatterType.Xml);
+            sut.WriteContent(fileName, expected, overwrite, type);
             var result = File.ReadAllLines(fileName);
 
             // Assert
             result.Should().NotBeNullOrEmpty();
             File.Exists(fileName).Should().BeTrue();
-            
+
         }
     }
 }

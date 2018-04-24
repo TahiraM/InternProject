@@ -1,8 +1,10 @@
-﻿using System.IO;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using Serilog;
 
 namespace InternProject.CsvFileConverter.Library
 {
+    [ExcludeFromCodeCoverage]
     public class FileLogger : LoggerConfiguration
     {
         public string FilePath = "LoggingFile.txt";
