@@ -1,8 +1,10 @@
-﻿using Autofac;
+﻿using System.Diagnostics.CodeAnalysis;
+using Autofac;
 using Serilog;
 
 namespace InternProject.CsvFileConverter.Library
 {
+    [ExcludeFromCodeCoverage]
     public class IocBuilder
     {
         public static IContainer Build()

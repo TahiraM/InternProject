@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using CsvFileConverterTests;
 using CsvHelper;
 using CsvHelper.TypeConversion;
 using FluentAssertions;
@@ -9,13 +10,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using Serilog;
+using Xunit;
 using MissingFieldException = CsvHelper.MissingFieldException;
 
 namespace CsvFileConverterTests
 {
+
     [TestClass]
     public class DataExtractorTest
     {
+        [TestMethod]
         public void Should_ExtractSectorId_Pass_WhenTheDataIsValidAndAvailable()
         {
             // Arrange
@@ -360,4 +364,6 @@ namespace CsvFileConverterTests
             action.Should().Throw<MissingFieldException>();
         }
     }
+
+   
 }

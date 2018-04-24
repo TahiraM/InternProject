@@ -1,5 +1,8 @@
-﻿namespace InternProject.CsvFileConverter.Library
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace InternProject.CsvFileConverter.Library
 {
+    [ExcludeFromCodeCoverage]
     public class FieldValidationResult
     {
         public FieldValidationResult(object value, string errorMessage)

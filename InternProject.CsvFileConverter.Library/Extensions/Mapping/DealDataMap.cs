@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using CsvHelper.Configuration;
 using Serilog;
 
 namespace InternProject.CsvFileConverter.Library
 {
+    [ExcludeFromCodeCoverage]
     public class DealDataMap : ClassMap<DealData>
     {
         private readonly Dictionary<Type, IFieldValidator> _validators;
