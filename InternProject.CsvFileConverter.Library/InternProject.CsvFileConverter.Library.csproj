@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.UnitOfWork" Version="2.0.4" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="NSubstitute" Version="3.1.0" />
     <PackageReference Include="Serilog" Version="2.6.0" />
     <PackageReference Include="Serilog.Exceptions" Version="4.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
@@ -24,6 +25,15 @@
     </Reference>
     <Reference Include="Microsoft.EntityFrameworkCore.UnitOfWork">
       <HintPath>..\..\..\Users\mahmoodt\.nuget\packages\microsoft.entityframeworkcore.unitofwork\2.0.4\lib\netstandard2.0\Microsoft.EntityFrameworkCore.UnitOfWork.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>System</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>System.Data</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>System.Xml</HintPath>
     </Reference>
   </ItemGroup>
 

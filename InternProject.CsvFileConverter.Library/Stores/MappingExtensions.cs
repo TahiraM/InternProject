@@ -30,5 +30,30 @@ namespace InternProject.CsvFileConverter.Library
 
             return modelBuilder;
         }
+
+        public static DealDataDbContext UpdateDealData(this ModelBuilder modelBuilder)
+        {
+            var entity = modelBuilder.Entity<DealData>();
+
+            var context = new DealDataDbContext();
+            context.Entry(entity.Property(m => m.Country)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.ExitDate)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.OtherFees)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.TransactionFees)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.TransactionType)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.TransactionTypeId)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.CountryId)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.Sector)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.SectorId)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.V3CompanyId)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.V3CompanyName)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.DealName)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.EFrontDealId)).State = EntityState.Modified;
+            context.Entry(entity.Property(m => m.Currency)).State = EntityState.Modified;
+
+
+
+            return context;
+        }
     }
 }
