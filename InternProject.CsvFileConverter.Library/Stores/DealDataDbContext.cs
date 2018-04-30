@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
 
 namespace InternProject.CsvFileConverter.Library
 {
@@ -12,9 +13,22 @@ namespace InternProject.CsvFileConverter.Library
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.MapDealData();
+            
 
-            modelBuilder.UpdateDealData();
+            if (modelBuilder.Entity<DealData>().Property(t => t.V3DealId) != null)
+            {
+                modelBuilder.UpdateDealData();
+            }
+            else
+            {
+                modelBuilder.MapDealData();
+            }
+           
+            
+
+          
+
+            
 
 
         }

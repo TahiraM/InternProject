@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace InternProject.CsvFileConverter.Library
 {
@@ -9,16 +10,10 @@ namespace InternProject.CsvFileConverter.Library
         {
             using (var db = new DealDataDbContext())
             {
-                
                 db.Database.EnsureCreated();
-
-                
-
                 db.AddRange(dealDataArray);
+                
                 db.SaveChanges();
-
-                
-                
             }
 
 
