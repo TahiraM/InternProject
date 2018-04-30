@@ -15,14 +15,9 @@ namespace InternProject.CsvFileConverter.Library
         {
             
 
-            if (modelBuilder.Entity<DealData>().Property(t => t.V3DealId) != null)
-            {
-                modelBuilder.UpdateDealData();
-            }
-            else
-            {
+            
                 modelBuilder.MapDealData();
-            }
+            
            
             
 

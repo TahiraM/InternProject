@@ -10,9 +10,13 @@ namespace InternProject.CsvFileConverter.Library
         {
             using (var db = new DealDataDbContext())
             {
+
                 db.Database.EnsureCreated();
+                if (db.Database.EnsureCreated())
+                {
+                   
+                }
                 db.AddRange(dealDataArray);
-                
                 db.SaveChanges();
             }
 

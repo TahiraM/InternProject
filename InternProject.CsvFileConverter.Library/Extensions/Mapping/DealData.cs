@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using Microsoft.Extensions.DependencyInjection;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternProject.CsvFileConverter.Library
 {
     public class DealData
     {
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid ID { get; set; }
+
         public string V3DealId { get; set; }
         public string EFrontDealId { get; set; }
         public string DealName { get; set; }

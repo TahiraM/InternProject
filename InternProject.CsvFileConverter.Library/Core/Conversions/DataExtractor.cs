@@ -28,8 +28,10 @@ namespace InternProject.CsvFileConverter.Library
                 Delimiter = "||",
                 Encoding = Encoding.UTF8,
                 HasHeaderRecord = headerPresent,
-                QuoteNoFields = false,
-                PrepareHeaderForMatch = header => header.ToLowerInvariant().Replace(" ", string.Empty)
+                HeaderValidated = null,
+                MissingFieldFound = null,
+                QuoteNoFields = true,
+                PrepareHeaderForMatch = header => header.ToLowerInvariant().Replace(" ", string.Empty),
             };
 
 
