@@ -15,10 +15,11 @@ namespace InternProject.CsvFileConverter.Library
             });
 
             
-
+            
             entity.Property(m => m.V3DealId);
             entity.Property(m => m.EFrontDealId);
             entity.Property(m => m.DealName);
+            entity.Property(m => m.CreatedDate).HasColumnType("DATETIME");
             entity.Property(m => m.V3CompanyId).HasColumnType("VARCHAR(40)");
             entity.Property(m => m.V3CompanyName).HasColumnType("VARCHAR(30)");
             entity.Property(m => m.SectorId).HasColumnType("INT");

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using Autofac;
 using InternProject.CsvFileConverter.Library;
 using Serilog;
@@ -13,6 +14,9 @@ namespace CsvFileConverter
             const string outputFile = @"C:\GIT\InternProject\InternProject.CsvFileConverter\Vali.json";
             try
             {
+                var connection =
+                    ConfigurationManager.ConnectionStrings["DatabaseConnection"];
+
                 var configuration = new FileOutputOptions {OutputFile = outputFile };
 
                 Log.Logger.Information($"Setup container");

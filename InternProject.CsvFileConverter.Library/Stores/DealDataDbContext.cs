@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.Configuration;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
 
 namespace InternProject.CsvFileConverter.Library
 {
@@ -9,23 +8,15 @@ namespace InternProject.CsvFileConverter.Library
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // TODO: Move the configuration to config file
-            optionsBuilder.UseSqlServer("Data Source=.\\sqlexpress;Integrated Security=True; Initial Catalog=InternProject_CsvFileConverter_Database.dbo");
+            //optionsBuilder.UseSqlServer("Data Source=.\\sqlexpress;Integrated Security=True; Initial Catalog=InternProject_CsvFileConverter_Database.dbo");
+            var connection =
+                ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString;
+            optionsBuilder.UseSqlServer(connection);
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
-
-            
-                modelBuilder.MapDealData();
-            
-           
-            
-
-          
-
-            
-
-
+            modelBuilder.MapDealData();
         }
     }
 }
