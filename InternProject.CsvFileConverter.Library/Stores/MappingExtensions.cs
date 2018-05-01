@@ -14,7 +14,7 @@ namespace InternProject.CsvFileConverter.Library
                 b.V3DealId
             });
 
-            var results = .Where(r => Keys.Contains(r.key));
+            
 
             entity.Property(m => m.V3DealId);
             entity.Property(m => m.EFrontDealId);
