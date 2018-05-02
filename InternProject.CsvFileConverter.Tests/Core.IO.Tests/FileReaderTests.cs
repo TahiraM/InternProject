@@ -1,10 +1,10 @@
 using System;
 using System.IO;
 using FluentAssertions;
-using InternProject.CsvFileConverter.Library;
+using InternProject.CsvFileConverter.Library.Core.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CsvFileConverterTests
+namespace CsvFileConverterTests.Core.IO.Tests
 {
     [TestClass]
     public class FileReaderTests

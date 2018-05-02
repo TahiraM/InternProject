@@ -5,7 +5,7 @@ using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Logging
 {
     [ExcludeFromCodeCoverage]
     public class MethodDetailsEnricher : ILogEventEnricher

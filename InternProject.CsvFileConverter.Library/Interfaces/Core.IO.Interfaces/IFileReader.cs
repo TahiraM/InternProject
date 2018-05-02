@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces
 {
     public interface IFileReader
     {

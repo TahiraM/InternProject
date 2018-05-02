@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Configuration;
 using Autofac;
-using InternProject.CsvFileConverter.Library;
+using InternProject.CsvFileConverter.Library.Autofac;
+using InternProject.CsvFileConverter.Library.Core;
+using InternProject.CsvFileConverter.Library.Core.IO;
 using Serilog;
 
 namespace CsvFileConverter
@@ -14,10 +15,7 @@ namespace CsvFileConverter
             const string outputFile = @"C:\GIT\InternProject\InternProject.CsvFileConverter\Vali.json";
             try
             {
-                var connection =
-                    ConfigurationManager.ConnectionStrings["DatabaseConnection"];
-
-                var configuration = new FileOutputOptions {OutputFile = outputFile };
+                var configuration = new FileOutputOptions {OutputFile = outputFile};
 
                 Log.Logger.Information($"Setup container");
                 var container = IocBuilder.Build(configuration);
@@ -44,5 +42,4 @@ namespace CsvFileConverter
             return 0;
         }
     }
-
 }

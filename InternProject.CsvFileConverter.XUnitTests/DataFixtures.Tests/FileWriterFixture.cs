@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using InternProject.CsvFileConverter.Library;
+using InternProject.CsvFileConverter.Library.Extensions.Formatters;
+using InternProject.CsvFileConverter.Library.Extensions.Mapping;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces.Extensions.Interfaces;
 
-namespace InternProject.CsvFileConverter.XUnitTests
+namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
 {
     public class FileWriterFixture
     {

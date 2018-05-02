@@ -2,7 +2,7 @@
 using Serilog;
 using Serilog.Configuration;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Logging
 {
     [ExcludeFromCodeCoverage]
     public static class LoggerEnrichmentConfigExt

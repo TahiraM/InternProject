@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests;
 
-namespace InternProject.CsvFileConverter.XUnitTests
+namespace InternProject.CsvFileConverter.XUnitTests.ClassDataMappers.DataExtractor.Mappers
 {
     public class fixtureData : IEnumerable<object[]>
     {

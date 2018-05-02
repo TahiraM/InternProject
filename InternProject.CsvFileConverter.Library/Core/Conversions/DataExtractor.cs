@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using CsvHelper;
 using CsvHelper.Configuration;
-using Microsoft.EntityFrameworkCore;
+using InternProject.CsvFileConverter.Library.Extensions.Mapping;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.Conversions.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
 using Serilog;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Core.Conversions
 {
     public class DataExtractor : IDataExtractor
     {
@@ -23,7 +25,7 @@ namespace InternProject.CsvFileConverter.Library
 
         public DealData[] ReadContent(StringReader reader, bool headerPresent)
         {
-            var config = new Configuration()
+            var config = new Configuration
             {
                 Delimiter = "||",
                 Encoding = Encoding.UTF8,
@@ -31,7 +33,7 @@ namespace InternProject.CsvFileConverter.Library
                 HeaderValidated = null,
                 MissingFieldFound = null,
                 QuoteNoFields = true,
-                PrepareHeaderForMatch = header => header.ToLowerInvariant().Replace(" ", string.Empty),
+                PrepareHeaderForMatch = header => header.ToLowerInvariant().Replace(" ", string.Empty)
             };
 
 
@@ -45,7 +47,6 @@ namespace InternProject.CsvFileConverter.Library
 
                     _logger.Information($"CSV DATA OUT! with {dealDatas.Length} records");
 
-                    
 
                     return dealDatas;
                 }
@@ -57,7 +58,5 @@ namespace InternProject.CsvFileConverter.Library
                 throw;
             }
         }
-
     }
 }
-        

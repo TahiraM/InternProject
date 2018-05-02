@@ -2,7 +2,7 @@
 using Serilog;
 using Serilog.Exceptions;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Logging
 {
     [ExcludeFromCodeCoverage]
     internal class LoggerConfigFile

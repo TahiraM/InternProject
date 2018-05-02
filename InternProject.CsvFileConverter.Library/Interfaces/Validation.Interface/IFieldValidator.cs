@@ -1,6 +1,7 @@
 ﻿using System;
+using InternProject.CsvFileConverter.Library.Validations;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface
 {
     public interface IFieldValidator
     {

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Extensions.Mapping
 {
     public class DealData
     {
-
         public string V3DealId { get; set; }
         public string EFrontDealId { get; set; }
         public string DealName { get; set; }

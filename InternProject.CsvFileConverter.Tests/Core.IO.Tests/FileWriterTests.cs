@@ -1,12 +1,13 @@
 ﻿using System.IO;
+using CsvFileConverterTests.Fixtures;
 using FluentAssertions;
 using FluentAssertions.Common;
-using InternProject.CsvFileConverter.Library;
+using InternProject.CsvFileConverter.Library.Core.IO;
+using InternProject.CsvFileConverter.Library.Extensions.Formatters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CsvFileConverterTests
+namespace CsvFileConverterTests.Core.IO.Tests
 {
-    
     public class FileWriterTests
     {
         [TestMethod]
@@ -68,7 +69,6 @@ namespace CsvFileConverterTests
             // Assert
             result.Should().NotBeNullOrEmpty();
             File.Exists(fileName).Should().BeTrue();
-            
         }
 
         [TestMethod]
@@ -87,7 +87,6 @@ namespace CsvFileConverterTests
             // Assert
             result.Should().NotBeNullOrEmpty();
             File.Exists(fileName).Should().BeTrue();
-            
         }
 
         [TestMethod]
@@ -106,7 +105,6 @@ namespace CsvFileConverterTests
             // Assert
             result.Should().NotBeNullOrEmpty();
             File.Exists(fileName).Should().BeTrue();
-            
         }
     }
 }

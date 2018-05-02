@@ -1,27 +1,13 @@
 ﻿using System;
 using System.IO;
 using FluentAssertions;
-using InternProject.CsvFileConverter.Library;
+using InternProject.CsvFileConverter.Library.Core.IO;
 using Xunit;
 
-namespace InternProject.CsvFileConverter.XUnitTests
+namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.IO.Tests
 {
     public class FileReaderTests
     {
-        [Fact]
-        public void Should_TryFind_Fail_WhenThereIsNoCsvFilePresent()
-        {
-            // Arrange
-            const string fileName = " ";
-            var sut = new FileReader();
-
-            // Act
-            Action action = () => sut.ReadContent(fileName);
-
-            // Assert
-            action.Should().Throw<FileNotFoundException>();
-        }
-
         [Fact]
         public void Should_ReadContent_Pass_WhenTheCsvFileIsPresentAndContainsTheRightData()
         {
@@ -58,6 +44,20 @@ namespace InternProject.CsvFileConverter.XUnitTests
             action.Should().Throw<FileLoadException>();
 
             File.Delete(fileName);
+        }
+
+        [Fact]
+        public void Should_TryFind_Fail_WhenThereIsNoCsvFilePresent()
+        {
+            // Arrange
+            const string fileName = " ";
+            var sut = new FileReader();
+
+            // Act
+            Action action = () => sut.ReadContent(fileName);
+
+            // Assert
+            action.Should().Throw<FileNotFoundException>();
         }
     }
 }

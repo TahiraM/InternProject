@@ -1,7 +1,8 @@
 ﻿using System.IO;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
 using Serilog;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Core.IO
 {
     public class FileReader : IFileReader
     {

@@ -1,4 +1,7 @@
-﻿namespace InternProject.CsvFileConverter.Library
+﻿using InternProject.CsvFileConverter.Library.Extensions.Formatters;
+using InternProject.CsvFileConverter.Library.Extensions.Mapping;
+
+namespace InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces
 {
     public interface IFileWriter
     {

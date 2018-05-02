@@ -1,9 +1,22 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Autofac;
-using CsvHelper.Configuration;
+using InternProject.CsvFileConverter.Library.Core;
+using InternProject.CsvFileConverter.Library.Core.Conversions;
+using InternProject.CsvFileConverter.Library.Core.IO;
+using InternProject.CsvFileConverter.Library.Extensions.Formatters;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.Conversions.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces.Extensions.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Store.Interfaces.UpdateFormat.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
+using InternProject.CsvFileConverter.Library.Logging;
+using InternProject.CsvFileConverter.Library.Stores;
+using InternProject.CsvFileConverter.Library.Stores.Extensions.UpdateFormat;
+using InternProject.CsvFileConverter.Library.Validations;
 using Serilog;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Autofac
 {
     [ExcludeFromCodeCoverage]
     public class IocBuilder
@@ -21,7 +34,7 @@ namespace InternProject.CsvFileConverter.Library
             builder.RegisterType<JsonTextFormatter>().As<ITextFormatter>();
             builder.RegisterType<XmlTextFormatter>().As<ITextFormatter>();
             builder.RegisterType<FileWriter>().As<IFileWriter>();
-            builder.RegisterType<Database>().As<IDealDataDb>();
+            builder.RegisterType<DealDataRepository>().As<IDealDataRepository>();
 
             builder.RegisterType<EfDataStoreWriter>().AsImplementedInterfaces();
             builder.RegisterType<FileDataStoreWriter>()
@@ -36,14 +49,11 @@ namespace InternProject.CsvFileConverter.Library
             builder.RegisterType<DateFieldValidator>().As<IFieldValidator>();
             builder.RegisterType<StringFieldValidator>().As<IFieldValidator>();
 
+            builder.RegisterType<UpdateAllRecords>().As<IUpdateAllRecords>();
+            builder.RegisterType<UpdateSelectedRecords>().As<IUpdateSelectedRecords>();
+
             var container = builder.Build();
             return container;
         }
-    }
-
-    public class FileOutputOptions
-    {
-        public string OutputFile { get; set; }
-        public FormatterType OutputFileFormat { get; set; } = FormatterType.Json;
     }
 }

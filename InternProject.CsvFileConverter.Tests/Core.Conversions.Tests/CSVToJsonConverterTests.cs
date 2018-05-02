@@ -1,13 +1,5 @@
-﻿using System;
-using System.IO;
-using FluentAssertions;
-using InternProject.CsvFileConverter.Library;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NSubstitute;
-
-namespace CsvFileConverterTests
+﻿namespace CsvFileConverterTests.Core.Conversions.Tests
 {
-    
     public class CsvToJsonConverterTests
     {
         //[TestMethod]

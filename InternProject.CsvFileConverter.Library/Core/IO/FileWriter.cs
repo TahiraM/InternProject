@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using InternProject.CsvFileConverter.Library.Extensions.Formatters;
+using InternProject.CsvFileConverter.Library.Extensions.Mapping;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces.Extensions.Interfaces;
 using Serilog;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Core.IO
 {
     public class FileWriter : IFileWriter
     {
