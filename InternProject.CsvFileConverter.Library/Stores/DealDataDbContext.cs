@@ -5,6 +5,8 @@ namespace InternProject.CsvFileConverter.Library
 {
     public class DealDataDbContext : DbContext
     {
+        public DbSet<DealData> DealDatas { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // TODO: Move the configuration to config file

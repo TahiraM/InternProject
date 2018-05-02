@@ -6,12 +6,6 @@ namespace InternProject.CsvFileConverter.Library
     public class DealData
     {
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid ID { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime? CreatedDate { get; set; } = DateTime.UtcNow;
-
         public string V3DealId { get; set; }
         public string EFrontDealId { get; set; }
         public string DealName { get; set; }
