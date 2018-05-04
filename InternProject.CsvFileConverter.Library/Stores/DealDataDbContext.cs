@@ -1,8 +1,10 @@
 ﻿using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 
 namespace InternProject.CsvFileConverter.Library.Stores
 {
+    [ExcludeFromCodeCoverage]
     public class DealDataDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

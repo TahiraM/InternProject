@@ -29,7 +29,5 @@ namespace InternProject.CsvFileConverter.Library.Stores.Extensions.UpdateFormat
 
             return dealDataList;
         }
-
-        
     }
 }

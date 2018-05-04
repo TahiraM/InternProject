@@ -50,7 +50,7 @@ namespace InternProject.CsvFileConverter.Library.Core.IO
             var extension = Path.GetExtension(output);
             if (extension != ".json")
             {
-                if (extension == ".xml") WriteContent(output, dealData,  true, FormatterType.Xml);
+                if (extension == ".xml") WriteContent(output, dealData, true, FormatterType.Xml);
             }
             else
             {

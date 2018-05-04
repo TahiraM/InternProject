@@ -90,7 +90,6 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.IO.Tests
             File.Exists(fileName).Should().BeTrue();
         }
 
-        
 
         [Theory]
         [InlineData("testing.json", null, FormatterType.Json)]
@@ -104,8 +103,8 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.IO.Tests
             var sut = new FileWriter(fixture.GetFormatters());
 
             // Act
-            Action action = ()=> sut.WriteContent(fileName, expected, overwrite, type);
-            
+            Action action = () => sut.WriteContent(fileName, expected, overwrite, type);
+
 
             // Assert
             action.Should().Throw<Exception>();

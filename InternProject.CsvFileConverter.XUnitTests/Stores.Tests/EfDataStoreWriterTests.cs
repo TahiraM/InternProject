@@ -5,7 +5,7 @@ using InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests;
 using NSubstitute;
 using Xunit;
 
-namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.IO.Tests
+namespace InternProject.CsvFileConverter.XUnitTests.Stores.Tests
 {
     public class EfDataStoreWriterTests
     {

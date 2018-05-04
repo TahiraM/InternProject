@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
+﻿using InternProject.CsvFileConverter.Library.Extensions.Mapping;
+using InternProject.CsvFileConverter.Library.Interfaces.Store.Interfaces.UpdateFormat.Interfaces;
 using InternProject.CsvFileConverter.Library.Stores;
 using InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests;
 using NSubstitute;
@@ -7,22 +7,22 @@ using Xunit;
 
 namespace InternProject.CsvFileConverter.XUnitTests.Stores.Tests
 {
-    public class DataStoreTests
+    public class DealDataRepositoryTests
     {
         [Fact]
         public void Should_Pass_WhenMethodsAreCorrectAndCallsAreBeingSent()
         {
             // Arrange
-            var dataStore = Substitute.For<IEnumerable<IDataStoreWriter>>();
+            var dataStoreWriter = Substitute.For<IUpdateRecords>();
             var fixture = new FileWriterFixture();
 
-            var sut = new DataStore(dataStore);
+            var sut = new DealDataRepository(dataStoreWriter);
 
             // Act
-            sut.Store(fixture.ValidInput);
+            sut.SaveMany(fixture.ValidInput);
 
             // Assert 
-            dataStore.Received(1).GetEnumerator();
+            dataStoreWriter.Received(1).UpdateRecords(Arg.Any<DealData[]>());
         }
     }
 }

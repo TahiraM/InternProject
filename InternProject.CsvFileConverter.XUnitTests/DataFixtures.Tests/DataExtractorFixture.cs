@@ -59,15 +59,16 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
             {
                 GenerateOutput(1, 229, 209, 2.1, 0.1, "02B4EFADE6", Convert.ToDateTime(date))
             };
-            ValidOutputDb = new[]
-            {
-                GenerateOutputDb(1, 229, 209, 2.1, 0.1, "02B4EFADE6", Convert.ToDateTime(date))
-            };
+            //ValidOutputDb = new[]
+            //{
+            //    GenerateOutputDb(1, 229, 209, 2.1, 0.1, "02B4EFADE6", Convert.ToDateTime(date))
+            //};
         }
 
         public string ValidInput { get; }
+
         public DealData[] ValidOutput { get; }
-        public DealDataFixture[] ValidOutputDb { get; }
+        //public DealDataFixture[] ValidOutputDb { get; }
 
         public string InvalidInputSectorId { get; }
         public string InvalidInputCountryId { get; }
@@ -96,7 +97,6 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
 
         public IUpdateRecords GetRecords()
         {
-
             return new UpdateAllRecords();
         }
 
@@ -115,19 +115,19 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
             };
         }
 
-        private DealDataFixture GenerateOutputDb(int sectorId, int countryId, int transTypeId, double transFees,
-            double otherFees, string v3DealId, DateTime exitDate)
-        {
-            return new DealDataFixture
-            {
-                V3DealId = v3DealId,
-                SectorId = sectorId,
-                CountryId = countryId,
-                TransactionTypeId = transTypeId,
-                TransactionFees = transFees,
-                OtherFees = otherFees,
-                ExitDate = exitDate
-            };
-        }
+        //private DealDataFixture GenerateOutputDb(int sectorId, int countryId, int transTypeId, double transFees,
+        //    double otherFees, string v3DealId, DateTime exitDate)
+        //{
+        //    return new DealDataFixture
+        //    {
+        //        V3DealId = v3DealId,
+        //        SectorId = sectorId,
+        //        CountryId = countryId,
+        //        TransactionTypeId = transTypeId,
+        //        TransactionFees = transFees,
+        //        OtherFees = otherFees,
+        //        ExitDate = exitDate
+        //    };
+        //}
     }
 }

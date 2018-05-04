@@ -10,28 +10,28 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
     {
         public FileWriterFixture()
         {
-            ValidInputDb = new[]
-            {
-                new DealDataFixture
-                {
-                    V3DealId = "02B4EFADE6",
-                    EFrontDealId = "02B4EFADE60B48339D13F93EB851943C",
-                    DealName = "Marston (Project Magenta)",
-                    V3CompanyId = "",
-                    V3CompanyName = "",
-                    SectorId = 3,
-                    Sector = "",
-                    CountryId = 229,
-                    Country = "United Kingdom",
-                    TransactionTypeId = 1,
-                    TransactionType = "",
-                    TransactionFees = 98.76,
-                    OtherFees = 0.998,
-                    Currency = "EUR",
-                    ActiveInActive = "Active",
-                    ExitDate = Convert.ToDateTime("1/1/2001")
-                }
-            };
+            //ValidInputDb = new[]
+            //{
+            //    new DealDataFixture
+            //    {
+            //        V3DealId = "02B4EFADE6",
+            //        EFrontDealId = "02B4EFADE60B48339D13F93EB851943C",
+            //        DealName = "Marston (Project Magenta)",
+            //        V3CompanyId = "",
+            //        V3CompanyName = "",
+            //        SectorId = 3,
+            //        Sector = "",
+            //        CountryId = 229,
+            //        Country = "United Kingdom",
+            //        TransactionTypeId = 1,
+            //        TransactionType = "",
+            //        TransactionFees = 98.76,
+            //        OtherFees = 0.998,
+            //        Currency = "EUR",
+            //        ActiveInActive = "Active",
+            //        ExitDate = Convert.ToDateTime("1/1/2001")
+            //    }
+            //};
             ValidInput = new[]
             {
                 new DealData
@@ -82,7 +82,8 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
         }
 
         public DealData[] ValidInput { get; }
-        public DealDataFixture[] ValidInputDb { get; }
+
+        //public DealDataFixture[] ValidInputDb { get; }
         public string ValidOutput { get; }
         public DealData[] InValidInput { get; }
 
