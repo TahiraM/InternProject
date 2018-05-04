@@ -52,7 +52,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
         {
             var entity = modelBuilder.Entity<DealDataFixture>();
 
-            entity.ToTable("DealData");
+            entity.ToTable("DealDataFixture");
 
             entity.HasKey(b => b.V3DealId);
 

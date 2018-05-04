@@ -18,8 +18,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.Stores.Tests
         public void SecondTest()
         {
             var context = Substitute.For<DealDataDbContext>();
-            var database = context.Set<DealData>(); 
-
+            var database = context.Set<DealData>();
         }
 
         [Fact]
@@ -31,14 +30,14 @@ namespace InternProject.CsvFileConverter.XUnitTests.Stores.Tests
             using (db)
             {
                 db.Database.EnsureCreated();
-                var loaded = db.Set<DealDataFixture>()
-                    .AsNoTracking()
-                    .FirstOrDefault(d => d.V3DealId == data[0].V3DealId);
+                //var loaded = db.Set<DealDataFixture>()
+                //    .AsNoTracking()
+                //    .FirstOrDefault(d => d.V3DealId == data[0].V3DealId);
 
-                if (loaded == null)
-                    db.Set<DealDataFixture>().AddRange(data);
-                else
-                    db.Set<DealDataFixture>().UpdateRange(data);
+                //if (loaded == null)
+                db.Set<DealDataFixture>().AddRange(data);
+                //else
+                //db.Set<DealDataFixture>().UpdateRange(data);
 
                 // Act
 
@@ -47,9 +46,6 @@ namespace InternProject.CsvFileConverter.XUnitTests.Stores.Tests
                 // Assert
                 result.Should().NotBeNull();
             }
-
-            
-           
         }
     }
 }
