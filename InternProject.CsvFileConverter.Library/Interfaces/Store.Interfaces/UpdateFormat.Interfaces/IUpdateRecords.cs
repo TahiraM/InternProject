@@ -2,8 +2,8 @@
 
 namespace InternProject.CsvFileConverter.Library.Interfaces.Store.Interfaces.UpdateFormat.Interfaces
 {
-    public interface IUpdateAllRecords
+    public interface IUpdateRecords
     {
-        DealData[] UpdateAll(DealData[] dealDataList);
+        DealData[] UpdateRecords(DealData[] dealDataList);
     }
 }

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InternProject.CsvFileConverter.Library.Stores.Extensions.UpdateFormat
 {
-    internal class UpdateAllRecords : IUpdateAllRecords
+    public class UpdateAllRecords : IUpdateRecords
     {
-        public DealData[] UpdateAll(DealData[] dealDataList)
+        public DealData[] UpdateRecords(DealData[] dealDataList)
         {
             using (var db = new DealDataDbContext())
             {

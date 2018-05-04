@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace InternProject.CsvFileConverter.Library.Autofac
 {
+    [ExcludeFromCodeCoverage]
     public static class DbContextExtensions
     {
         public static IServiceCollection AddSqlDbContext<TDbContext>(this IServiceCollection services,

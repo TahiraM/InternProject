@@ -1,4 +1,7 @@
 ﻿using System;
+using InternProject.CsvFileConverter.Library.Extensions.Mapping;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
 
 namespace InternProject.CsvFileConverter.Library.Core.IO
 {

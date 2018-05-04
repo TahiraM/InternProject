@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using FluentAssertions;
 using FluentAssertions.Common;
 using InternProject.CsvFileConverter.Library.Core.IO;
@@ -50,6 +51,26 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.IO.Tests
         }
 
         [Theory]
+        [InlineData("testing.xml", FormatterType.Xml)]
+        [InlineData("testing.json", FormatterType.Json)]
+        public void ShouldPass_WriteContent_DataShouldBeConvertedToCorrectFileTypeWithoutOverwrite(string fileName,
+            FormatterType type)
+        {
+            // Arrange
+            var fixture = new FileWriterFixture();
+            var expected = fixture.InValidInput;
+            var sut = new FileWriter(fixture.GetFormatters());
+
+            // Act
+            sut.WriteContent(fileName, expected, type);
+            var result = File.ReadAllLines(fileName);
+
+            // Assert
+            result.Should().NotBeNullOrEmpty();
+            File.Exists(fileName).Should().BeTrue();
+        }
+
+        [Theory]
         [InlineData("testing.xml", true, FormatterType.Xml)]
         [InlineData("testing.json", true, FormatterType.Json)]
         public void ShouldPass_WriteContent_DataShouldBeConvertedToCorrectFileTypeWithFormatter(string fileName,
@@ -67,6 +88,27 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.IO.Tests
             // Assert
             result.Should().NotBeNullOrEmpty();
             File.Exists(fileName).Should().BeTrue();
+        }
+
+        
+
+        [Theory]
+        [InlineData("testing.json", null, FormatterType.Json)]
+        [InlineData(null, true, FormatterType.Json)]
+        public void ShouldFail_ThrowError_WriteContent_IfDataNotInCorrectFormat(string fileName,
+            bool overwrite, FormatterType type)
+        {
+            // Arrange
+            var fixture = new FileWriterFixture();
+            var expected = fixture.InValidInput;
+            var sut = new FileWriter(fixture.GetFormatters());
+
+            // Act
+            Action action = ()=> sut.WriteContent(fileName, expected, overwrite, type);
+            
+
+            // Assert
+            action.Should().Throw<Exception>();
         }
 
         [Fact]

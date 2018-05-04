@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InternProject.CsvFileConverter.Library.Stores.Extensions.UpdateFormat
 {
-    internal class UpdateSelectedRecords : IUpdateSelectedRecords
+    public class UpdateSelectedRecords : IUpdateRecords
     {
-        public DealData[] UpdateSelected(DealData[] dealDataList)
+        public DealData[] UpdateRecords(DealData[] dealDataList)
         {
             using (var db = new DealDataDbContext())
             {
@@ -29,5 +29,7 @@ namespace InternProject.CsvFileConverter.Library.Stores.Extensions.UpdateFormat
 
             return dealDataList;
         }
+
+        
     }
 }

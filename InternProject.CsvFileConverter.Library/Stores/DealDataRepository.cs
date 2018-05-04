@@ -7,16 +7,16 @@ namespace InternProject.CsvFileConverter.Library.Stores
 {
     public class DealDataRepository : IDealDataRepository
     {
-        private readonly IUpdateAllRecords _updateAllRecords;
+        private readonly IUpdateRecords _updateRecords;
 
-        public DealDataRepository(IUpdateAllRecords updateAllRecords)
+        public DealDataRepository(IUpdateRecords updateRecords)
         {
-            _updateAllRecords = updateAllRecords ?? throw new ArgumentNullException(nameof(updateAllRecords));
+            _updateRecords = updateRecords ?? throw new ArgumentNullException(nameof(updateRecords));
         }
 
         public DealData[] SaveMany(DealData[] dealDataList)
         {
-            _updateAllRecords.UpdateAll(dealDataList);
+            _updateRecords.UpdateRecords(dealDataList);
 
             return dealDataList;
         }
