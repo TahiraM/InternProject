@@ -1,6 +1,8 @@
 ﻿using System;
 using Autofac;
-using InternProject.CsvFileConverter.Library;
+using InternProject.CsvFileConverter.Library.Autofac;
+using InternProject.CsvFileConverter.Library.Core;
+using InternProject.CsvFileConverter.Library.Core.IO;
 using Serilog;
 
 namespace CsvFileConverter
@@ -9,19 +11,20 @@ namespace CsvFileConverter
     {
         private static int Main(string[] args)
         {
-            const string inputFile = "Deal.csv";
-            const string outputFile = "Vali.json";
+            const string inputFile = @"C:\GIT\InternProject\InternProject.CsvFileConverter\Deal.csv";
+            const string outputFile = @"C:\GIT\InternProject\InternProject.CsvFileConverter\Vali.json";
             try
             {
+                var configuration = new FileOutputOptions {OutputFile = outputFile};
+
                 Log.Logger.Information($"Setup container");
-                var container = IocBuilder.Build();
+                var container = IocBuilder.Build(configuration);
 
                 Log.Logger.Information($"Create converter from container");
                 var converter = container.Resolve<CsvToJsonConverter>();
-               
 
                 Log.Logger.Information($"Start of the conversion process from {inputFile} to {outputFile}");
-                converter.Convert(inputFile, outputFile);
+                converter.Convert(inputFile);
 
 
                 Console.ReadKey();

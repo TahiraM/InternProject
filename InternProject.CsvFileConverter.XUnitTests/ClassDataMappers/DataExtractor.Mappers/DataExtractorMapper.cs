@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using InternProject.CsvFileConverter.Library;
+using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 
-namespace InternProject.CsvFileConverter.XUnitTests
+namespace InternProject.CsvFileConverter.XUnitTests.ClassDataMappers.DataExtractor.Mappers
 {
     public class DataExtractorMapper : IEnumerable<object[]>
     {
@@ -15,7 +15,7 @@ namespace InternProject.CsvFileConverter.XUnitTests
             new object[] {fixture.OtherFees, 0.1},
             new object[] {fixture.TransactionTypeId, 209},
             new object[] {fixture.TransactionFees, 2.1},
-            new object[] {fixture.V3DealId, "02B4EFADE6" }
+            new object[] {fixture.V3DealId, "02B4EFADE6"}
         };
 
         public IEnumerator<object[]> GetEnumerator()

@@ -4,9 +4,10 @@ using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using CsvHelper.Configuration;
+using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
 using Serilog;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Extensions.Mapping
 {
     [ExcludeFromCodeCoverage]
     public class DealDataMap : ClassMap<DealData>

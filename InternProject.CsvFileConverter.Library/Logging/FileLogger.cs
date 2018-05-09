@@ -2,7 +2,7 @@
 using System.IO;
 using Serilog;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Logging
 {
     [ExcludeFromCodeCoverage]
     public class FileLogger : LoggerConfiguration

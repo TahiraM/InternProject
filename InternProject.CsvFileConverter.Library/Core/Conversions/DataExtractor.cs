@@ -5,9 +5,12 @@ using System.Linq;
 using System.Text;
 using CsvHelper;
 using CsvHelper.Configuration;
+using InternProject.CsvFileConverter.Library.Extensions.Mapping;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.Conversions.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
 using Serilog;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Core.Conversions
 {
     public class DataExtractor : IDataExtractor
     {
@@ -27,9 +30,12 @@ namespace InternProject.CsvFileConverter.Library
                 Delimiter = "||",
                 Encoding = Encoding.UTF8,
                 HasHeaderRecord = headerPresent,
-                QuoteNoFields = false,
+                HeaderValidated = null,
+                MissingFieldFound = null,
+                QuoteNoFields = true,
                 PrepareHeaderForMatch = header => header.ToLowerInvariant().Replace(" ", string.Empty)
             };
+
 
             try
             {
@@ -41,6 +47,7 @@ namespace InternProject.CsvFileConverter.Library
 
                     _logger.Information($"CSV DATA OUT! with {dealDatas.Length} records");
 
+
                     return dealDatas;
                 }
             }
@@ -51,37 +58,5 @@ namespace InternProject.CsvFileConverter.Library
                 throw;
             }
         }
-
-        //private DealData[] MapDataToDealData(DealDataRaw[] dealDataRaws)
-        //{
-
-        //        return dealDataRaws.Select(m => new DealDataRawValidator())
-        //        {
-
-
-        //        }).ToArray();
-
-        //}
     }
 }
-
-//return dealDataRaws.Select(m => new DealData()
-//{
-//V3CompanyId = Convert.ToString(m.V3CompanyId),
-//V3CompanyName = Convert.ToString(m.V3CompanyName),
-//V3DealId = Convert.ToString(m.V3DealId),
-//EFrontDealId = Convert.ToString(m.EFrontDealId),
-//DealName = Convert.ToString(m.DealName),
-//Sector = Convert.ToString(m.Sector),
-//Country = Convert.ToString(m.Country),
-//TransactionType = Convert.ToString(m.TransactionType),
-//ActiveInActive = Convert.ToString(m.ActiveInActive),
-//OtherFees = Convert.ToDouble(m.OtherFees),
-//SectorId = Convert.ToInt32(m.SectorId),
-//CountryId = Convert.ToInt32(m.CountryId),
-//TransactionTypeId = Convert.ToInt32(m.TransactionTypeId),
-//TransactionFees = Convert.ToDouble(m.TransactionFees),
-//ExitDate = Convert.ToDateTime(m.ExitDate)
-
-
-//}).ToArray();

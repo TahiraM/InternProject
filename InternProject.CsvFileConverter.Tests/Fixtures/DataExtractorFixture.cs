@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using InternProject.CsvFileConverter.Library;
+using InternProject.CsvFileConverter.Library.Extensions.Mapping;
+using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
+using InternProject.CsvFileConverter.Library.Validations;
 
-namespace CsvFileConverterTests
+namespace CsvFileConverterTests.Fixtures
 {
     public class DataExtractorFixture
     {

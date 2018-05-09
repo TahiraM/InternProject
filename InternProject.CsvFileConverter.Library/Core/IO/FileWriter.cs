@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using InternProject.CsvFileConverter.Library.Extensions.Formatters;
+using InternProject.CsvFileConverter.Library.Extensions.Mapping;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces.Extensions.Interfaces;
 using Serilog;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Core.IO
 {
     public class FileWriter : IFileWriter
     {
@@ -43,7 +47,15 @@ namespace InternProject.CsvFileConverter.Library
 
         public void WriteContent(string output, DealData[] dealData, FormatterType formatterType)
         {
-            WriteContent(output, dealData, true, formatterType);
+            var extension = Path.GetExtension(output);
+            if (extension != ".json")
+            {
+                if (extension == ".xml") WriteContent(output, dealData, true, FormatterType.Xml);
+            }
+            else
+            {
+                WriteContent(output, dealData, true, FormatterType.Json);
+            }
         }
 
         public void WriteContent(string output, DealData[] dealData, bool overwrite, FormatterType formatterType)

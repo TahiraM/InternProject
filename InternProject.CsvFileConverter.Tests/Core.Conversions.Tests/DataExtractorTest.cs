@@ -1,21 +1,20 @@
 ﻿using System;
 using System.IO;
-using CsvFileConverterTests;
+using CsvFileConverterTests.Fixtures;
 using CsvHelper;
 using CsvHelper.TypeConversion;
 using FluentAssertions;
 using FluentAssertions.Common;
-using InternProject.CsvFileConverter.Library;
+using InternProject.CsvFileConverter.Library.Core.Conversions;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.Conversions.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using Serilog;
-using Xunit;
 using MissingFieldException = CsvHelper.MissingFieldException;
 
-namespace CsvFileConverterTests
+namespace CsvFileConverterTests.Core.Conversions.Tests
 {
-
     [TestClass]
     public class DataExtractorTest
     {
@@ -364,6 +363,4 @@ namespace CsvFileConverterTests
             action.Should().Throw<MissingFieldException>();
         }
     }
-
-   
 }

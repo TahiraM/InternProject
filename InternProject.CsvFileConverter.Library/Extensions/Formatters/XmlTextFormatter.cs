@@ -1,8 +1,9 @@
 ﻿using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces.Extensions.Interfaces;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Extensions.Formatters
 {
     public class XmlTextFormatter : ITextFormatter
     {

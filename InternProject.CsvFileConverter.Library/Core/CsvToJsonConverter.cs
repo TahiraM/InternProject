@@ -1,27 +1,29 @@
 ﻿using System;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.Conversions.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Core
 {
     public class CsvToJsonConverter
     {
         private readonly IDataExtractor _dataExtractor;
+        private readonly IDataStore _dataStore;
         private readonly IFileReader _fileReader;
-        private readonly IFileWriter _fileWriter;
 
         public CsvToJsonConverter(
             IFileReader fileReader,
             IDataExtractor dataExtractor,
-            IFileWriter fileWriter)
+            IDataStore dataStore)
         {
             _fileReader = fileReader ?? throw new ArgumentNullException(nameof(fileReader));
             _dataExtractor = dataExtractor ?? throw new ArgumentNullException(nameof(dataExtractor));
-            _fileWriter = fileWriter ?? throw new ArgumentNullException(nameof(fileWriter));
+            _dataStore = dataStore ?? throw new ArgumentNullException(nameof(dataStore));
         }
 
-        public void Convert(string input, string output)
+        public void Convert(string input)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
-            if (output == null) throw new ArgumentNullException(nameof(output));
 
             // Read the CSV file
             var content = _fileReader.ReadContent(input);
@@ -29,8 +31,8 @@ namespace InternProject.CsvFileConverter.Library
             //Extract CSV Data
             var data = _dataExtractor.ReadContent(content, true);
 
-            // Save this into a file
-            _fileWriter.WriteContent(output, data);
+            // Store data 
+            _dataStore.Store(data);
         }
     }
 }

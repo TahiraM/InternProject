@@ -4,14 +4,13 @@ using CsvHelper;
 using CsvHelper.TypeConversion;
 using FluentAssertions;
 using FluentAssertions.Common;
-using InternProject.CsvFileConverter.Library;
-using NSubstitute;
-using NSubstitute.ExceptionExtensions;
+using InternProject.CsvFileConverter.Library.Core.Conversions;
+using InternProject.CsvFileConverter.XUnitTests.ClassDataMappers.DataExtractor.Mappers;
+using InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests;
 using Serilog;
 using Xunit;
-using MissingFieldException = CsvHelper.MissingFieldException;
 
-namespace InternProject.CsvFileConverter.XUnitTests
+namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.Converstions.Tests
 {
     public class DataExtractorTests
     {
@@ -59,16 +58,13 @@ namespace InternProject.CsvFileConverter.XUnitTests
             // Arrange
             var data = new StringReader(dataString);
             var fixture = new DataExtractorFixture();
-            var legacyDataExtractor = Substitute.For<IDataExtractor>();
             var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
-            legacyDataExtractor.ReadContent(Arg.Any<StringReader>(), Arg.Any<bool>())
-                .Throws(new MissingFieldException(null));
 
             // Act
             Action action = () => sut.ReadContent(data, false);
 
             // Assert
-            action.Should().Throw<MissingFieldException>();
+            action.Should().Throw<ReaderException>();
         }
 
 

@@ -1,6 +1,7 @@
 ﻿using System;
+using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
 
-namespace InternProject.CsvFileConverter.Library
+namespace InternProject.CsvFileConverter.Library.Validations
 {
     public class StringFieldValidator : IFieldValidator
     {
