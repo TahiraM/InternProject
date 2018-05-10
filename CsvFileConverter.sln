@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CsvFileConverterTests", "In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternProject.CsvFileConverter.Library", "InternProject.CsvFileConverter.Library\InternProject.CsvFileConverter.Library.csproj", "{621F7B76-163E-4C4B-98A1-D58E7AC8B374}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternProject.CsvFileConverter.XUnitTests", "InternProject.CsvFileConverter.XUnitTests\InternProject.CsvFileConverter.XUnitTests.csproj", "{11821C39-4C9A-4CCA-848F-CCBF341D4CCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternProject.CsvFileConverter.XUnitTests", "InternProject.CsvFileConverter.XUnitTests\InternProject.CsvFileConverter.XUnitTests.csproj", "{11821C39-4C9A-4CCA-848F-CCBF341D4CCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternProject.CsvFileConverter.WebApi", "InternProject.CsvFileConverter.WebApi\InternProject.CsvFileConverter.WebApi.csproj", "{A122FF3B-A84A-4E16-81A1-008CA123AA51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{11821C39-4C9A-4CCA-848F-CCBF341D4CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11821C39-4C9A-4CCA-848F-CCBF341D4CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11821C39-4C9A-4CCA-848F-CCBF341D4CCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A122FF3B-A84A-4E16-81A1-008CA123AA51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A122FF3B-A84A-4E16-81A1-008CA123AA51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A122FF3B-A84A-4E16-81A1-008CA123AA51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A122FF3B-A84A-4E16-81A1-008CA123AA51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

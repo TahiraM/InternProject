@@ -7,6 +7,14 @@ namespace InternProject.CsvFileConverter.Library.Stores
     [ExcludeFromCodeCoverage]
     public class DealDataDbContext : DbContext
     {
+        public DealDataDbContext()
+        {
+            
+        }
+        public DealDataDbContext(DbContextOptions<DealDataDbContext> options)
+            : base(options)
+        { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connection = ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString;
