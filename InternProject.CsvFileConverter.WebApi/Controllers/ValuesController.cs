@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Stores;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace InternProject.CsvFileConverter.WebApi.Controllers
 {
@@ -14,14 +10,14 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
     {
         private readonly DealDataDbContext _dataContext;
 
-        public ValuesController(DealDataDbContext dataContext)
+        public ValuesController()
         {
-            _dataContext = dataContext;
+            _dataContext = new DealDataDbContext();
             var loaded = _dataContext.Set<DealData>();
             if (loaded == null)
                 _dataContext.Set<DealData>().Add(new DealData
                 {
-                    V3DealId = "helloo", 
+                    V3DealId = "helloo",
                     Country = "boo"
                 });
             else
@@ -32,12 +28,20 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
                 });
         }
 
-        //// GET api/values/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        [HttpGet]
+        public void GetDefault()
+        {
+            var success = true;
+        }
+
+        [HttpGet("{V3DealId}", Name = "GetData")]
+        public IEnumerable<DealData> Get()
+        {
+            using (var db = new DealDataDbContext())
+            {
+                return db.Set<DealData>();
+            }
+        }
 
         //// POST api/values
         //[HttpPost]
