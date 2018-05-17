@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using InternProject.CsvFileConverter.Library.Core.Conversions;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
 using InternProject.CsvFileConverter.Library.Validations;
+using Microsoft.Extensions.Logging;
+using NSubstitute;
 
 namespace CsvFileConverterTests.Fixtures
 {
@@ -101,5 +104,7 @@ namespace CsvFileConverterTests.Fixtures
                 ExitDate = exitDate
             };
         }
+
+        public ILogger<DataExtractor> Logger => Substitute.For<ILogger<DataExtractor>>();
     }
 }

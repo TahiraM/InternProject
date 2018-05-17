@@ -8,11 +8,10 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        private readonly DealDataDbContext _dataContext;
+        public DealDataDbContext _dataContext;
 
         public ValuesController()
         {
-            _dataContext = new DealDataDbContext();
             var loaded = _dataContext.Set<DealData>();
             if (loaded == null)
                 _dataContext.Set<DealData>().Add(new DealData

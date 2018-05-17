@@ -5,13 +5,11 @@ VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CsvFileConverter", "InternProject.CsvFileConverter\CsvFileConverter.csproj", "{BDB1390D-0CA5-44A2-A7BE-706CD4A39280}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CsvFileConverterTests", "InternProject.CsvFileConverter.Tests\CsvFileConverterTests.csproj", "{1D480948-73E2-4C6B-8DBC-32A6741864CB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternProject.CsvFileConverter.Library", "InternProject.CsvFileConverter.Library\InternProject.CsvFileConverter.Library.csproj", "{621F7B76-163E-4C4B-98A1-D58E7AC8B374}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternProject.CsvFileConverter.XUnitTests", "InternProject.CsvFileConverter.XUnitTests\InternProject.CsvFileConverter.XUnitTests.csproj", "{11821C39-4C9A-4CCA-848F-CCBF341D4CCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternProject.CsvFileConverter.WebApi", "InternProject.CsvFileConverter.WebApi\InternProject.CsvFileConverter.WebApi.csproj", "{A122FF3B-A84A-4E16-81A1-008CA123AA51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternProject.CsvFileConverter.WebApi", "InternProject.CsvFileConverter.WebApi\InternProject.CsvFileConverter.WebApi.csproj", "{A122FF3B-A84A-4E16-81A1-008CA123AA51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{BDB1390D-0CA5-44A2-A7BE-706CD4A39280}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDB1390D-0CA5-44A2-A7BE-706CD4A39280}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDB1390D-0CA5-44A2-A7BE-706CD4A39280}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D480948-73E2-4C6B-8DBC-32A6741864CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D480948-73E2-4C6B-8DBC-32A6741864CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D480948-73E2-4C6B-8DBC-32A6741864CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D480948-73E2-4C6B-8DBC-32A6741864CB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{621F7B76-163E-4C4B-98A1-D58E7AC8B374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{621F7B76-163E-4C4B-98A1-D58E7AC8B374}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{621F7B76-163E-4C4B-98A1-D58E7AC8B374}.Release|Any CPU.ActiveCfg = Release|Any CPU

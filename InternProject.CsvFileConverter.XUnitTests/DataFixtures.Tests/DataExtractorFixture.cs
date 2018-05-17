@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using InternProject.CsvFileConverter.Library.Core.Conversions;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Interfaces.Store.Interfaces.UpdateFormat.Interfaces;
 using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
 using InternProject.CsvFileConverter.Library.Stores.Extensions.UpdateFormat;
 using InternProject.CsvFileConverter.Library.Validations;
+using Microsoft.Extensions.Logging;
+using NSubstitute;
 
 namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
 {
@@ -115,19 +118,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
             };
         }
 
-        //private DealDataFixture GenerateOutputDb(int sectorId, int countryId, int transTypeId, double transFees,
-        //    double otherFees, string v3DealId, DateTime exitDate)
-        //{
-        //    return new DealDataFixture
-        //    {
-        //        V3DealId = v3DealId,
-        //        SectorId = sectorId,
-        //        CountryId = countryId,
-        //        TransactionTypeId = transTypeId,
-        //        TransactionFees = transFees,
-        //        OtherFees = otherFees,
-        //        ExitDate = exitDate
-        //    };
-        //}
+
+        public ILogger<DataExtractor> Logger => Substitute.For<ILogger<DataExtractor>>();
     }
 }

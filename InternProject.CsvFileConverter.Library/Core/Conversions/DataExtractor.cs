@@ -8,16 +8,16 @@ using CsvHelper.Configuration;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Interfaces.Core.Conversions.Interfaces;
 using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace InternProject.CsvFileConverter.Library.Core.Conversions
 {
     public class DataExtractor : IDataExtractor
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<DataExtractor> _logger;
         private readonly IEnumerable<IFieldValidator> _validators;
 
-        public DataExtractor(IEnumerable<IFieldValidator> validators, ILogger logger)
+        public DataExtractor(IEnumerable<IFieldValidator> validators, ILogger<DataExtractor> logger)
         {
             _validators = validators ?? throw new ArgumentNullException(nameof(validators));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -45,7 +45,7 @@ namespace InternProject.CsvFileConverter.Library.Core.Conversions
                     csv.Configuration.RegisterClassMap(classMap);
                     var dealDatas = csv.GetRecords<DealData>().ToArray();
 
-                    _logger.Information($"CSV DATA OUT! with {dealDatas.Length} records");
+                    _logger.LogInformation($"CSV DATA OUT! with {dealDatas.Length} records");
 
 
                     return dealDatas;
@@ -53,7 +53,7 @@ namespace InternProject.CsvFileConverter.Library.Core.Conversions
             }
             catch (Exception e)
             {
-                _logger.Error(e.Message);
+                _logger.LogError(e.Message);
 
                 throw;
             }
