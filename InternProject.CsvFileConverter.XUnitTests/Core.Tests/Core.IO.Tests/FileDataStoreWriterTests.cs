@@ -3,6 +3,7 @@ using InternProject.CsvFileConverter.Library.Extensions.Formatters;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
 using InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests;
+using Microsoft.Extensions.Options;
 using NSubstitute;
 using Xunit;
 
@@ -15,7 +16,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.IO.Tests
         {
             // Arrange
             var fileWriter = Substitute.For<IFileWriter>();
-            var output = Substitute.For<FileOutputOptions>();
+            var output = Substitute.For<IOptions<FileOutputOptions>>();
             var fixture = new FileWriterFixture();
 
             var sut = new FileDataStoreWriter(fileWriter, output);

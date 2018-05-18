@@ -4,6 +4,7 @@ using InternProject.CsvFileConverter.Library.Core.Conversions;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Interfaces.Store.Interfaces.UpdateFormat.Interfaces;
 using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
+using InternProject.CsvFileConverter.Library.Stores;
 using InternProject.CsvFileConverter.Library.Stores.Extensions.UpdateFormat;
 using InternProject.CsvFileConverter.Library.Validations;
 using Microsoft.Extensions.Logging;
@@ -87,6 +88,9 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
         public string EmptyInputOtherFees { get; }
         public string EmptyInputExitDate { get; }
 
+
+        public ILogger<DataExtractor> Logger => Substitute.For<ILogger<DataExtractor>>();
+
         public IEnumerable<IFieldValidator> GetValidators()
         {
             return new List<IFieldValidator>
@@ -98,9 +102,12 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
             };
         }
 
+       
+
         public IUpdateRecords GetRecords()
         {
-            return new UpdateAllRecords();
+            var dbFactory = Substitute.For<IDbContextFactory>();
+            return new UpdateAllRecords(dbFactory);
         }
 
         private DealData GenerateOutput(int sectorId, int countryId, int transTypeId, double transFees,
@@ -117,8 +124,5 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
                 ExitDate = exitDate
             };
         }
-
-
-        public ILogger<DataExtractor> Logger => Substitute.For<ILogger<DataExtractor>>();
     }
 }

@@ -30,10 +30,11 @@ namespace InternProject.CsvFileConverter.Library.Autofac
                 .RegisterCoreServices(configuration);
         }
 
-        private static IServiceCollection RegisterCoreServices(this IServiceCollection services, IConfiguration configuration)
+        private static IServiceCollection RegisterCoreServices(this IServiceCollection services,
+            IConfiguration configuration)
         {
             services.AddOptions().Configure<FileOutputOptions>(configuration);
-            
+
             services.AddTransient<CsvToJsonConverter>();
             services.AddTransient<IFileWriter, FileWriter>();
             services.AddTransient<IDataExtractor, DataExtractor>();
@@ -53,6 +54,8 @@ namespace InternProject.CsvFileConverter.Library.Autofac
             services.AddTransient<IFieldValidator, StringFieldValidator>();
             services.AddTransient<IFileWriter, FileWriter>();
             services.AddTransient<IUpdateRecords, UpdateAllRecords>();
+
+            //services.AddTransient<ValuesController>();
 
             return services;
         }

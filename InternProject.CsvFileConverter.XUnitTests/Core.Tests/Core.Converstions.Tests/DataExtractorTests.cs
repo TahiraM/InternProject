@@ -7,7 +7,6 @@ using FluentAssertions.Common;
 using InternProject.CsvFileConverter.Library.Core.Conversions;
 using InternProject.CsvFileConverter.XUnitTests.ClassDataMappers.DataExtractor.Mappers;
 using InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests;
-using Serilog;
 using Xunit;
 
 namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.Converstions.Tests

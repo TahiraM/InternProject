@@ -1,52 +1,68 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Stores;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace InternProject.CsvFileConverter.WebApi.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        public DealDataDbContext _dataContext;
+        private readonly IDbContextFactory _dbContextFactory;
 
-        public ValuesController()
+        public ValuesController(IDbContextFactory dbContextFactory)
         {
-            var loaded = _dataContext.Set<DealData>();
-            if (loaded == null)
-                _dataContext.Set<DealData>().Add(new DealData
-                {
-                    V3DealId = "helloo",
-                    Country = "boo"
-                });
-            else
-                _dataContext.Set<DealData>().Update(new DealData
-                {
-                    V3DealId = "helloo",
-                    Country = "boo"
-                });
+            _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
         }
 
-        [HttpGet]
-        public void GetDefault()
-        {
-            var success = true;
-        }
 
-        [HttpGet("{V3DealId}", Name = "GetData")]
-        public IEnumerable<DealData> Get()
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get()
         {
-            using (var db = new DealDataDbContext())
+            using (var db = _dbContextFactory.Create())
             {
-                return db.Set<DealData>();
+                foreach (var dealData in db.Set<DealData>())
+                {
+                    var response
+                        = db.Set<DealData>().Find(dealData.V3DealId);
+
+                    return Ok(response);
+                }
             }
+
+            return NotFound();
         }
 
-        //// POST api/values
-        //[HttpPost]
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Post(DealData value)
+        {
+            using (var db = _dbContextFactory.Create())
+            {
+                var response = new DealData();
+                db.Database.EnsureCreated();
+                foreach (var dealData in db.Set<DealData>())
+                {
+                    response = db.Set<DealData>()
+                        .AsNoTracking()
+                        .FirstOrDefault(d => value.V3DealId == dealData.V3DealId);
+
+                    if (response == null)
+                        db.Set<DealData>().Add(dealData);
+                    else
+                        db.Set<DealData>().Update(dealData);
+
+                    
+                }
+
+                db.SaveChanges();
+                return Ok(response);
+            }
+
+            return NotFound();
+        }
 
         //// PUT api/values/5
         //[HttpPut("{id}")]
