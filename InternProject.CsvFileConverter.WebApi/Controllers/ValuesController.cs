@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
@@ -18,6 +19,11 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
             _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
         }
 
+        [HttpGet]
+        public IEnumerable<DealData> GetValues()
+        {
+            return _dbContextFactory.Create().Set<DealData>();
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get()
@@ -54,14 +60,12 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
                     else
                         db.Set<DealData>().Update(dealData);
 
-                    
+
                 }
 
                 db.SaveChanges();
                 return Ok(response);
             }
-
-            return NotFound();
         }
 
         //// PUT api/values/5

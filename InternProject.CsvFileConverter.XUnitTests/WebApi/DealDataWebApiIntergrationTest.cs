@@ -1,49 +1,64 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using FluentAssertions;
 using Xunit;
 
 namespace InternProject.CsvFileConverter.XUnitTests.WebApi
 {
-    public class DealDataWebApiIntergrationTest
+    public class DealDataWebApiIntergrationTest : IClassFixture<ControllerFixture>
     {
-        [Theory]
-        [InlineData("Files\\QPR_Sample.xlsx", "UK Team", 2, "ATPI", @"Reports\QPR_Sample.xlsx")]
-        [InlineData("Files\\Valuation_Sample.xlsx", "UK Team", 2, "ATPI",  @"Valuations\Valuation_Sample.xlsx")]
-        public async Task Should_PublishAsync_PassWhenFilePathIsValid(
-            string sourceFile,
-            string dealTeamName,
-            int companyId,
-            string companyName,
-            string expectedPath)
+        public DealDataWebApiIntergrationTest(ControllerFixture fixture)
+        {
+            _fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
+        }
+
+        private readonly ControllerFixture _fixture;
+
+        [Fact]
+        public async Task Should_GetAsync_PassWhenCorrectDataIsBeingPassedThrough()
         {
             // Given
-            
+            var expected =
+                "{\"v3DealId\":\"02B4EFAD4432\",\"eFrontDealId\":\"02B4EFADE653J8339D13F93EB851943C900\",\"dealName\":\"Marston (Project Magenta)0\",\"v3CompanyId\":\"JFV3CompanyI6\",\"v3CompanyName\":\"JFV3CompanyHellloooo\",\"sectorId\":6,\"sector\":\"Advertising\",\"countryId\":null,\"country\":\"United Kingdom\",\"transactionTypeId\":320,\"transactionType\":\"Primary LBO\",\"transactionFees\":5.3,\"otherFees\":1.1,\"currency\":\"EUR\",\"activeInActive\":\"Active\",\"exitDate\":\"2004-04-04T00:00:00\"}";
 
-            //var expected =
-            //    $@"\\icgplc.com\icg\afs\AppTemp\Mezz\DealAssets\{dealTeamName}\{companyName}\Company Information\Monitoring & QPR\{expectedPath}";
+            // When
 
-            //var stringContent = new StringContent(JsonConvert.SerializeObject(publishItem), Encoding.UTF8,
-            //    "application/json");
+            var response = _fixture.Client.GetAsync("/api/values/02B4EFAD4432").Result;
+            var res = "";
+            using (var content = response.Content)
+            {
+                var result = content.ReadAsStringAsync();
+                res = result.Result;
+            }
 
-            //// When
-            //var actual = await _fixture.Client.PostAsync($"/api/v1/companies/{companyId}/assets", stringContent);
+            // Then
+            response.Should().NotBeNull();
+            response.StatusCode.Should().Be(200);
+            response.IsSuccessStatusCode.Should().BeTrue();
+            res.Should().Be(expected);
+        }
 
-            //// Then
-            //actual.Should().NotBeNull();
-            //actual.IsSuccessStatusCode.Should().BeTrue();
+        [Fact]
+        public async Task Should_PublishAsync_FailWhenIncorrectDataIsBeingPassedThrough()
+        {
+            // Given
+            var expected =
+                "{\"v3DealId\":\"02B4EFAD4432\",\"eFrontDealId\":\"02B4EFADE653J8339D13F93EB851943C900\",\"dealName\":\"Marston (Project Magenta)0\",\"v3CompanyId\":\"JFV3CompanyI6\",\"v3CompanyName\":\"JFV3CompanyHellloooo\",\"sectorId\":6,\"sector\":\"Advertising\",\"countryId\":null,\"country\":\"United Kingdom\",\"transactionTypeId\":320,\"transactionType\":\"Primary LBO\",\"transactionFees\":5.3,\"otherFees\":1.1,\"currency\":\"EUR\",\"activeInActive\":\"Active\",\"exitDate\":\"2004-04-04T00:00:00\"}";
 
-            //var content = await actual.Content.ReadAsStringAsync();
-            //var result = JsonConvert.DeserializeObject<PublishResult>(content);
+            // When
 
-            //result.PublishedItemPath.Should().Be(expected);
-            //File.Exists(result.PublishedItemPath).Should().BeTrue();
+            var response = _fixture.Client.GetAsync("/api/help/fail").Result;
+            var res = "";
+            using (var content = response.Content)
+            {
+                var result = content.ReadAsStringAsync();
+                res = result.Result;
+            }
 
-            //// Clean up
-            //File.Delete(result.PublishedItemPath);
+            // Then
+            response.Should().NotBeNull();
+            response.StatusCode.Should().Be(404);
+            response.IsSuccessStatusCode.Should().BeFalse();
         }
     }
 }
