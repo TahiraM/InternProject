@@ -26,45 +26,35 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(string id)
         {
             using (var db = _dbContextFactory.Create())
             {
-                foreach (var dealData in db.Set<DealData>())
-                {
-                    var response
-                        = db.Set<DealData>().Find(dealData.V3DealId);
+                var dealData = await db.Set<DealData>().FindAsync(id);
+                if (dealData== null) return NotFound();
 
-                    return Ok(response);
-                }
+                return Ok(dealData);
             }
-
-            return NotFound();
         }
 
-        [HttpPost]
+        [HttpPost("{V3DealId}")]
         public async Task<IActionResult> Post(DealData value)
         {
             using (var db = _dbContextFactory.Create())
             {
-                var response = new DealData();
                 db.Database.EnsureCreated();
-                foreach (var dealData in db.Set<DealData>())
-                {
-                    response = db.Set<DealData>()
-                        .AsNoTracking()
-                        .FirstOrDefault(d => value.V3DealId == dealData.V3DealId);
 
-                    if (response == null)
-                        db.Set<DealData>().Add(dealData);
-                    else
-                        db.Set<DealData>().Update(dealData);
+                var loaded = await db.Set<DealData>()
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(d => d.V3DealId == value.V3DealId);
 
-
-                }
+                if (loaded == null)
+                    db.Set<DealData>().Add(value);
+                else
+                    db.Set<DealData>().Update(value);
 
                 db.SaveChanges();
-                return Ok(response);
+                return Ok(db);
             }
         }
 

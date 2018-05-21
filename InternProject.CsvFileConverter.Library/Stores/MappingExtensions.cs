@@ -22,7 +22,7 @@ namespace InternProject.CsvFileConverter.Library.Stores
             entity.Property(m => m.V3CompanyName).HasColumnType("VARCHAR(30)");
             entity.Property(m => m.SectorId).HasColumnType("INT");
             entity.Property(m => m.Sector).HasColumnType("VARCHAR(25)");
-            entity.Property(m => m.CountryId).HasColumnType("INT").ValueGeneratedOnAddOrUpdate();
+            entity.Property(m => m.CountryId).HasColumnType("INT");
             entity.Property(m => m.Country).HasColumnType("VARCHAR(15)");
             entity.Property(m => m.TransactionTypeId).HasColumnType("INT");
             entity.Property(m => m.TransactionType).HasColumnType("VARCHAR(25)");
