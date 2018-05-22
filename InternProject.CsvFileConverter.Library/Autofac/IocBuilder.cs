@@ -49,8 +49,7 @@ namespace InternProject.CsvFileConverter.Library.Autofac
             builder.RegisterType<DateFieldValidator>().As<IFieldValidator>();
             builder.RegisterType<StringFieldValidator>().As<IFieldValidator>();
 
-            builder.RegisterType<UpdateSelectedRecords>().As<IUpdateRecords>();
-            builder.RegisterType<UpdateSelectedRecords>().As<IUpdateRecords>();
+            builder.RegisterType<UpdateAllRecords>().As<IUpdateRecords>();
 
             var container = builder.Build();
             return container;

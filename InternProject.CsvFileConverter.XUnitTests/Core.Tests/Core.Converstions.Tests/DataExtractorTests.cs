@@ -7,7 +7,6 @@ using FluentAssertions.Common;
 using InternProject.CsvFileConverter.Library.Core.Conversions;
 using InternProject.CsvFileConverter.XUnitTests.ClassDataMappers.DataExtractor.Mappers;
 using InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests;
-using Serilog;
 using Xunit;
 
 namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.Converstions.Tests
@@ -21,7 +20,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.Converstions
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(data);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -38,7 +37,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.Converstions
             var fixture = new DataExtractorFixture();
             var expected = fixture.ValidOutput;
             var input = new StringReader(fixture.ValidInput);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             var actual = sut.ReadContent(input, false);
@@ -58,7 +57,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.Converstions
             // Arrange
             var data = new StringReader(dataString);
             var fixture = new DataExtractorFixture();
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(data, false);
@@ -75,7 +74,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.Converstions
             var fixture = new DataExtractorFixture();
             var expected = fixture.ValidOutput;
             var input = new StringReader(fixture.ValidInput);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             var actual = sut.ReadContent(input, false);
@@ -92,7 +91,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.Converstions
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.InvalidInputExitDate);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);

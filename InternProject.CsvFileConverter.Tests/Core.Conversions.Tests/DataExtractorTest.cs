@@ -25,7 +25,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             var fixture = new DataExtractorFixture();
             var expected = fixture.ValidOutput;
             var input = new StringReader(fixture.ValidInput);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             var actual = sut.ReadContent(input, false);
@@ -43,7 +43,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.InvalidInputSectorId);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -58,7 +58,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.EmptyInputSectorId);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -74,7 +74,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             var fixture = new DataExtractorFixture();
             var expected = fixture.ValidOutput;
             var input = new StringReader(fixture.ValidInput);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             var actual = sut.ReadContent(input, false);
@@ -91,7 +91,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.InvalidInputCountryId);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -106,7 +106,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.EmptyInputCountryId);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -122,7 +122,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             var fixture = new DataExtractorFixture();
             var expected = fixture.ValidOutput;
             var input = new StringReader(fixture.ValidInput);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             var actual = sut.ReadContent(input, false);
@@ -139,7 +139,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.InvalidInputTransTypeId);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -154,7 +154,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.EmptyInputCountryId);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -170,7 +170,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             var fixture = new DataExtractorFixture();
             var expected = fixture.ValidOutput;
             var input = new StringReader(fixture.ValidInput);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             var actual = sut.ReadContent(input, false);
@@ -187,7 +187,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.InvalidInputTransFees);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -202,7 +202,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.EmptyInputTransFees);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -218,7 +218,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             var fixture = new DataExtractorFixture();
             var expected = fixture.ValidOutput;
             var input = new StringReader(fixture.ValidInput);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             var actual = sut.ReadContent(input, false);
@@ -235,7 +235,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.InvalidInputOtherFees);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -250,7 +250,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.EmptyInputOtherFees);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -266,7 +266,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             var fixture = new DataExtractorFixture();
             var expected = fixture.ValidOutput;
             var input = new StringReader(fixture.ValidInput);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             var actual = sut.ReadContent(input, false);
@@ -285,7 +285,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             var fixture = new DataExtractorFixture();
             var expected = fixture.ValidOutput;
             var input = new StringReader(fixture.ValidInput);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             var actual = sut.ReadContent(input, false);
@@ -302,7 +302,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.InvalidInputExitDate);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -317,7 +317,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             // Arrange
             var fixture = new DataExtractorFixture();
             var input = new StringReader(fixture.EmptyInputExitDate);
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
 
             // Act
             Action action = () => sut.ReadContent(input, false);
@@ -334,7 +334,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             var data = new StringReader("help");
             var fixture = new DataExtractorFixture();
             var legacyDataExtractor = Substitute.For<IDataExtractor>();
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
             legacyDataExtractor.ReadContent(Arg.Any<StringReader>(), Arg.Any<bool>())
                 .Throws(new MissingFieldException(null));
 
@@ -352,7 +352,7 @@ namespace CsvFileConverterTests.Core.Conversions.Tests
             var data = new StringReader(" ");
             var fixture = new DataExtractorFixture();
             var legacyDataExtractor = Substitute.For<IDataExtractor>();
-            var sut = new DataExtractor(fixture.GetValidators(), Log.Logger);
+            var sut = new DataExtractor(fixture.GetValidators(), fixture.Logger);
             legacyDataExtractor.ReadContent(Arg.Any<StringReader>(), Arg.Any<bool>())
                 .Throws(new MissingFieldException(null));
 

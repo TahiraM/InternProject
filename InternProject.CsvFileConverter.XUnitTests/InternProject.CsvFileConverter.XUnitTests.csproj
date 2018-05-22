@@ -7,13 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="WebApi\appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="WebApi\appsettings.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.0.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <PackageReference Include="FluentAssertions" Version="5.3.0" />
+    <PackageReference Include="NSubstitute" Version="3.1.0" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InternProject.CsvFileConverter.WebApi\InternProject.CsvFileConverter.WebApi.csproj" />
     <ProjectReference Include="..\InternProject.CsvFileConverter\CsvFileConverter.csproj" />
   </ItemGroup>
 
