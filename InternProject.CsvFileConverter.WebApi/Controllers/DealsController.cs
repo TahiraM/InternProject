@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using InternProject.CsvFileConverter.Library.Core;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
 using InternProject.CsvFileConverter.Library.Stores;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace InternProject.CsvFileConverter.WebApi.Controllers
 {
@@ -15,9 +16,9 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
     public class DealsController : Controller
     {
         private readonly ICsvToJsonConverter _csvToJsonConverter;
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IDbContextFactory _dbContextFactory;
         private readonly IDealDataRepository _dealDataRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public DealsController(
             IDbContextFactory dbContextFactory,
@@ -58,12 +59,27 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
             return Ok(result.First());
         }
 
-
         [HttpPost("{path}")]
-        public void UploadFile([FromBody]string path)
+        public void UploadFile([FromBody] string path)
         {
-            
             _csvToJsonConverter.Convert(path);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] string id)
+        {
+            using (var db = _dbContextFactory.Create())
+            {
+                db.Database.EnsureCreated();
+
+                var loaded = await db.Set<DealData>()
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(d => d.V3DealId == id);
+
+                if (loaded == null) return NotFound();
+                db.Remove(loaded);
+                return Ok(db.SaveChanges());
+            }
         }
     }
 }
