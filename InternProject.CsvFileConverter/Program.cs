@@ -24,7 +24,7 @@ namespace CsvFileConverter
 
                 var serviceProvider = services.BuildServiceProvider();
 
-                var conveter = serviceProvider.GetRequiredService<CsvToJsonConverter>();
+                var conveter = serviceProvider.GetRequiredService<ICsvToJsonConverter>();
                 conveter.Convert(inputFile);
 
                 Console.ReadKey();

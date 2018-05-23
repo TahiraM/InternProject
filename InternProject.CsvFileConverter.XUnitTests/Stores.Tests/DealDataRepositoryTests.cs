@@ -13,7 +13,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.Stores.Tests
         public void Should_Pass_WhenMethodsAreCorrectAndCallsAreBeingSent()
         {
             // Arrange
-            var dataStoreWriter = Substitute.For<IUpdateRecords>();
+            var dataStoreWriter = Substitute.For<IDbContextFactory>();
             var fixture = new FileWriterFixture();
 
             var sut = new DealDataRepository(dataStoreWriter);
@@ -22,7 +22,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.Stores.Tests
             sut.SaveMany(fixture.ValidInput);
 
             // Assert 
-            dataStoreWriter.Received(1).UpdateRecords(Arg.Any<DealData[]>());
+            dataStoreWriter.Received(1);
         }
     }
 }

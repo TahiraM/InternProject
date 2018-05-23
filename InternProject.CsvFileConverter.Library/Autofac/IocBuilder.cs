@@ -12,7 +12,6 @@ using InternProject.CsvFileConverter.Library.Interfaces.Store.Interfaces.UpdateF
 using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
 using InternProject.CsvFileConverter.Library.Logging;
 using InternProject.CsvFileConverter.Library.Stores;
-using InternProject.CsvFileConverter.Library.Stores.Extensions.UpdateFormat;
 using InternProject.CsvFileConverter.Library.Validations;
 using Serilog;
 
@@ -48,8 +47,7 @@ namespace InternProject.CsvFileConverter.Library.Autofac
             builder.RegisterType<DoubleFieldValidator>().As<IFieldValidator>();
             builder.RegisterType<DateFieldValidator>().As<IFieldValidator>();
             builder.RegisterType<StringFieldValidator>().As<IFieldValidator>();
-
-            builder.RegisterType<UpdateAllRecords>().As<IUpdateRecords>();
+;
 
             var container = builder.Build();
             return container;
