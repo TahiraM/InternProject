@@ -65,19 +65,5 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
             
             _csvToJsonConverter.Convert(path);
         }
-
-        //// PUT api/values/5
-        //[HttpPut("{Path}")]
-        //public void Put(string path)
-        //{
-        //    var deserial = JsonConvert.DeserializeObject(path);
-        //     _csvToJsonConverter.Convert(deserial.ToString());
-        //}
-
-        //// DELETE api/values/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

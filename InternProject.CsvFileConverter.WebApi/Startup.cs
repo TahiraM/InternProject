@@ -63,22 +63,4 @@ namespace InternProject.CsvFileConverter.WebApi
             app.UseMvc();
         }
     }
-
-    //public static class ServiceCollectionController
-    //{
-    //    public static IConfiguration Configuration { get; }
-
-    //    private static IServiceCollection RegisterCoreServices(this IServiceCollection services,
-    //        IConfiguration configuration)
-    //    {
-            
-    //        services.AddDbContext<DealDataDbContext>(options =>
-    //            options.UseSqlServer(Configuration.GetConnectionString("DealData")));
-    //        services.AddTransient<IDbContextFactory, DbContextFactory>();
-    //        services.AddTransient<IDealDataRepository, DealDataRepository>();
-    //        services.AddTransient<ICsvToJsonConverter, CsvToJsonConverter>();
-
-    //        return services;
-    //    }
-    //}
 }
