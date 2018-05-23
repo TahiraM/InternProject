@@ -8,7 +8,6 @@ using InternProject.CsvFileConverter.Library.Interfaces.Core.Conversions.Interfa
 using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
 using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces.Extensions.Interfaces;
 using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
-using InternProject.CsvFileConverter.Library.Interfaces.Store.Interfaces.UpdateFormat.Interfaces;
 using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
 using InternProject.CsvFileConverter.Library.Logging;
 using InternProject.CsvFileConverter.Library.Stores;
@@ -47,7 +46,7 @@ namespace InternProject.CsvFileConverter.Library.Autofac
             builder.RegisterType<DoubleFieldValidator>().As<IFieldValidator>();
             builder.RegisterType<DateFieldValidator>().As<IFieldValidator>();
             builder.RegisterType<StringFieldValidator>().As<IFieldValidator>();
-;
+            ;
 
             var container = builder.Build();
             return container;

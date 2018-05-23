@@ -1,6 +1,4 @@
-﻿using InternProject.CsvFileConverter.Library.Extensions.Mapping;
-using InternProject.CsvFileConverter.Library.Interfaces.Store.Interfaces.UpdateFormat.Interfaces;
-using InternProject.CsvFileConverter.Library.Stores;
+﻿using InternProject.CsvFileConverter.Library.Stores;
 using InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests;
 using NSubstitute;
 using Xunit;
