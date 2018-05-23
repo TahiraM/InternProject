@@ -1,4 +1,16 @@
-﻿using InternProject.CsvFileConverter.Library.Stores;
+﻿using System.Net.Mime;
+using InternProject.CsvFileConverter.Library.Autofac;
+using InternProject.CsvFileConverter.Library.Core;
+using InternProject.CsvFileConverter.Library.Core.Conversions;
+using InternProject.CsvFileConverter.Library.Core.IO;
+using InternProject.CsvFileConverter.Library.Extensions.Formatters;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.Conversions.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces.Extensions.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
+using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
+using InternProject.CsvFileConverter.Library.Stores;
+using InternProject.CsvFileConverter.Library.Validations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,13 +36,20 @@ namespace InternProject.CsvFileConverter.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile(@"C:\GIT\InternProject\InternProject.CsvFileConverter.WebApi\appsettings.Development.json")
+                .Build();
+
             services.AddDbContext<DealDataDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DealData")));
+            services.RegisterServices(configuration);
 
-            services.AddTransient<IDbContextFactory, DbContextFactory>();
+            services.BuildServiceProvider();
+
 
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "Contacts API", Version = "v1"}); });
             services.AddMvc();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,4 +63,22 @@ namespace InternProject.CsvFileConverter.WebApi
             app.UseMvc();
         }
     }
+
+    //public static class ServiceCollectionController
+    //{
+    //    public static IConfiguration Configuration { get; }
+
+    //    private static IServiceCollection RegisterCoreServices(this IServiceCollection services,
+    //        IConfiguration configuration)
+    //    {
+            
+    //        services.AddDbContext<DealDataDbContext>(options =>
+    //            options.UseSqlServer(Configuration.GetConnectionString("DealData")));
+    //        services.AddTransient<IDbContextFactory, DbContextFactory>();
+    //        services.AddTransient<IDealDataRepository, DealDataRepository>();
+    //        services.AddTransient<ICsvToJsonConverter, CsvToJsonConverter>();
+
+    //        return services;
+    //    }
+    //}
 }

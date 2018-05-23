@@ -1,4 +1,5 @@
 ﻿using System;
+using CsvHelper.Configuration;
 using InternProject.CsvFileConverter.Library.Core;
 using InternProject.CsvFileConverter.Library.Core.Conversions;
 using InternProject.CsvFileConverter.Library.Core.IO;
@@ -10,8 +11,8 @@ using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
 using InternProject.CsvFileConverter.Library.Interfaces.Store.Interfaces.UpdateFormat.Interfaces;
 using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
 using InternProject.CsvFileConverter.Library.Stores;
-using InternProject.CsvFileConverter.Library.Stores.Extensions.UpdateFormat;
 using InternProject.CsvFileConverter.Library.Validations;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -30,12 +31,14 @@ namespace InternProject.CsvFileConverter.Library.Autofac
                 .RegisterCoreServices(configuration);
         }
 
+        public static IConfiguration Configuration { get; }
+
         private static IServiceCollection RegisterCoreServices(this IServiceCollection services,
             IConfiguration configuration)
         {
             services.AddOptions().Configure<FileOutputOptions>(configuration);
 
-            services.AddTransient<CsvToJsonConverter>();
+            services.AddTransient<ICsvToJsonConverter, CsvToJsonConverter>();
             services.AddTransient<IFileWriter, FileWriter>();
             services.AddTransient<IDataExtractor, DataExtractor>();
             services.AddTransient<ITextFormatter, JsonTextFormatter>();
@@ -52,11 +55,11 @@ namespace InternProject.CsvFileConverter.Library.Autofac
             services.AddTransient<IFieldValidator, DoubleFieldValidator>();
             services.AddTransient<IFieldValidator, DateFieldValidator>();
             services.AddTransient<IFieldValidator, StringFieldValidator>();
-            services.AddTransient<IFileWriter, FileWriter>();
-            services.AddTransient<IUpdateRecords, UpdateAllRecords>();
-
-            //services.AddTransient<ValuesController>();
-
+            services.AddTransient<IFileWriter, FileWriter>();;
+            services.AddDbContext<DealDataDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DealData")));
+            services.AddTransient<IDbContextFactory, DbContextFactory>();
+            
             return services;
         }
 
