@@ -4,4 +4,5 @@ jobs:
     docker: # See https://docs.docker.com/get-started/#docker-concepts if you are new to Docker.
       - image: circleci/ruby:2.4.1
     steps:
-      - run: url "http://localhost:61686/swagger/"
+      - checkout
+      - run: echo "A first hello"
