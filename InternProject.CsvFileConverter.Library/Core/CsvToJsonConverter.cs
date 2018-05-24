@@ -39,7 +39,5 @@ namespace InternProject.CsvFileConverter.Library.Core
             // Store data 
             _dataStore.Store(data);
         }
-
-        
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using CsvHelper.Configuration;
 using InternProject.CsvFileConverter.Library.Core;
 using InternProject.CsvFileConverter.Library.Core.Conversions;
 using InternProject.CsvFileConverter.Library.Core.IO;
@@ -8,7 +7,6 @@ using InternProject.CsvFileConverter.Library.Interfaces.Core.Conversions.Interfa
 using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
 using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces.Extensions.Interfaces;
 using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
-using InternProject.CsvFileConverter.Library.Interfaces.Store.Interfaces.UpdateFormat.Interfaces;
 using InternProject.CsvFileConverter.Library.Interfaces.Validation.Interface;
 using InternProject.CsvFileConverter.Library.Stores;
 using InternProject.CsvFileConverter.Library.Validations;
@@ -20,6 +18,8 @@ namespace InternProject.CsvFileConverter.Library.Autofac
 {
     public static class ServiceCollectionExtensions
     {
+        public static IConfiguration Configuration { get; }
+
         public static IServiceCollection RegisterServices(this IServiceCollection services,
             IConfiguration configuration)
         {
@@ -30,8 +30,6 @@ namespace InternProject.CsvFileConverter.Library.Autofac
                 .RegisterFrameworkServices(configuration)
                 .RegisterCoreServices(configuration);
         }
-
-        public static IConfiguration Configuration { get; }
 
         private static IServiceCollection RegisterCoreServices(this IServiceCollection services,
             IConfiguration configuration)
@@ -55,11 +53,12 @@ namespace InternProject.CsvFileConverter.Library.Autofac
             services.AddTransient<IFieldValidator, DoubleFieldValidator>();
             services.AddTransient<IFieldValidator, DateFieldValidator>();
             services.AddTransient<IFieldValidator, StringFieldValidator>();
-            services.AddTransient<IFileWriter, FileWriter>();;
+            services.AddTransient<IFileWriter, FileWriter>();
+            ;
             services.AddDbContext<DealDataDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DealData")));
             services.AddTransient<IDbContextFactory, DbContextFactory>();
-            
+
             return services;
         }
 

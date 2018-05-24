@@ -31,7 +31,5 @@ namespace InternProject.CsvFileConverter.Library.Core.IO
 
             return reader;
         }
-
-       
     }
 }

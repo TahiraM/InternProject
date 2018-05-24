@@ -17,23 +17,6 @@ namespace InternProject.CsvFileConverter.Library.Stores
             _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
         }
 
-        private static void SaveToDatabase(DealData[] dealDataList, DealDataDbContext db)
-        {
-            db.Database.EnsureCreated();
-
-            foreach (var dealData in dealDataList)
-            {
-                var loaded = db.Set<DealData>()
-                    .AsNoTracking()
-                    .FirstOrDefault(d => d.V3DealId == dealData.V3DealId);
-
-                if (loaded == null)
-                    db.Set<DealData>().Add(dealData);
-                else
-                    db.Set<DealData>().Update(dealData);
-            }
-        }
-
         public DealData[] SaveMany(DealData[] dealDataList)
         {
             using (var db = _dbContextFactory.Create())
@@ -42,6 +25,7 @@ namespace InternProject.CsvFileConverter.Library.Stores
 
                 db.SaveChanges();
             }
+
             return dealDataList;
         }
 
@@ -53,6 +37,7 @@ namespace InternProject.CsvFileConverter.Library.Stores
 
                 await db.SaveChangesAsync();
             }
+
             return dealDataList;
         }
 
@@ -73,6 +58,23 @@ namespace InternProject.CsvFileConverter.Library.Stores
                 db.Database.EnsureCreated();
 
                 return await db.Set<DealData>().FindAsync(dealId);
+            }
+        }
+
+        private static void SaveToDatabase(DealData[] dealDataList, DealDataDbContext db)
+        {
+            db.Database.EnsureCreated();
+
+            foreach (var dealData in dealDataList)
+            {
+                var loaded = db.Set<DealData>()
+                    .AsNoTracking()
+                    .FirstOrDefault(d => d.V3DealId == dealData.V3DealId);
+
+                if (loaded == null)
+                    db.Set<DealData>().Add(dealData);
+                else
+                    db.Set<DealData>().Update(dealData);
             }
         }
     }
