@@ -36,7 +36,7 @@ namespace InternProject.CsvFileConverter.WebApi
             services.BuildServiceProvider();
 
 
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "Contacts API", Version = "v1"}); });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "DealDatas", Version = "v1"}); });
             services.AddMvc();
         }
 
@@ -46,7 +46,7 @@ namespace InternProject.CsvFileConverter.WebApi
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Contacts API V1"); });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "DealDatas"); });
 
             app.UseMvc();
         }

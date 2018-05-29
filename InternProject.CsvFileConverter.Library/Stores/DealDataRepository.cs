@@ -61,6 +61,16 @@ namespace InternProject.CsvFileConverter.Library.Stores
             }
         }
 
+        public Task<DealData> Get(string dealId)
+        {
+            using (var db = _dbContextFactory.Create())
+            {
+                db.Database.EnsureCreated();
+
+                return  db.Set<DealData>().FindAsync(dealId);
+            }
+        }
+
         private static void SaveToDatabase(DealData[] dealDataList, DealDataDbContext db)
         {
             db.Database.EnsureCreated();

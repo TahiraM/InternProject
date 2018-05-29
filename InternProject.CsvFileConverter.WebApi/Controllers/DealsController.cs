@@ -18,18 +18,15 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
         private readonly ICsvToJsonConverter _csvToJsonConverter;
         private readonly IDbContextFactory _dbContextFactory;
         private readonly IDealDataRepository _dealDataRepository;
-        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public DealsController(
             IDbContextFactory dbContextFactory,
             IDealDataRepository dealDataRepository,
-            ICsvToJsonConverter csvToJsonConverter,
-            IHttpContextAccessor httpContextAccessor)
+            ICsvToJsonConverter csvToJsonConverter)
         {
             _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
             _dealDataRepository = dealDataRepository ?? throw new ArgumentNullException(nameof(dealDataRepository));
             _csvToJsonConverter = csvToJsonConverter ?? throw new ArgumentNullException(nameof(csvToJsonConverter));
-            _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
         }
 
         [HttpGet]

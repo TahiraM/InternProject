@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using InternProject.CsvFileConverter.Library.Core.IO;
 using InternProject.CsvFileConverter.Library.Extensions.Formatters;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces.Extensions.Interfaces;
+using Microsoft.Extensions.Options;
+using NSubstitute;
 
 namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
 {
@@ -95,7 +98,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
                 new XmlTextFormatter()
             };
         }
-
+        
         private string GenerateOutput()
         {
             return
