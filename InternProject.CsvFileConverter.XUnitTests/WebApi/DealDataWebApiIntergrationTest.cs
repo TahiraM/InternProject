@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Xunit;
@@ -22,12 +21,12 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
             var expected =
                 "{\"v3DealId\":\"02B4EFAD4432\",\"eFrontDealId\":\"02B4EFADE653J8339D13F93EB851943C900\",\"dealName\":\"Marston (Project Magenta)0\",\"v3CompanyId\":\"JFV3CompanyI6\",\"v3CompanyName\":\"JFV3CompanyHellloooo\",\"sectorId\":6,\"sector\":\"Advertising\",\"countryId\":159,\"country\":\"United Kingdom\",\"transactionTypeId\":320,\"transactionType\":\"Primary LBO\",\"transactionFees\":5.3,\"otherFees\":1.1,\"currency\":\"EUR\",\"activeInActive\":\"Active\",\"exitDate\":\"2004-04-04T00:00:00\"}";
             var res = "";
-            
+
             // When
             var response = await _fixture.Client.GetAsync("api/v1/deals/02B4EFAD4432");
             using (var content = response.Content)
             {
-                var result =  content.ReadAsStringAsync();
+                var result = content.ReadAsStringAsync();
                 res = result.Result;
             }
 

@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using InternProject.CsvFileConverter.Library.Extensions.Formatters;
-using InternProject.CsvFileConverter.Library.Extensions.Mapping;
-using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
-using InternProject.CsvFileConverter.Library.Stores;
-using InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests;
-using Microsoft.EntityFrameworkCore;
-using NSubstitute;
-using Xunit;
-
-namespace InternProject.CsvFileConverter.XUnitTests.Stores.Tests
+﻿namespace InternProject.CsvFileConverter.XUnitTests.Stores.Tests
 {
     public class DealDataRepositoryTests
     {
@@ -33,6 +20,4 @@ namespace InternProject.CsvFileConverter.XUnitTests.Stores.Tests
         //    sut.Received(1).SaveMany(Arg.Any<DealData[]>());
         //}
     }
-    
-        
 }

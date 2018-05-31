@@ -10,7 +10,6 @@ namespace InternProject.CsvFileConverter.Library.Stores
 {
     public class DealDataRepository : IDealDataRepository
     {
-        
         private readonly IDbContextFactory _dbContextFactory;
 
         public DealDataRepository(IDbContextFactory dbContextFactory)
@@ -20,9 +19,8 @@ namespace InternProject.CsvFileConverter.Library.Stores
 
         public DealDataRepository()
         {
-            
         }
-        
+
         public DealData[] SaveMany(DealData[] dealDataList)
         {
             using (var db = _dbContextFactory.Create())
@@ -73,7 +71,7 @@ namespace InternProject.CsvFileConverter.Library.Stores
             {
                 db.Database.EnsureCreated();
 
-                return  db.Set<DealData>().FindAsync(dealId);
+                return db.Set<DealData>().FindAsync(dealId);
             }
         }
 

@@ -5,7 +5,6 @@ using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
 using InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests;
 using Microsoft.Extensions.Options;
 using NSubstitute;
-using NSubstitute.Extensions;
 using Xunit;
 
 namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.IO.Tests
