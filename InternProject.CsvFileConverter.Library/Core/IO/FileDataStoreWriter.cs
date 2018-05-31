@@ -11,10 +11,10 @@ namespace InternProject.CsvFileConverter.Library.Core.IO
         private readonly IFileWriter _fileWriter;
         private readonly FileOutputOptions _options;
 
-        public FileDataStoreWriter(IFileWriter fileWriter, IOptions<FileOutputOptions> optionsAsseccor)
+        public FileDataStoreWriter(IFileWriter fileWriter, IOptions<FileOutputOptions> optionsAccessor)
         {
             _fileWriter = fileWriter ?? throw new ArgumentNullException(nameof(fileWriter));
-            _options = optionsAsseccor?.Value ?? throw new ArgumentNullException(nameof(optionsAsseccor));
+            _options = optionsAccessor?.Value ?? throw new ArgumentNullException(nameof(optionsAccessor));
         }
 
         public void Write(DealData[] data)

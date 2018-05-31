@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using InternProject.CsvFileConverter.WebApi;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
@@ -25,6 +26,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
 
             Server = new TestServer(hostBuilder);
             Client = Server.CreateClient();
+            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public HttpClient Client { get; }

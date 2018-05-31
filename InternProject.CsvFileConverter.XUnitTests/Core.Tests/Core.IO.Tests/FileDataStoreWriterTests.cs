@@ -5,6 +5,7 @@ using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces;
 using InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests;
 using Microsoft.Extensions.Options;
 using NSubstitute;
+using NSubstitute.Extensions;
 using Xunit;
 
 namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.IO.Tests
@@ -16,9 +17,13 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.IO.Tests
         {
             // Arrange
             var fileWriter = Substitute.For<IFileWriter>();
-            var output = Substitute.For<IOptions<FileOutputOptions>>();
+            var mock = new FileOutputOptions
+            {
+                OutputFile = "",
+                OutputFileFormat = FormatterType.Json
+            };
+            var output = Options.Create(mock);
             var fixture = new FileWriterFixture();
-
             var sut = new FileDataStoreWriter(fileWriter, output);
 
             // Act
