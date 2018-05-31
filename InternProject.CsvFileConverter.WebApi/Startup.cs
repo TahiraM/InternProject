@@ -26,7 +26,7 @@ namespace InternProject.CsvFileConverter.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile(@"C:\GIT\InternProject\InternProject.CsvFileConverter.WebApi\appsettings.json")
+                .AddJsonFile("appsettings.json")
                 .Build();
 
             services.AddDbContext<DealDataDbContext>(options =>
