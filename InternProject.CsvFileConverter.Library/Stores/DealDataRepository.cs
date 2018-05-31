@@ -10,6 +10,7 @@ namespace InternProject.CsvFileConverter.Library.Stores
 {
     public class DealDataRepository : IDealDataRepository
     {
+        
         private readonly IDbContextFactory _dbContextFactory;
 
         public DealDataRepository(IDbContextFactory dbContextFactory)
@@ -17,6 +18,11 @@ namespace InternProject.CsvFileConverter.Library.Stores
             _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
         }
 
+        public DealDataRepository()
+        {
+            
+        }
+        
         public DealData[] SaveMany(DealData[] dealDataList)
         {
             using (var db = _dbContextFactory.Create())

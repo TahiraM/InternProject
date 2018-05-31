@@ -4,6 +4,7 @@ using InternProject.CsvFileConverter.Library.Core.IO;
 using InternProject.CsvFileConverter.Library.Extensions.Formatters;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Interfaces.Core.IO.Interfaces.Extensions.Interfaces;
+using InternProject.CsvFileConverter.Library.Stores;
 using Microsoft.Extensions.Options;
 using NSubstitute;
 
@@ -11,6 +12,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.DataFixtures.Tests
 {
     public class FileWriterFixture
     {
+        
         public FileWriterFixture()
         {
             //ValidInputDb = new[]
