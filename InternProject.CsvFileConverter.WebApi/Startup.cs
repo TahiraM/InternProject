@@ -30,14 +30,11 @@ namespace InternProject.CsvFileConverter.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var configuration = new ConfigurationBuilder()
-                .AddJsonFile(@"C:\GIT\InternProject\InternProject.CsvFileConverter.WebApi\appsettings.Development.json")
-                .Build();
+            
 
             services.AddDbContext<DealDataDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DealData")));
             
-            services.RegisterServices(configuration);
             services.BuildServiceProvider();
 
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info { Title = "DealDatas", Version = "v1" }); });
