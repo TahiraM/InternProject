@@ -13,7 +13,7 @@ jobs:
           command: dotnet build ./CsvFileConverter.sln
       - run:
           name: Run Test
-          command: dotnet test InternProject.CsvFileConverter.XUnitTests -- --single-run --no-progress --browser=ChromeNoSandbox
+          command: dotnet test InternProject.CsvFileConverter.XUnitTests --single-run --no-progress --browser=ChromeNoSandbox
       - restore_cache:
           keys:
             - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
