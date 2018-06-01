@@ -31,12 +31,12 @@ namespace InternProject.CsvFileConverter.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile(@"C:\GIT\InternProject\InternProject.CsvFileConverter.WebApi\appsettings.Development.json")
                 .Build();
 
             services.AddDbContext<DealDataDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DealData")));
-
+            
             services.RegisterServices(configuration);
             services.BuildServiceProvider();
 
