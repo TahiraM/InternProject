@@ -14,7 +14,8 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
     {
         public ControllerFixture()
         {
-            var hostBuilder = new WebHostBuilder().UseKestrel()
+            var hostBuilder = new WebHostBuilder()
+                .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureAppConfiguration((context, builder) =>
                 {
@@ -24,11 +25,11 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
                     builder.SetBasePath(env.ContentRootPath)
                         .AddJsonFile("appsettings.json", false, true);
                 })
-                .UseStartup<Startup>();
+                .UseStartup<TestStartup>();
 
             Server = new TestServer(hostBuilder);
+
             Client = Server.CreateClient();
-            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public HttpClient Client { get; }
