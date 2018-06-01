@@ -23,7 +23,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
                     env.EnvironmentName = "Development";
 
                     builder.SetBasePath(env.ContentRootPath)
-                        .AddJsonFile("appsettings.json", false, true);
+                        .AddJsonFile("appsettings.json");
                 })
                 .UseStartup<TestStartup>();
 
