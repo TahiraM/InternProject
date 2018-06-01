@@ -14,9 +14,6 @@ jobs:
       - run:
           name: Run Test
           command: dotnet test InternProject.CsvFileConverter.XUnitTests
-      - restore_cache:
-          keys:
-            - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
 workflows:
   version: 2
   build_and_test:
