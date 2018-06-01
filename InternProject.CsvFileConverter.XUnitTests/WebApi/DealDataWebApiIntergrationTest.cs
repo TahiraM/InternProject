@@ -14,14 +14,12 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
 {
     public class DealDataWebApiIntergrationTest : IClassFixture<ControllerFixture>
     {
-        public DealDataWebApiIntergrationTest(ControllerFixture fixture, DealDataDbContext context)
+        public DealDataWebApiIntergrationTest(ControllerFixture fixture)
         {
             _fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
-            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         private readonly ControllerFixture _fixture;
-        private readonly DealDataDbContext _context;
 
         [Fact]
         public async Task Should_GetAsync_PassWhenCorrectDataIsGottenThroughTheApi()
