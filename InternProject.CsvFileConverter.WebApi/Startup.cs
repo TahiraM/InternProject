@@ -11,6 +11,11 @@ namespace InternProject.CsvFileConverter.WebApi
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -31,12 +36,11 @@ namespace InternProject.CsvFileConverter.WebApi
 
             services.AddDbContext<DealDataDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DealData")));
-            services.RegisterServices(configuration);
 
+            services.RegisterServices(configuration);
             services.BuildServiceProvider();
 
-
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "DealDatas", Version = "v1"}); });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info { Title = "DealDatas", Version = "v1" }); });
             services.AddMvc();
         }
 

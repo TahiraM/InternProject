@@ -1,10 +1,12 @@
 ﻿using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using InternProject.CsvFileConverter.Library.Stores;
 using InternProject.CsvFileConverter.WebApi;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace InternProject.CsvFileConverter.XUnitTests.WebApi
 {
@@ -32,5 +34,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
         public HttpClient Client { get; }
 
         public TestServer Server { get; }
+
+        public DealDataDbContext Context => Server.Host.Services.GetRequiredService<DealDataDbContext>();
     }
 }
