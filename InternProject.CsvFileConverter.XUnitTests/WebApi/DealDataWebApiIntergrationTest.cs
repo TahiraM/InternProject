@@ -72,7 +72,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
         {
             services.RegisterCoreServices(configuration);
             
-            services.AddDbContext<DealDataDbContext>(opt => opt.UseInMemoryDatabase());
+            services.AddDbContext<DealDataDbContext>(opt => opt.UseInMemoryDatabase("DealData"));
 
             return services;
         }
