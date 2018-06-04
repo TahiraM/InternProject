@@ -70,7 +70,7 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
 
         protected IServiceCollection AddServices(IServiceCollection services, IConfiguration configuration)
         {
-            //AddServices(services, configuration);
+            services.RegisterCoreServices(configuration);
             
             services.AddDbContext<DealDataDbContext>(opt => opt.UseInMemoryDatabase());
 
