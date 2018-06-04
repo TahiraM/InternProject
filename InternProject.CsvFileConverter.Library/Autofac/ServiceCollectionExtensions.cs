@@ -28,11 +28,13 @@ namespace InternProject.CsvFileConverter.Library.Autofac
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
             return services
+                
                 .AddDbServices(configuration)
-                .RegisterCoreServices(configuration);
+                .AddCoreServices(configuration);
         }
 
-        public static IServiceCollection RegisterCoreServices(this IServiceCollection services,
+
+        public static IServiceCollection AddCoreServices(this IServiceCollection services,
             IConfiguration configuration)
         {
             services.AddOptions().Configure<FileOutputOptions>(configuration);
