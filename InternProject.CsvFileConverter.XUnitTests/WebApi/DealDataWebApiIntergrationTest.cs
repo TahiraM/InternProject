@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.WindowsAzure.Storage;
+using Swashbuckle.AspNetCore.Swagger;
 using Xunit;
 
 namespace InternProject.CsvFileConverter.XUnitTests.WebApi
@@ -66,15 +67,21 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
     {
         public TestStartup(IConfiguration configuration) : base(configuration)
         {
+          
         }
 
-        protected IServiceCollection AddServices(IServiceCollection services, IConfiguration configuration)
+        public override void ConfigureServices(IServiceCollection services)
         {
-            services.RegisterCoreServices(configuration);
-            
-            services.AddDbContext<DealDataDbContext>(opt => opt.UseInMemoryDatabase("DealData"));
+            services.RegisterCoreServices(Configuration);
 
-            return services;
+            services
+                .AddEntityFrameworkInMemoryDatabase()
+                .AddDbContext<DealDataDbContext>(options =>
+                    options.UseInMemoryDatabase("DealData"));
+
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info { Title = "DealDatas", Version = "v1" }); });
+            services.AddMvc();
+
         }
     }
 }
