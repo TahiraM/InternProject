@@ -70,12 +70,9 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
 
         protected IServiceCollection AddServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.RegisterServices(configuration);
-            services.BuildServiceProvider();
-            services.AddAuthenticationCore();
-
-            services.AddDbContext<DealDataDbContext>(opt => opt.UseInMemoryDatabase());
+            //AddServices(services, configuration);
             
+            services.AddDbContext<DealDataDbContext>(opt => opt.UseInMemoryDatabase());
 
             return services;
         }
