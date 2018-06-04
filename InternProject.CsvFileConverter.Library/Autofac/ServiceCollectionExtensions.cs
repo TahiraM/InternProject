@@ -63,7 +63,7 @@ namespace InternProject.CsvFileConverter.Library.Autofac
             IConfiguration configuration)
         {
             services.AddDbContext<DealDataDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DealData")));
+                options.UseSqlServer(configuration.GetConnectionString("DealData")));
 
             return services;
         }
