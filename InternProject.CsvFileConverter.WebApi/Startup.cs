@@ -14,8 +14,6 @@ namespace InternProject.CsvFileConverter.WebApi
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -26,11 +24,13 @@ namespace InternProject.CsvFileConverter.WebApi
             Configuration = builder.Build();
         }
 
+        public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCoreServices(Configuration);
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info { Title = "DealDatas", Version = "v1" }); });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "DealDatas", Version = "v1"}); });
             services.AddMvc();
 
             AddDbServices(services, Configuration);
@@ -48,7 +48,7 @@ namespace InternProject.CsvFileConverter.WebApi
         }
 
         protected virtual void AddDbServices(IServiceCollection services,
-        IConfiguration configuration)
+            IConfiguration configuration)
         {
             services.AddDbServices(configuration);
         }

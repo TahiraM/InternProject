@@ -1,8 +1,6 @@
 ﻿using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using InternProject.CsvFileConverter.Library.Stores;
-using InternProject.CsvFileConverter.WebApi;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;

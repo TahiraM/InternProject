@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using FluentAssertions;
-using InternProject.CsvFileConverter.Library.Autofac;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
-using InternProject.CsvFileConverter.Library.Stores;
-using InternProject.CsvFileConverter.WebApi;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.WindowsAzure.Storage;
 using Newtonsoft.Json;
-using Swashbuckle.AspNetCore.Swagger;
 using Xunit;
 
 namespace InternProject.CsvFileConverter.XUnitTests.WebApi
@@ -63,23 +55,6 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
             response.Should().NotBeNull();
             response.StatusCode.Should().Be(404);
             response.IsSuccessStatusCode.Should().BeFalse();
-        }
-    }
-
-    public class TestStartup : Startup
-    {
-        public TestStartup(IConfiguration configuration) : base(configuration)
-        {
-          
-        }
-
-        protected override void AddDbServices(IServiceCollection services, IConfiguration configuration)
-        {
-            if (services == null) throw new ArgumentNullException(nameof(services));
-            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
-
-            services.AddEntityFrameworkInMemoryDatabase()
-                .AddDbContext<DealDataDbContext>(options => options.UseInMemoryDatabase("DealData"));
         }
     }
 }

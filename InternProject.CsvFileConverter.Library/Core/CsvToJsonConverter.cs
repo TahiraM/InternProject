@@ -5,11 +5,6 @@ using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
 
 namespace InternProject.CsvFileConverter.Library.Core
 {
-    public interface ICsvToJsonConverter
-    {
-        void Convert(string input);
-    }
-
     public class CsvToJsonConverter : ICsvToJsonConverter
     {
         private readonly IDataExtractor _dataExtractor;
