@@ -4,8 +4,8 @@ namespace InternProject.CsvFileConverter.Library.Extensions.Mapping
 {
     public class DealData
     {
-        public string V3DealId { get; set; }
         public string EFrontDealId { get; set; }
+        public string V3DealId { get; set; }
         public string DealName { get; set; }
         public string V3CompanyId { get; set; }
         public string V3CompanyName { get; set; }

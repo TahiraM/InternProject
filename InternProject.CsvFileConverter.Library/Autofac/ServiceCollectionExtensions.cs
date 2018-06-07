@@ -27,11 +27,12 @@ namespace InternProject.CsvFileConverter.Library.Autofac
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
             return services
-                .RegisterFrameworkServices(configuration)
-                .RegisterCoreServices(configuration);
+                .AddDbServices(configuration)
+                .AddCoreServices(configuration);
         }
 
-        private static IServiceCollection RegisterCoreServices(this IServiceCollection services,
+
+        public static IServiceCollection AddCoreServices(this IServiceCollection services,
             IConfiguration configuration)
         {
             services.AddOptions().Configure<FileOutputOptions>(configuration);
@@ -54,19 +55,16 @@ namespace InternProject.CsvFileConverter.Library.Autofac
             services.AddTransient<IFieldValidator, DateFieldValidator>();
             services.AddTransient<IFieldValidator, StringFieldValidator>();
             services.AddTransient<IFileWriter, FileWriter>();
-            ;
-            services.AddDbContext<DealDataDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DealData")));
             services.AddTransient<IDbContextFactory, DbContextFactory>();
 
             return services;
         }
 
-        private static IServiceCollection RegisterFrameworkServices(this IServiceCollection services,
+        public static IServiceCollection AddDbServices(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddMemoryCache();
-            services.AddSqlDbContext<DealDataDbContext>(configuration.GetConnectionString("DealData"));
+            services.AddDbContext<DealDataDbContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("DealData")));
 
             return services;
         }

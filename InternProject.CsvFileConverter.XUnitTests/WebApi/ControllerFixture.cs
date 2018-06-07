@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using InternProject.CsvFileConverter.WebApi;
+using InternProject.CsvFileConverter.Library.Stores;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace InternProject.CsvFileConverter.XUnitTests.WebApi
 {
@@ -12,7 +12,8 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
     {
         public ControllerFixture()
         {
-            var hostBuilder = new WebHostBuilder().UseKestrel()
+            var hostBuilder = new WebHostBuilder()
+                .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureAppConfiguration((context, builder) =>
                 {
@@ -20,17 +21,19 @@ namespace InternProject.CsvFileConverter.XUnitTests.WebApi
                     env.EnvironmentName = "Development";
 
                     builder.SetBasePath(env.ContentRootPath)
-                        .AddJsonFile("appsettings.json", false, true);
+                        .AddJsonFile("appsettings.json");
                 })
-                .UseStartup<Startup>();
+                .UseStartup<TestStartup>();
 
             Server = new TestServer(hostBuilder);
+
             Client = Server.CreateClient();
-            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public HttpClient Client { get; }
 
         public TestServer Server { get; }
+
+        public DealDataDbContext Context => Server.Host.Services.GetRequiredService<DealDataDbContext>();
     }
 }
