@@ -1,4 +1,5 @@
-﻿using InternProject.CsvFileConverter.Library.Autofac;
+﻿using System.Web.Http;
+using InternProject.CsvFileConverter.Library.Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,12 @@ namespace InternProject.CsvFileConverter.WebApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+        }
+
+        public static void Register(HttpConfiguration config)
+        {
+            // New code
+            config.EnableCors();
         }
 
         public Startup(IHostingEnvironment env)
