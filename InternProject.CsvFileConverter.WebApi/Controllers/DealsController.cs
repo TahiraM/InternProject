@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InternProject.CsvFileConverter.WebApi.Controllers
 {
-    [EnableCors(origins: "http://localhost:61686/", headers: "*", methods: "*")]
+    
     [Route("api/v1/[controller]")]
     public class DealsController : Controller
     {
