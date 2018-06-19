@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Cors;
 using InternProject.CsvFileConverter.Library.Core;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
@@ -11,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InternProject.CsvFileConverter.WebApi.Controllers
 {
+    [EnableCors(origins: "http://localhost:61686/", headers: "*", methods: "*")]
     [Route("api/v1/[controller]")]
     public class DealsController : Controller
     {

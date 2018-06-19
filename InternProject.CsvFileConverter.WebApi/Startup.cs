@@ -1,4 +1,5 @@
-﻿using InternProject.CsvFileConverter.Library.Autofac;
+﻿using System.Web.Http;
+using InternProject.CsvFileConverter.Library.Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +32,7 @@ namespace InternProject.CsvFileConverter.WebApi
             services.AddCoreServices(Configuration);
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "DealDatas", Version = "v1"}); });
             services.AddMvc();
+            services.AddCors();
 
             AddDbServices(services, Configuration);
         }
@@ -39,7 +41,7 @@ namespace InternProject.CsvFileConverter.WebApi
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
-
+            app.UseCors(builder => builder.WithOrigins("http://localhost:61686/"));
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "DealDatas"); });
 
