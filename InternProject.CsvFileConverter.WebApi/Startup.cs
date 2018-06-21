@@ -1,24 +1,20 @@
-﻿using System.Web.Http;
-using InternProject.CsvFileConverter.Library.Autofac;
+﻿using InternProject.CsvFileConverter.Library.Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
- 
+
 namespace InternProject.CsvFileConverter.WebApi
 {
     public class Startup
     {
+        public string Url = "http://localhost:61686/";
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-        }
-
-        public static void Register(HttpConfiguration config)
-        {
-            // New code
-            config.EnableCors();
         }
 
         public Startup(IHostingEnvironment env)
@@ -30,23 +26,17 @@ namespace InternProject.CsvFileConverter.WebApi
             Configuration = builder.Build();
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCoreServices(Configuration);
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "DealDatas", Version = "v1"}); });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info { Title = "DealDatas", Version = "v1" }); });
             services.AddMvc();
-
             AddDbServices(services, Configuration);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
-
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "DealDatas"); });
 

@@ -22,3 +22,5 @@ namespace InternProject.CsvFileConverter.Library.Extensions.Mapping
         public DateTime? ExitDate { get; set; }
     }
 }
+
+  

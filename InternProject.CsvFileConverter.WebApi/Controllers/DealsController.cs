@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Http.Cors;
 using InternProject.CsvFileConverter.Library.Core;
 using InternProject.CsvFileConverter.Library.Extensions.Mapping;
 using InternProject.CsvFileConverter.Library.Interfaces.Database.Interfaces;
@@ -12,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InternProject.CsvFileConverter.WebApi.Controllers
 {
-    
     [Route("api/v1/[controller]")]
     public class DealsController : Controller
     {
@@ -37,7 +35,7 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string id)
+        public async Task<IActionResult> GetSingleDeal(string id)
         {
             var dealData = await _dealDataRepository.GetAsync(id);
             if (dealData == null) return NotFound();
@@ -46,7 +44,7 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] DealData dealData)
+        public async Task<IActionResult> PostNewDealData([FromBody] DealData dealData)
         {
             if (dealData == null) throw new ArgumentNullException(nameof(dealData));
 
