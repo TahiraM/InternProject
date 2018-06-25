@@ -4,102 +4,92 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
-
-<h4>DealData</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EFrontDealId" class="control-label"></label>
-                <input asp-for="EFrontDealId" class="form-control" />
-                <span asp-validation-for="EFrontDealId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="V3DealId" class="control-label"></label>
-                <input asp-for="V3DealId" class="form-control" />
-                <span asp-validation-for="V3DealId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DealName" class="control-label"></label>
-                <input asp-for="DealName" class="form-control" />
-                <span asp-validation-for="DealName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="V3CompanyId" class="control-label"></label>
-                <input asp-for="V3CompanyId" class="form-control" />
-                <span asp-validation-for="V3CompanyId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="V3CompanyName" class="control-label"></label>
-                <input asp-for="V3CompanyName" class="form-control" />
-                <span asp-validation-for="V3CompanyName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SectorId" class="control-label"></label>
-                <input asp-for="SectorId" class="form-control" />
-                <span asp-validation-for="SectorId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sector" class="control-label"></label>
-                <input asp-for="Sector" class="form-control" />
-                <span asp-validation-for="Sector" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CountryId" class="control-label"></label>
-                <input asp-for="CountryId" class="form-control" />
-                <span asp-validation-for="CountryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Country" class="control-label"></label>
-                <input asp-for="Country" class="form-control" />
-                <span asp-validation-for="Country" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TransactionTypeId" class="control-label"></label>
-                <input asp-for="TransactionTypeId" class="form-control" />
-                <span asp-validation-for="TransactionTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TransactionType" class="control-label"></label>
-                <input asp-for="TransactionType" class="form-control" />
-                <span asp-validation-for="TransactionType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TransactionFees" class="control-label"></label>
-                <input asp-for="TransactionFees" class="form-control" />
-                <span asp-validation-for="TransactionFees" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OtherFees" class="control-label"></label>
-                <input asp-for="OtherFees" class="form-control" />
-                <span asp-validation-for="OtherFees" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Currency" class="control-label"></label>
-                <input asp-for="Currency" class="form-control" />
-                <span asp-validation-for="Currency" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ActiveInActive" class="control-label"></label>
-                <input asp-for="ActiveInActive" class="form-control" />
-                <span asp-validation-for="ActiveInActive" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExitDate" class="control-label"></label>
-                <input asp-for="ExitDate" class="form-control" />
-                <span asp-validation-for="ExitDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <a asp-action="SendData"><input type="submit" value="Create" class="btn btn-default"/></a>
-            </div>
-        </form>
-    </div>
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        <div class=" form-group">
+            @Html.LabelFor(model => model.V3DealId)
+            @Html.EditorFor(model => model.V3DealId)
+            @Html.ValidationMessageFor(model => model.V3DealId)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.DealName)
+            @Html.EditorFor(model => model.DealName)
+            @Html.ValidationMessageFor(model => model.DealName)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.EFrontDealId)
+            @Html.EditorFor(model => model.EFrontDealId)
+            @Html.ValidationMessageFor(model => model.EFrontDealId)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.V3CompanyId)
+            @Html.EditorFor(model => model.V3CompanyId)
+            @Html.ValidationMessageFor(model => model.V3CompanyId)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.V3CompanyName)
+            @Html.EditorFor(model => model.V3CompanyName)
+            @Html.ValidationMessageFor(model => model.V3CompanyName)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.SectorId)
+            @Html.EditorFor(model => model.SectorId)
+            @Html.ValidationMessageFor(model => model.SectorId)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.Sector)
+            @Html.EditorFor(model => model.Sector)
+            @Html.ValidationMessageFor(model => model.Sector)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.CountryId)
+            @Html.EditorFor(model => model.CountryId)
+            @Html.ValidationMessageFor(model => model.CountryId)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.Country)
+            @Html.EditorFor(model => model.Country)
+            @Html.ValidationMessageFor(model => model.Country)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.TransactionTypeId)
+            @Html.EditorFor(model => model.TransactionTypeId)
+            @Html.ValidationMessageFor(model => model.TransactionTypeId)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.TransactionType)
+            @Html.EditorFor(model => model.TransactionType)
+            @Html.ValidationMessageFor(model => model.TransactionType)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.TransactionFees)
+            @Html.EditorFor(model => model.TransactionFees)
+            @Html.ValidationMessageFor(model => model.TransactionFees)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.OtherFees)
+            @Html.EditorFor(model => model.OtherFees)
+            @Html.ValidationMessageFor(model => model.OtherFees)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.Currency)
+            @Html.EditorFor(model => model.Currency)
+            @Html.ValidationMessageFor(model => model.Currency)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.ActiveInActive)
+            @Html.EditorFor(model => model.ActiveInActive)
+            @Html.ValidationMessageFor(model => model.ActiveInActive)
+        </div>
+        <div class=" form-group">
+            @Html.LabelFor(model => model.ExitDate)
+            @Html.EditorFor(model => model.ExitDate)
+            @Html.ValidationMessageFor(model => model.ExitDate)
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-default"/>
+            <input type="reset" value="Reset" class="btn btn-default"/>
+        </div>
+    }
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

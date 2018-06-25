@@ -7,19 +7,19 @@
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a href="@Url.Action("Create")" class="btn btn-default">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.EFrontDealId)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.V3DealId)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.DealName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EFrontDealId)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.V3CompanyId)
@@ -67,13 +67,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.EFrontDealId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.V3DealId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DealName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EFrontDealId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.V3CompanyId)
@@ -115,9 +115,8 @@
                 @Html.DisplayFor(modelItem => item.ExitDate)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a href="@Url.Action("Create", new {id = item.V3DealId})" class="btn btn-default">Edit</a>|
+                <a href="@Url.Action("Delete", new {id = item.V3DealId})" class="btn btn-default">Delete</a>
             </td>
         </tr>
 }

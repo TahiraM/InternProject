@@ -61,8 +61,8 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
             _csvToJsonConverter.Convert(path);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete([FromBody] string id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
         {
             using (var db = _dbContextFactory.Create())
             {

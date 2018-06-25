@@ -6,19 +6,19 @@ namespace InternProject.CsvFileConverter.WebApp.WebApiConfig
 {
     public class DealsApi
     {
-        private string _apiBaseURI = "http://localhost:61686/";
+        private const string ApiBaseUri = "http://localhost:61686/";
+
         public HttpClient Initial()
         {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri(_apiBaseURI);
+            var client = new HttpClient { BaseAddress = new Uri(ApiBaseUri) };
 
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             return client;
-  
+
         }
 
-        
+
     }
 }

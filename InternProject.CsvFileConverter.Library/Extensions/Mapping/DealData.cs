@@ -1,12 +1,14 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace InternProject.CsvFileConverter.Library.Extensions.Mapping
 {
     public class DealData
     {
-        public string EFrontDealId { get; set; }
+        [Required(ErrorMessage = "V3DealID cannot be empty")]
         public string V3DealId { get; set; }
         public string DealName { get; set; }
+        public string EFrontDealId { get; set; }
         public string V3CompanyId { get; set; }
         public string V3CompanyName { get; set; }
         public int? SectorId { get; set; }
