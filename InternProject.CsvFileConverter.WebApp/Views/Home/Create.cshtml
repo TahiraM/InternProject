@@ -1,4 +1,5 @@
-﻿@model InternProject.CsvFileConverter.Library.Extensions.Mapping.DealData
+﻿@using Microsoft.ApplicationInsights.AspNetCore
+@model InternProject.CsvFileConverter.Library.Extensions.Mapping.DealData
 
 @{
     ViewData["Title"] = "Create";
@@ -93,3 +94,7 @@
         </div>
     }
 </div>
+
+@section Scripts{ 
+    <script type ="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+}

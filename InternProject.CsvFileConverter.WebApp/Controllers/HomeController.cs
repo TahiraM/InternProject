@@ -35,11 +35,12 @@ namespace InternProject.CsvFileConverter.WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Create(string id)
         {
-            if (id == Empty) throw new ArgumentNullException();
+            if (id == null) return View(new DealData());
             try
             {
                 var response = await _api.Initial().GetAsync("api/v1/Deals/" + id);
                 var result = response.Content.ReadAsStringAsync().Result;
+                TempData["SuccessMessage"] = "Updated Successfully";
                 return View(response.Content.ReadAsAsync<DealData>().Result);
                 
             }
@@ -49,7 +50,7 @@ namespace InternProject.CsvFileConverter.WebApp.Controllers
                     "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
 
-            return View("Create");
+            return View("Index");
         }
 
 
@@ -70,7 +71,7 @@ namespace InternProject.CsvFileConverter.WebApp.Controllers
             catch (DataException)
             {
                 ModelState.AddModelError("",
-                    "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                    "Unable to create record. Try again, and if the problem persists see your system administrator.");
             }
 
             return View(data);
@@ -90,7 +91,7 @@ namespace InternProject.CsvFileConverter.WebApp.Controllers
             catch (DataException)
             {
                 ModelState.AddModelError("",
-                    "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                    "Unable to Delete. Try again, and if the problem persists, see your system administrator.");
             }
 
             return View("Index");
