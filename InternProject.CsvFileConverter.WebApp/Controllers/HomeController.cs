@@ -65,6 +65,7 @@ namespace InternProject.CsvFileConverter.WebApp.Controllers
                 if (ModelState.IsValid)
                 {
                     await _api.Initial().PostAsync("api/v1/Deals", data, new JsonMediaTypeFormatter());
+                    TempData["Success"] = "New Deal Created Successfully";
                     return RedirectToAction("Index");
                 }
             }
@@ -77,6 +78,23 @@ namespace InternProject.CsvFileConverter.WebApp.Controllers
             return View(data);
         }
 
+        public async Task<IActionResult> Upload(string url)
+        {
+            if (url == Empty) throw new ArgumentNullException();
+            try
+            {
+                var response = await _api.Initial().PostAsync("api/v1/Deals/path", url, new JsonMediaTypeFormatter());
+                var result = response.Content.ReadAsStringAsync().Result;
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("",
+                    "Unable to Delete. Try again, and if the problem persists, see your system administrator.");
+            }
+            return View("Index");
+        }
+
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
@@ -85,6 +103,7 @@ namespace InternProject.CsvFileConverter.WebApp.Controllers
             {
                 var response = await _api.Initial().DeleteAsync("api/v1/Deals/" + id);
                 var result = response.Content.ReadAsStringAsync().Result;
+                TempData["Deleted"] = "Deal Deleted";
                 return RedirectToAction("Index");
 
             }
