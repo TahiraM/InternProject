@@ -43,7 +43,6 @@ namespace InternProject.CsvFileConverter.XUnitTests.Core.Tests.Core.Converstions
             var actual = sut.ReadContent(input, false);
 
             // Assert
-            //expected.Should().Contain(item => item.OtherFees == 0.1);
             testData.Should().IsSameOrEqualTo(value);
             expected.Length.Should().IsSameOrEqualTo(actual.Length);
             expected[0].Should().IsSameOrEqualTo(actual[0]);

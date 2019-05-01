@@ -1,0 +1,130 @@
+﻿@using Microsoft.ApplicationInsights.AspNetCore
+@model InternProject.CsvFileConverter.Library.Extensions.Mapping.DealData
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.V3DealId)
+
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.V3DealId)
+            @Html.ValidationMessageFor(model => model.V3DealId)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.DealName)
+
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.DealName)
+            @Html.ValidationMessageFor(model => model.DealName)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.EFrontDealId)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.EFrontDealId)
+            @Html.ValidationMessageFor(model => model.EFrontDealId)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.V3CompanyName)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.V3CompanyName)
+            @Html.ValidationMessageFor(model => model.V3CompanyName)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.SectorId)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.SectorId)
+            @Html.ValidationMessageFor(model => model.SectorId)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.Sector)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.Sector)
+            @Html.ValidationMessageFor(model => model.Sector)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.CountryId)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.CountryId)
+            @Html.ValidationMessageFor(model => model.CountryId)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.Country)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.Country)
+            @Html.ValidationMessageFor(model => model.Country)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.TransactionTypeId)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.TransactionTypeId)
+            @Html.ValidationMessageFor(model => model.TransactionTypeId)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.TransactionType)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.TransactionType)
+            @Html.ValidationMessageFor(model => model.TransactionType)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.TransactionFees)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.TransactionFees)
+            @Html.ValidationMessageFor(model => model.TransactionFees)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.OtherFees)
+        </div>
+        <div class="form-group" id="text">
+            @Html.EditorFor(model => model.OtherFees)
+            @Html.ValidationMessageFor(model => model.OtherFees)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.Currency)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.Currency)
+            @Html.ValidationMessageFor(model => model.Currency)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.ActiveInActive)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.ActiveInActive)
+            @Html.ValidationMessageFor(model => model.ActiveInActive)
+        </div>
+        <div class=" form-group" id="label">
+            @Html.LabelFor(model => model.ExitDate)
+        </div>
+        <div class="form-group" id="textBox">
+            @Html.EditorFor(model => model.ExitDate)
+            @Html.ValidationMessageFor(model => model.ExitDate)
+        </div>
+        <div class="form-group">
+            <input type="submit" id="submit" value="Submit" class="btn btn-default" onclick="Success()"/>
+            <input type="reset" value="Reset" class="btn btn-default" />
+        </div>
+    }
+    <script>
+        function Success() {
+            window.alert("Saved Successfully");
+        }
+    </script>
+    
+</div>
+

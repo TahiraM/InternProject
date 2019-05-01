@@ -9,6 +9,8 @@ namespace InternProject.CsvFileConverter.WebApi
 {
     public class Startup
     {
+        public string Url = "http://localhost:61686/";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,8 +31,14 @@ namespace InternProject.CsvFileConverter.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCoreServices(Configuration);
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "DealDatas", Version = "v1"}); });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info { Title = "DealDatas", Version = "v1" }); });
             services.AddMvc();
+            services.AddCors(options => options.AddPolicy("AllowSpecificOrigin", builder =>
+            {
+                builder.WithOrigins(Url).AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            }));
 
             AddDbServices(services, Configuration);
         }
@@ -39,7 +47,7 @@ namespace InternProject.CsvFileConverter.WebApi
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
-
+            app.UseCors("AllowSpecificOrigin");
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "DealDatas"); });
 

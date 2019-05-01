@@ -1,0 +1,55 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url('../images/full-page-desktop-background-www.wallpapersbrowse.com.jpg');
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 12pt;
+    font-weight: 300;
+    line-height: 1.75em;
+    color: #ffffff;
+}
+ .form-group label {
+    font-size: 20px;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+.text-box {
+    color: #020;
+    width: 400px;
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #ffffff;
+}
+
+
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 18px;
+    line-height: 1.4;
+    background-color: #122b40;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+
+}

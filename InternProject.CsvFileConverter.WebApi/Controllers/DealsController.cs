@@ -35,7 +35,7 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string id)
+        public async Task<IActionResult> GetSingleDeal(string id)
         {
             var dealData = await _dealDataRepository.GetAsync(id);
             if (dealData == null) return NotFound();
@@ -44,7 +44,7 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] DealData dealData)
+        public async Task<IActionResult> PostNewDealData([FromBody] DealData dealData)
         {
             if (dealData == null) throw new ArgumentNullException(nameof(dealData));
 
@@ -61,8 +61,8 @@ namespace InternProject.CsvFileConverter.WebApi.Controllers
             _csvToJsonConverter.Convert(path);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete([FromBody] string id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
         {
             using (var db = _dbContextFactory.Create())
             {
