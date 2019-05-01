@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -11,13 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="WebApi\appsettings.json">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
+  <Content Include="WebApi\appsettings.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.1.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
